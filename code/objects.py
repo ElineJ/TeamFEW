@@ -17,21 +17,36 @@ class VeGrid(object):
             return True
         return False
     def isPositioninGrid(self, pos)
-        vehicle.x 
+        if 0 > vehicle.x1 <= self.width and 0 > vehicle.x2 <= self.width and 0 > vehicle.y1 < self.height and 0 > vehicle.y1 < self.height:
+            return True
+        return False
 
 
 class Vehicle:
     
-    def __init__(self, position, grid):
-        self.grid = grid
-        self.name = name
+    def __init__(self, x1, x2, y1, y2):
+        
+        # kan eigenlijk niet hier omdat trucks 3 lang zijn
         self.pos = position
+        self.x1 = x1
+        self.x2 = x2
+        self.y1 = y1
+        self.y2 = y2
+        
     def getVehiclePosition(self):
+        
         return self.pos
-    def setVehiclePosition(self, position):
-        self pos = position
+    
+    def setVehiclePosition(self, x1, x2, y1, y2):
+        
+        self.x1 = x1
+        self.x2 = x2
+        self.y1 = y1
+        self.y2 = y2
+        # niet erg mooi
+        
 class Hcar(Vehicle):
     def __init__(self):
-        length = 3
+ 
     def movement(self):
         
