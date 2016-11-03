@@ -12,3 +12,9 @@ class grid:
     cars = []
     width = widthgrid
     height = heightgrid
+
+# ondergrens = minimaal aantal stappen om eruit te komen
+# bovengrens = maximaal aantal stappen om eruit te komen
+
+# kijken wat rode auto blokkeert --> die moet je verplaatsen
+# kan je die niet verplaatsen --> verplaats wat die auto blokkeert, etc
