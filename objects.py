@@ -10,5 +10,5 @@ class carType:
 
 class grid:
     cars = []
-    width = 6
-    height = 6
+    width = widthgrid
+    height = heightgrid
