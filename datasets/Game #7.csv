@@ -27,7 +27,7 @@ car25, "1, 2", "11, 11", H, green
 car26, "7, 8", "11, 11", H, blue
 car27, "9, 9", "10, 11", V, light blue
 car28, "11, 11", "10, 11", V, light blue
-truck1, "7, 8, 9", " 0, 0" H, purple
+truck1, "7, 8, 9", "0, 0, 0", H, purple
 truck2, "0, 1, 2", "2, 2, 2", H, yellow
 truck3, "6, 6, 6", "2, 3, 4", V, dark yellow
 truck4, "0, 0, 0", "3, 4, 5", V, purple
