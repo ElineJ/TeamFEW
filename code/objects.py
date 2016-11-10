@@ -115,49 +115,50 @@ class Car(object):
         """
         self.pos = position
 
-    def moveCar(self, position):
+    def moveCar(self, position, direction):
         """
         Moves car to new position
         """
 
-        # check if position is on the grid
+        # TODO: check if position is on the grid
 
+        if direction == 'right' or direction == 'up':
+            # move vertical car right
+            if self.orientation == 'V':
+                y1 = self.pos.y1 + 1
+                y2 = self.pos.y2 + 1
+                new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
+                self.setCarPosition(new_pos)
+                # move horizontal car up
+            else:
+                x1 = self.pos.x1 + 1
+                x2 = self.pos.x2 + 1
+                new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
+                self.setCarPosition(new_pos)
 
-        # move vertical car right
-        if self.orientation == 'V':
-            y1 = self.pos.y1 + 1
-            y2 = self.pos.y2 + 1
-            new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
-            self.setCarPosition(new_pos)
-        # move horizontal car up
-        else:
-            x1 = self.pos.x1 + 1
-            x2 = self.pos.x2 + 1
-            new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
-            self.setCarPosition(new_pos)
+        elif direction == 'left' or direction == 'down':
+            # move vertical car left
+            if self.orientation == 'V':
+                y1 = self.pos.y1 - 1
+                y2 = self.pos.y2 - 1
+                new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
+                self.setCarPosition(new_pos)
+            # move horizontal car down
+            else:
+                x1 = self.pos.x1 - 1
+                x2 = self.pos.x2 - 1
+                new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
+                self.setCarPosition(new_pos)
 
-        # move vertical car left
-        if self.orientation == 'H':
-            y1 = self.pos.y1 - 1
-            y2 = self.pos.y2 - 1
-            new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
-            self.setCarPosition(new_pos)
-        # move horizontal car down
-        else:
-            x1 = self.pos.x1 - 1
-            x2 = self.pos.x2 - 1
-            new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
-            self.setCarPosition(new_pos)
-
-        # if position is on the grid, move car
-        # update position in all_vehicles
+        # TODO: update position in all_vehicles?
 
 
 class Truck(object):
     """
     Creates an object for a vehicle type of truck
     """
-    def __init__(self, position, orientation, color):
+    def __init__(self, x1, x2, x3, y1, y2, y3, orientation, color):
+        position = TruckPosition(x1, x2, x3, y1, y2, y3)
         self.pos = position
         self.orientation = orientation
         self.color = color
@@ -176,9 +177,46 @@ class Truck(object):
         """
         self.pos = position
 
+    def moveTruck(self, position, direction):
+        """
+        Moves truck to new position
+        """
+        if direction == 'right' or direction == 'up':
+            # move vertical car right
+            if self.orientation == 'V':
+                y1 = self.pos.y1 + 1
+                y2 = self.pos.y2 + 1
+                y3 = self.pos.y3 + 1
+                new_pos = CarPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
+                self.setCarPosition(new_pos)
+                # move horizontal car up
+            else:
+                x1 = self.pos.x1 + 1
+                x2 = self.pos.x2 + 1
+                x3 = self.pos.x3 + 1
+                new_pos = CarPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
+                self.setCarPosition(new_pos)
+
+        elif direction == 'left' or direction == 'down':
+            # move vertical car left
+            if self.orientation == 'V':
+                y1 = self.pos.y1 - 1
+                y2 = self.pos.y2 - 1
+                y3 = self.pos.y3 - 1
+                new_pos = CarPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
+                self.setCarPosition(new_pos)
+            # move horizontal car down
+            else:
+                x1 = self.pos.x1 - 1
+                x2 = self.pos.x2 - 1
+                x3 = self.pos.x3 - 1
+                new_pos = CarPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
+                self.setCarPosition(new_pos)
+
+        # TODO: update position in all_vehicles?
+
 # == run simulation
 
 def runSimulation(width, height):
     anim = visualize.Visualization(width, height)
-
     anim.done()

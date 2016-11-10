@@ -6,6 +6,9 @@ import math
 import time
 
 from Tkinter import *
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib import pyplot as plt
 
 class Visualization:
     def __init__(self, width, height, delay = 0.2):
@@ -35,7 +38,9 @@ class Visualization:
                 x1, y1 = self._map_coords(i, j)
                 x2, y2 = self._map_coords(i + 1, j + 1)
                 self.tiles[(i, j)] = self.w.create_rectangle(x1, y1, x2, y2,
-                                                             fill = "blue")
+                                                             fill = "#dbe8ff")
+
+        # Draw
 
         # Draw gridlines
         for i in range(width + 1):
@@ -46,6 +51,11 @@ class Visualization:
             x1, y1 = self._map_coords(0, i)
             x2, y2 = self._map_coords(width, i)
             self.w.create_line(x1, y1, x2, y2)
+
+        # draw shapes for cars
+        x1, y1 = self._map_coords(0, 0)
+        x2, y2 = self._map_coords(0, 1)
+        self.w.create_rectangle(x1, y1, x2, y2, fill="red")
 
         # Draw some status text
         #self.robots = None
