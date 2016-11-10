@@ -1,44 +1,44 @@
 vehicle,x,y,orientation,color
-car1, "0, 0", "0, 1", V, green
-car2, "6, 6", "0, 1", V, blue
-car3, "10, 11", "0, 0", H, light blue
-car4, "3, 4", "2, 2", H, orange
-car5, "5, 5", "1, 2", V, light blue
-car6, "7, 8", "2, 2", H, green
-car7, "10, 10", "1, 2", V, orange
-car8, "11, 11", "1, 2", V, blue
-car9, "3, 4", "5, 5", V, green
-car10, "7, 8", "3, 3", H, orange
-car11, "9, 10", "3, 3", H, light blue
-car12, "2, 3", "5, 5", H, red
-car13, "4 ,4", "5, 6", V, orange
-car14, "5, 5", "5, 6", V, light blue
-car15, "3, 3", "6, 7", V, light blue
-car16, "4, 5", "7, 7", H, green
-car17, "7, 7", "6, 7", V, blue
-car18, "9 ,9", "6, 7", V, light blue
-car19, "10, 11", "6, 6", H, green
-car20, "10, 11", "7, 7", H, blue
-car21, "0, 1", "8, 8", H, orange
-car22, "2, 2", "8, 9", V, green
-car23, "8, 9", "9, 9", H, green
-car24, "11, 11", "8, 9", V, green
-car25, "1, 2", "11, 11", H, green
-car26, "7, 8", "11, 11", H, blue
-car27, "9, 9", "10, 11", V, light blue
-car28, "11, 11", "10, 11", V, light blue
-truck1, "7, 8, 9", "0, 0, 0", H, purple
-truck2, "0, 1, 2", "2, 2, 2", H, yellow
-truck3, "6, 6, 6", "2, 3, 4", V, dark yellow
-truck4, "0, 0, 0", "3, 4, 5", V, purple
-truck5, "1, 1, 1", "3, 4, 5", V, dark yellow
-truck6, "2, 3, 4", "4, 4, 4", H, grey
-truck7, "7, 8, 9", "4, 4, 4", H, purple
-truck8, "0, 1, 2", "6, 6, 6", H, grey
-truck9, "0, 1, 2", "7, 7, 7", H, yellow
-truck10, "6, 6, 6", "6, 7, 8", V, yellow
-truck11, "3, 4, 5", "8, 8, 8", H, purple
-truck12, "7, 8, 9", "8, 8, 8", H, dark yellow
-truck13, "3, 4, 5", "9, 9, 9", H, yellow
-truck14, "6, 6, 6", "9, 10, 11", V, grey
-truck15, "10, 10, 10", "9, 10, 11", V, purple
+car, "0, 0", "0, 1", V, green
+car, "6, 6", "0, 1", V, blue
+car, "10, 11", "0, 0", H, light-blue
+car, "3, 4", "2, 2", H, orange
+car, "5, 5", "1, 2", V, light-blue
+car, "7, 8", "2, 2", H, green
+car, "10, 10", "1, 2", V, orange
+car, "11, 11", "1, 2", V, blue
+car, "3, 4", "5, 5", V, green
+car, "7, 8", "3, 3", H, orange
+car, "9, 10", "3, 3", H, light-blue
+redcar, "2, 3", "5, 5", H, red
+car, "4 ,4", "5, 6", V, orange
+car, "5, 5", "5, 6", V, light-blue
+car, "3, 3", "6, 7", V, light-blue
+car, "4, 5", "7, 7", H, green
+car, "7, 7", "6, 7", V, blue
+car, "9, 9", "6, 7", V, light-blue
+car, "10, 11", "6, 6", H, green
+car, "10, 11", "7, 7", H, blue
+car, "0, 1", "8, 8", H, orange
+car, "2, 2", "8, 9", V, green
+car, "8, 9", "9, 9", H, green
+car, "11, 11", "8, 9", V, green
+car, "1, 2", "11, 11", H, green
+car, "7, 8", "11, 11", H, blue
+car, "9, 9", "10, 11", V, light-blue
+car, "11, 11", "10, 11", V, light-blue
+truck, "7, 8, 9", "0, 0, 0", H, purple
+truck, "0, 1, 2", "2, 2, 2", H, yellow
+truck, "6, 6, 6", "2, 3, 4", V, dark-yellow
+truck, "0, 0, 0", "3, 4, 5", V, purple
+truck, "1, 1, 1", "3, 4, 5", V, dark-yellow
+truck, "2, 3, 4", "4, 4, 4", H, grey
+truck, "7, 8, 9", "4, 4, 4", H, purple
+truck, "0, 1, 2", "6, 6, 6", H, grey
+truck, "0, 1, 2", "7, 7, 7", H, yellow
+truck, "6, 6, 6", "6, 7, 8", V, yellow
+truck, "3, 4, 5", "8, 8, 8", H, purple
+truck, "7, 8, 9", "8, 8, 8", H, dark-yellow
+truck, "3, 4, 5", "9, 9, 9", H, yellow
+truck, "6, 6, 6", "9, 10, 11", V, grey
+truck, "10, 10, 10", "9, 10, 11", V, purple

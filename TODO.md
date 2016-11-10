@@ -13,12 +13,14 @@
 
 #### Code:
 - Grid met auto's maken
-- Data importeren voor de games
+- ~~Data importeren voor de games~~ --> in objects.py toevoegen
 - Eerste algoritme:
     - Random algoritme implementeren
     - Nadenken over beter algoritme
-- Functie voor beweging van auto's maken
-- Kijken naar visualisatie
+- Functie voor beweging van auto's maken --> moet nog worden verbeterd
+- ~~Kijken naar visualisatie~~
+- ~~Datasets aanpassen~~
+- Functie voor checken of ergens een auto is of niet en randen grid
 
 #### Overig:
 - Opzoeken onder- en bovengrens
