@@ -4,6 +4,7 @@
 
 
 import numpy as np
+#from matplotlib import mpl, pyplot
 
 import visualize
 import pylab
@@ -94,9 +95,9 @@ class Car(object):
     """
     Creates an object for a vehicle type of car
     """
-    def __init__(self, x, x, y, y, orientation, color):
-
-        self.pos = CarPosition(x, x, y, y)
+    def __init__(self, x1, x2, y1, y2, orientation, color):
+        position = CarPosition(x1, x2, y1, y2)
+        self.pos = position
         self.orientation = orientation
         self.color = color
 
@@ -121,16 +122,32 @@ class Car(object):
 
         # check if position is on the grid
 
-        # get current position
-        current_pos = self.getCarPosition()
 
-
-        if orientation == "V":
-            new_pos = current_pos.
+        # move vertical car right
+        if self.orientation == 'V':
+            y1 = self.pos.y1 + 1
+            y2 = self.pos.y2 + 1
+            new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
+            self.setCarPosition(new_pos)
+        # move horizontal car up
         else:
+            x1 = self.pos.x1 + 1
+            x2 = self.pos.x2 + 1
+            new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
+            self.setCarPosition(new_pos)
 
-            setCarPosition(new_pos)
-
+        # move vertical car left
+        if self.orientation == 'H':
+            y1 = self.pos.y1 - 1
+            y2 = self.pos.y2 - 1
+            new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
+            self.setCarPosition(new_pos)
+        # move horizontal car down
+        else:
+            x1 = self.pos.x1 - 1
+            x2 = self.pos.x2 - 1
+            new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
+            self.setCarPosition(new_pos)
 
         # if position is on the grid, move car
         # update position in all_vehicles
@@ -158,3 +175,10 @@ class Truck(object):
         position: a Position object.
         """
         self.pos = position
+
+# == run simulation
+
+def runSimulation(width, height):
+    anim = visualize.Visualization(width, height)
+
+    anim.done()
