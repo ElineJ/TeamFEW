@@ -10,7 +10,7 @@ car,"4, 5 ","6, 6 ",H,green
 car,"4, 4","7,8",V,orange
 car,"5, 6","8, 8",H,light-blue
 car,"7, 8","8, 8",H,green
-redCar,"1, 2 ","4, 4",V,red
+redcar,"1, 2 ","4, 4",V,red
 truck,"1, 2, 3","0, 0, 0",H,yellow
 truck,"3, 3, 3 ","1, 2, 3",V,purple
 truck,"1, 2, 3","8, 8, 8",H,grey
