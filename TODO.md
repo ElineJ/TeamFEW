@@ -13,12 +13,13 @@
 
 #### Code:
 - Grid met auto's maken
-- Data importeren voor de games
+- ~~Data importeren voor de games~~
 - Eerste algoritme:
     - Random algoritme implementeren
     - Nadenken over beter algoritme
 - Functie voor beweging van auto's maken
 - Kijken naar visualisatie
+- Datasets aanpassen
 
 #### Overig:
 - Opzoeken onder- en bovengrens

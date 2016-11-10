@@ -138,4 +138,4 @@ finally:
     # close file
     f.close()
 
-print [Car.x2 for Car in car_list]
+# print [Car.x2 for Car in car_list]
