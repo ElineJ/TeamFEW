@@ -8,16 +8,57 @@ import numpy as np
 import visualize
 import pylab
 
+# === Position classes
 
-class Position(object):
+class CarPosition(object):
+    """
+    A Position represents a position on the grid
+    """
+    def __init__(self, x1, x2, y1, y2):
+        """
+        Initializes a position with coordinates (x, x, y, y).
+        """
+        self.x1 = x1
+        self.x2 = x2
+        self.y1 = y1
+        self.y2 = y2
+    def getX(self):
+        x = [self.x1, self.x2]
+        return x
+    def getY(self):
+        y = [self.y1, self.y2]
+        return y
 
+
+class TruckPosition(object):
+    """
+    A Position represents a position on the grid
+    """
+    def __init__(self, x1, x2, x3, y1, y2, y3):
+        """
+        Initializes a position with coordinates (x, x, x, y, y, y).
+        """
+        self.x1 = x1
+        self.x2 = x2
+        self.x3 = x3
+        self.y1 = y1
+        self.y2 = y2
+        self.y3 = y3
+    def getX(self):
+        x = [self.x1, self.x2, self.x3]
+        return x
+    def getY(self):
+        y = [self.y1, self.y2, self.y3]
+        return y
+
+# === Grid
 
 class Grid(object):
     """
     Sets up a grid for the game with a given width and height
 
     Exit: the position of the exit
-    all_vehicles: an array of all the vehicle positions on the board
+    all_vehicles: an array of all the vehicle position objects on the board
     """
     def __init__(self, width, height, exit):
         self.width = width
@@ -36,72 +77,84 @@ class Grid(object):
             return True
         return False
 
-    def isPositioninGrid(self, pos):
+    def isPositionInGrid(self, pos):
         """
         Checks if a position is in the grid
 
         Returns True if it is, False if it isn't
         """
-        if 0 > vehicle.x1 <= self.width and 0 > vehicle.x2 <= self.width and 0 > vehicle.y1 < self.height and 0 > vehicle.y1 < self.height:
+        if (0 > pos.x1 <= self.width) and (0 > pos.x2 <= self.width) and (0 > pos.y1 <= self.height) and (0 > pos.y2 <= self.height):
             return True
-        return False
+        else:
+            return False
+
+# === Vehicles
 
 class Car(object):
     """
     Creates an object for a vehicle type of car
     """
-    def __init__(self, x1, x2, y1, y2, orientation, color):
+    def __init__(self, x, x, y, y, orientation, color):
 
-        self.pos = position
-        self.x1 = x1
-        self.x2 = x2
-        self.y1 = y1
-        self.y2 = y2
+        self.pos = CarPosition(x, x, y, y)
         self.orientation = orientation
         self.color = color
 
-    def getVehiclePosition(self):
+    def getCarPosition(self):
         """
         Returns the current position of vehicle
         """
         return self.pos
 
-    def setVehiclePosition(self, x1, x2, y1, y2):
+    def setCarPosition(self, position):
+        """
+        Set the position of the car to position
 
-        self.x1 = x1
-        self.x2 = x2
-        self.y1 = y1
-        self.y2 = y2
-        # niet erg mooi
+        position: a Position object.
+        """
+        self.pos = position
+
+    def moveCar(self, position):
+        """
+        Moves car to new position
+        """
+
+        # check if position is on the grid
+
+        # get current position
+        current_pos = self.getCarPosition()
+
+
+        if orientation == "V":
+            new_pos = current_pos.
+        else:
+
+            setCarPosition(new_pos)
+
+
+        # if position is on the grid, move car
+        # update position in all_vehicles
+
 
 class Truck(object):
     """
     Creates an object for a vehicle type of truck
     """
-    def __init__(self, x1, x2, x3, y1, y2, y3, orientation, color):
-
+    def __init__(self, position, orientation, color):
         self.pos = position
-        self.x1 = x1
-        self.x2 = x2
-        self.x3 = x3
-        self.y1 = y1
-        self.y2 = y2
-        self.y3 = y3
         self.orientation = orientation
         self.color = color
 
-    def getVehiclePosition(self):
+    def getTruckPosition(self):
         """
         Returns the current position of vehicle
         """
         return self.pos
 
-    def setVehiclePosition(self, x1, x2, y1, y2):
+    def setTruckPosition(self, position):
+        """
+        Set the position of the car to position
 
-        self.x1 = x1
-        self.x2 = x2
-        self.x3 = x3
-        self.y1 = y1
-        self.y2 = y2
-        self.y3 = y3
-        # niet erg mooi
+        position: a Position object.
+        """
+        self.pos = position
