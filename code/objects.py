@@ -46,18 +46,19 @@ class Grid(object):
             return True
         return False
 
-class Vehicle(object):
+class Car(object):
     """
-    Creates an object for a vehicle
+    Creates an object for a vehicle type of car
     """
-    def __init__(self, x1, x2, y1, y2):
+    def __init__(self, x1, x2, y1, y2, orientation, color):
 
-        # kan eigenlijk niet hier omdat trucks 3 lang zijn
         self.pos = position
         self.x1 = x1
         self.x2 = x2
         self.y1 = y1
         self.y2 = y2
+        self.orientation = orientation
+        self.color = color
 
     def getVehiclePosition(self):
         """
@@ -73,7 +74,34 @@ class Vehicle(object):
         self.y2 = y2
         # niet erg mooi
 
-class Hcar(Vehicle):
-    def __init__(self):
+class Truck(object):
+    """
+    Creates an object for a vehicle type of truck
+    """
+    def __init__(self, x1, x2, x3, y1, y2, y3, orientation, color):
 
-    def movement(self):
+        self.pos = position
+        self.x1 = x1
+        self.x2 = x2
+        self.x3 = x3
+        self.y1 = y1
+        self.y2 = y2
+        self.y3 = y3
+        self.orientation = orientation
+        self.color = color
+
+    def getVehiclePosition(self):
+        """
+        Returns the current position of vehicle
+        """
+        return self.pos
+
+    def setVehiclePosition(self, x1, x2, y1, y2):
+
+        self.x1 = x1
+        self.x2 = x2
+        self.x3 = x3
+        self.y1 = y1
+        self.y2 = y2
+        self.y3 = y3
+        # niet erg mooi
