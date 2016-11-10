@@ -1,0 +1,14 @@
+vehicle	x	y	orientation
+car1	"1, 2"	"0, 0"	h
+car2	"1, 2"	"1, 1"	h
+car3	"3, 3"	"1, 2"	v
+car4	"4, 5"	"1, 1"	h
+car5	"2, 2"	"2, 3"	v
+car6	"5, 5"	"2, 3"	v
+car7	"0, 1"	"3, 3"	h
+car8	"3, 4"	"3, 3"	h
+car9	"0, 0"	"4, 5"	v
+car10	"2, 2"	"4, 5"	v
+car11	"4, 5"	"4, 4"	h
+truck1	"3, 4, 5"	"0, 0"	h
+redcar	"0, 1"	"2, 2"	h

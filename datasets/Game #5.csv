@@ -1,0 +1,25 @@
+vehicle,x,y,orientation,color
+car1 ,"0, 0","5, 6",V,blue
+car2,"0, 0","7, 8",V,light-blue
+car3,"1, 1","7, 8",V,green
+car4,"2, 2","5, 6",V,orange
+car5,"2, 3","7, 7",H,blue
+car6,"2, 3","8, 8",H,light-blue
+car7,"3, 4","6, 6",H,green
+car8,"4, 4","7, 8",V,orange
+car9,"5, 5","0, 1",V,green
+car10,"4, 5","2, 2",H,orange
+car11,"4, 5","3, 3",H,blue
+car12,"6, 6","0, 1",V,blue
+car13,"6, 6","2, 3",V,light-blue
+car14,"6, 7","6, 6",H,green
+car15,"7, 8","1, 1",H,green
+car16,"7, 8","3, 3",H,orange
+car17,"8, 8","7, 8",V,light-blue
+redCar,"6, 7","4, 4",H,red
+truck1,"0, 1, 2","0, 0, 0",H,yellow
+truck2,"3, 3, 3","0, 1, 2",V,purple
+truck3,"2, 3, 4","4, 4, 4",H,dark-yellow
+truck4,"5, 5, 5","4, 5, 6",V,purple
+truck5,"5, 6, 7","7, 7, 7",H,grey
+truck6,"8, 8, 8","4, 5, 6",V,yellow
