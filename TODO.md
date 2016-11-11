@@ -19,7 +19,7 @@
     - Nadenken over beter algoritme
 - Functie voor beweging van auto's maken --> moet nog worden verbeterd
 - ~~Kijken naar visualisatie~~
-- ~~Datasets aanpassen~~
+- ~~Datasets aanpassen~~ --> er zitten nog fouten in sommige?
 - Functie voor checken of ergens een auto is of niet en randen grid
 
 #### Overig:
