@@ -78,11 +78,12 @@ class Grid(object):
     Exit: the position of the exit
     all_vehicles: an array of all the vehicle position objects on the board
     """
+    all_vehicles = []
+
     def __init__(self, width, height, exit):
         self.width = width
         self.height = height
         self.exit = exit
-        all_vehicles = []
         self.all_vehicles = all_vehicles
         empty_grid = []
         self.empty_grid = empty_grid
@@ -129,8 +130,7 @@ class Car(object):
         self.pos = position
         self.orientation = orientation
         self.color = color
-        Grid.all_vehicles.append(self.pos)
-
+        # Grid.all_vehicles.append(self.pos)
 
     def getCarPosition(self):
         """
