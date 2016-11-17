@@ -113,6 +113,18 @@ class Grid(object):
         else:
             return False
 
+    def isPositionEmpty(self, pos):
+
+        for i in range(0, len.empty_grid):
+            if check_pos == empty_grid[i]:
+                return True
+            else:
+                return False
+
+    def updateEmptyPosition(self, pos):
+
+        #
+
 # === Vehicles
 
 class Car(object):
@@ -124,6 +136,8 @@ class Car(object):
         self.pos = position
         self.orientation = orientation
         self.color = color
+        grid.all_vehicles.append(self.pos)
+
 
     def getCarPosition(self):
         """
@@ -153,7 +167,7 @@ class Car(object):
                 y1 = self.pos.y1 - 1
                 y2 = self.pos.y2 - 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
-
+                check_pos = Position(self.pos.x1, self.pos.y1)
                 # if new_pos ==
 
                 self.setCarPosition(new_pos)
