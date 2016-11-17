@@ -1,141 +1,110 @@
-import csv     # imports the csv module
-import sys      # imports the sys module
+def run():
+    import csv     # imports the csv module
+    import sys      # imports the sys module
 
-car_list = []
+    global Car
+    global Truck
+    global Grid
 
+    # open csv file
+    f = open(sys.argv[1], 'rb')
 
-""""
-class Car(object):
-    """
-    #Creates an object for a vehicle type of car
-    """
-    def __init__(self, x1, x2, y1, y2, orientation, color):
+    try:
+        # create reader
+        reader = csv.reader(f)
 
-        self.orientation = orientation
-        self.color = color
-        self.x1 = x1
-        self.x2 = x2
-        self.y1 = y1
-        self.y2 = y2
+        # skip first line of csv file
+        next(reader)
 
-class Truck(object):
-    """
-    #Creates an object for a vehicle type of car
-    """
-    def __init__(self, x1, x2, x3, y1, y2, y3, orientation, color):
+        # iterates the rows of the file in orders
+        for row in reader:
+            # check whether the vehicle is a car or a truck or a redcar
+            if(row[0] == "car"):
+                # get string of x coordinates
+                str = row[1]
 
-        self.orientation = orientation
-        self.color = color
-        self.x1 = x1
-        self.x2 = x2
-        self.x3 = x3
-        self.y1 = y1
-        self.y2 = y2
-        self.y3 = y3
+                # split this string
+                list = str.split(", ")
 
-# def openfile():
-"""
+                # save values from list
+                x1 = list[0]
+                x2 = list[1]
 
-"""
-Produces objects of cars by reading a csv file
-"""
-# open csv file
-f = open(sys.argv[1], 'rb')
+                # get string of y coordinates
+                str = row[2]
 
-try:
-    # create reader
-    reader = csv.reader(f)
+                # split this string
+                list = str.split(", ")
 
-    # skip first line of csv file
-    next(reader)
+                # save values from list
+                y1 = list[0]
+                y2 = list[1]
 
-    # iterates the rows of the file in orders
-    for row in reader:
-        # check whether the vehicle is a car or a truck or a redcar
-        if(row[0] == "car"):
-            # get string of x coordinates
-            str = row[1]
+                # print "coordinates are x1 = " + x1 + x2
+                print "car"
 
-            # split this string
-            list = str.split(", ")
+                # add car with the values from csv file to the list of cars
+                Grid.all_vehicles.append(Car(x1, x2, y1, y2, row[3], row[4]))
 
-            # save values from list
-            x1 = list[0]
-            x2 = list[1]
+            elif(row[0] == "truck"):
+                # get string of x coordinates
+                str = row[1]
 
-            # get string of y coordinates
-            str = row[2]
+                # split this string
+                list = str.split(", ")
 
-            # split this string
-            list = str.split(", ")
+                # save values from list
+                x1 = list[0]
+                x2 = list[1]
+                x3 = list[2]
 
-            # save values from list
-            y1 = list[0]
-            y2 = list[1]
+                # get string of y coordinates
+                str = row[2]
 
-            # print "coordinates are x1 = " + x1 + x2
-            # print "car"
+                # split this string
+                list = str.split(", ")
 
-            # add car with the values from csv file to the list of cars
-            car_list.append(Car(x1, x2, y1, y2, row[3], row[4]))
-        elif(row[0] == "truck"):
-            # get string of x coordinates
-            str = row[1]
+                # save values from list
+                y1 = list[0]
+                y2 = list[1]
+                y3 = list[2]
 
-            # split this string
-            list = str.split(", ")
+                #print "coordinates are x1 = " + x1 + x2
+                print "truck"
 
-            # save values from list
-            x1 = list[0]
-            x2 = list[1]
-            x3 = list[2]
+                # add car with the values from csv file to the list of cars
+                Grid.all_vehicles.append(Truck(x1, x2, x3, y1, y2, y3, row[3], row[4]))
 
-            # get string of y coordinates
-            str = row[2]
+            elif(row[0] == "redcar"):
+                # get string of x coordinates
+                str = row[1]
 
-            # split this string
-            list = str.split(", ")
+                # split this string
+                list = str.split(", ")
 
-            # save values from list
-            y1 = list[0]
-            y2 = list[1]
-            y3 = list[2]
+                # save values from list
+                x1 = list[0]
+                x2 = list[1]
 
-            # print "coordinates are x1 = " + x1 + x2
-            #print "truck"
+                # get string of y coordinates
+                str = row[2]
 
-            # add car with the values from csv file to the list of cars
-            car_list.append(Truck(x1, x2, x3, y1, y2, y3, row[3], row[4]))
-        elif(row[0] == "redcar"):
-            # get string of x coordinates
-            str = row[1]
+                # split this string
+                list = str.split(", ")
 
-            # split this string
-            list = str.split(", ")
+                # save values from list
+                y1 = list[0]
+                y2 = list[1]
 
-            # save values from list
-            x1 = list[0]
-            x2 = list[1]
+                # print "coordinates are x1 = " + x1 + x2
+                # print "car"
 
-            # get string of y coordinates
-            str = row[2]
+                # add car with the values from csv file to the list of cars
+                Grid.all_vehicles.append(Car(x1, x2, y1, y2, row[3], row[4]))
 
-            # split this string
-            list = str.split(", ")
+                print "redcar found"
+    finally:
+        # close file
+        f.close()
 
-            # save values from list
-            y1 = list[0]
-            y2 = list[1]
-
-            # print "coordinates are x1 = " + x1 + x2
-            # print "car"
-
-            # add car with the values from csv file to the list of cars
-            car_list.append(Car(x1, x2, y1, y2, row[3], row[4]))
-
-            print "redcar found"
-finally:
-    # close file
-    f.close()
-
-# print [Car.x2 for Car in car_list]
+        print [Car.color for Car in Grid.all_vehicles]

@@ -130,7 +130,6 @@ class Car(object):
         self.pos = position
         self.orientation = orientation
         self.color = color
-        # Grid.all_vehicles.append(self.pos)
 
     def getCarPosition(self):
         """
