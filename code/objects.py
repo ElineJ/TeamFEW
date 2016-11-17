@@ -123,13 +123,13 @@ class Car(object):
         # TODO: check if position is on the grid
 
         if direction == 'right' or direction == 'up':
-            # move vertical car right
+            # move vertical car up
             if self.orientation == 'V':
-                y1 = self.pos.y1 + 1
-                y2 = self.pos.y2 + 1
+                y1 = self.pos.y1 - 1
+                y2 = self.pos.y2 - 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
                 self.setCarPosition(new_pos)
-                # move horizontal car up
+            # move horizontal car right
             else:
                 x1 = self.pos.x1 + 1
                 x2 = self.pos.x2 + 1
@@ -137,13 +137,13 @@ class Car(object):
                 self.setCarPosition(new_pos)
 
         elif direction == 'left' or direction == 'down':
-            # move vertical car left
+            # move vertical car down
             if self.orientation == 'V':
-                y1 = self.pos.y1 - 1
-                y2 = self.pos.y2 - 1
+                y1 = self.pos.y1 + 1
+                y2 = self.pos.y2 + 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
                 self.setCarPosition(new_pos)
-            # move horizontal car down
+            # move horizontal car left
             else:
                 x1 = self.pos.x1 - 1
                 x2 = self.pos.x2 - 1
@@ -181,15 +181,15 @@ class Truck(object):
         """
         Moves truck to new position
         """
-        if direction == 'right' or direction == 'up':
-            # move vertical car right
+        if direction == 'right' or direction == 'down':
+            # move vertical car down
             if self.orientation == 'V':
                 y1 = self.pos.y1 + 1
                 y2 = self.pos.y2 + 1
                 y3 = self.pos.y3 + 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 self.setCarPosition(new_pos)
-                # move horizontal car up
+            # move horizontal car right
             else:
                 x1 = self.pos.x1 + 1
                 x2 = self.pos.x2 + 1
@@ -197,18 +197,18 @@ class Truck(object):
                 new_pos = CarPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 self.setCarPosition(new_pos)
 
-        elif direction == 'left' or direction == 'down':
-            # move vertical car left
+        elif direction == 'left' or direction == 'up':
+            # move vertical car up
             if self.orientation == 'V':
                 y1 = self.pos.y1 - 1
                 y2 = self.pos.y2 - 1
                 y3 = self.pos.y3 - 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 self.setCarPosition(new_pos)
-            # move horizontal car down
+            # move horizontal car left
             else:
-                x1 = self.pos.x1 - 1
                 x2 = self.pos.x2 - 1
+                x1 = self.pos.x1 - 1
                 x3 = self.pos.x3 - 1
                 new_pos = CarPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 self.setCarPosition(new_pos)
