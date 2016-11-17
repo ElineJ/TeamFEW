@@ -103,18 +103,20 @@ class Grid(object):
         return False
 
     def isPositionEmpty(self, pos):
+        print pos.x
+        print pos.y
         for i in range(0, len(self.empty_grid)):
-            if pos == self.empty_grid[i]:
+
+            if pos.x == self.empty_grid[i].x and pos.y == self.empty_grid[i].y:
                 return True
-            else:
-                return False
+        return False
 
     def updateEmptyPosition(self, pos, new_pos):
         for i in range(0, len(self.empty_grid)):
             if pos == self.empty_grid[i]:
                 self.empty_grid[i] = new_pos
-                
-        
+
+
 
 # === Vehicles
 
@@ -127,7 +129,7 @@ class Car(object):
         self.pos = position
         self.orientation = orientation
         self.color = color
-        grid.all_vehicles.append(self.pos)
+        Grid.all_vehicles.append(self.pos)
 
 
     def getCarPosition(self):
@@ -142,33 +144,32 @@ class Car(object):
 
         position: a Position object.
         """
-        for i in range(0, len(all_vehicles)):
-            if self.all_vehicles[i] == old_pos:
-                self.all_vehicles[i] = new_pos
-            self.pos = new_pos
+        for i in range(0, len(Grid.all_vehicles)):
+            if Grid.all_vehicles[i] == old_pos:
+                Grid.all_vehicles[i] = new_pos
+        self.pos = new_pos
     def moveCar(self, position, direction):
         """
         Moves car to new position
         """
-        old_pos = getCarposition()
-        # TODO: check if position is on the grid
+        old_pos = self.getCarPosition()
 
         if direction == 'right' or direction == 'up':
             # move vertical car up
 
             if self.orientation == 'V':
-                
+
                 y1 = self.pos.y1 - 1
                 y2 = self.pos.y2 - 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
                 check_pos = GridPosition(self.pos.x1, y1)
                 empty_pos = GridPosition(self.pos.x1, self.pos.y2)
-                if isPositionEmpty(check_pos):
-                    updateEmptyPosition(check_pos, empty_pos)
+                if Grid.isPositionEmpty(check_pos):
+                    Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos)
                 else:
-                    print("dit kan dus niet he")  
-                    
+                    print("dit kan dus niet he")
+
             # move horizontal car right
             else:
                 x1 = self.pos.x1 + 1
@@ -176,14 +177,14 @@ class Car(object):
                 new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
                 check_pos = GridPosition(x2, self.pos.y2)
                 empty_pos = GridPosition(self.pos.x1, self.pos.y1)
-                if isPositionEmpty(check_pos):
-                    updateEmptyPosition(check_pos, empty_pos)
+                if Grid.isPositionEmpty(check_pos):
+                    Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos)
                 else:
                     print("dit kan dus niet he")
-                    
+
         elif direction == 'left' or direction == 'down':
-            
+
             # move vertical car down
             if self.orientation == 'V':
                 y1 = self.pos.y1 + 1
@@ -191,8 +192,8 @@ class Car(object):
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
                 check_pos = GridPosition(self.pos.x2, y2)
                 empty_pos = GridPosition(self.pos.x1, self.pos.y1)
-                if isPositionEmpty(check_pos):
-                    updateEmptyPosition(check_pos, empty_pos)
+                if Grid.isPositionEmpty(check_pos):
+                    Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos)
                 else:
                     print("dit kan dus niet he")
@@ -204,8 +205,8 @@ class Car(object):
                 new_pos = CarPosition(x1, x2, self.pos.y1, self.pos.y2)
                 check_pos = GridPosition(x1, self.pos.y1)
                 empty_pos = GridPosition(self.pos.x2, self.pos.y2)
-                if isPositionEmpty(check_pos):
-                    updateEmptyPosition(check_pos, empty_pos)
+                if Grid.isPositionEmpty(check_pos):
+                    Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos)
                 else:
                     print("dit kan dus niet he")
@@ -249,6 +250,13 @@ class Truck(object):
                 y3 = self.pos.y3 + 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 self.setCarPosition(new_pos)
+                check_pos = GridPosition(x1, self.pos.y1)
+                empty_pos = GridPosition(self.pos.x2, self.pos.y2)
+                if Grid.isPositionEmpty(check_pos):
+                    Grid.updateEmptyPosition(check_pos, empty_pos)
+                    self.setCarPosition(old_pos, new_pos)
+                else:
+                    print("dit kan dus niet he")
             # move horizontal car right
             else:
                 x1 = self.pos.x1 + 1
