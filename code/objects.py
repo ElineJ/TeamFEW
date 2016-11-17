@@ -24,8 +24,8 @@ class GridPosition(object):
 
     def getX(self):
         return self.x
-    
-    def getY(self): 
+
+    def getY(self):
         return self.y
 
 class CarPosition(object):
@@ -80,18 +80,18 @@ class Grid(object):
     """
     def __init__(self, width, height, exit):
         self.width = width
-        self.height = height      
+        self.height = height
         self.exit = exit
         all_vehicles = []
         self.all_vehicles = all_vehicles
         empty_grid = []
         self.empty_grid = empty_grid
-        for i in height:
-            for j in width:
+        for i in range(0, height):
+            for j in range(0, width):
                 new_grid = GridPosition(i, j)
                 empty_grid.append(new_grid)
-                
-        
+
+
     def isRedOnExit(self, pos):
         """
         Checks if the red car is at the exit
@@ -148,14 +148,14 @@ class Car(object):
 
         if direction == 'right' or direction == 'up':
             # move vertical car up
-            
+
             if self.orientation == 'V':
                 y1 = self.pos.y1 - 1
                 y2 = self.pos.y2 - 1
                 new_pos = CarPosition(self.pos.x1, self.pos.x2, y1, y2)
-                
-                if new_pos == 
-                
+
+                # if new_pos ==
+
                 self.setCarPosition(new_pos)
             # move horizontal car right
             else:

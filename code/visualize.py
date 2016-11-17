@@ -15,7 +15,6 @@ class Visualization:
         "Initializes a visualization with the specified parameters."
         # Number of seconds to pause after each frame
         self.delay = delay
-
         self.max_dim = max(width, height)
         self.width = width
         self.height = height
@@ -31,13 +30,13 @@ class Visualization:
         x2, y2 = self._map_coords(width, height)
         self.w.create_rectangle(x1, y1, x2, y2, fill = "white")
 
-        # Draw gray squares for dirty tiles
-        self.tiles = {}
+        # Draw squares for the grid
+        self.grid = {}
         for i in range(width):
             for j in range(height):
                 x1, y1 = self._map_coords(i, j)
                 x2, y2 = self._map_coords(i + 1, j + 1)
-                self.tiles[(i, j)] = self.w.create_rectangle(x1, y1, x2, y2,
+                self.grid[(i, j)] = self.w.create_rectangle(x1, y1, x2, y2,
                                                              fill = "#dbe8ff")
 
         # Draw
@@ -56,6 +55,18 @@ class Visualization:
         x1, y1 = self._map_coords(0, 0)
         x2, y2 = self._map_coords(0, 1)
         self.w.create_rectangle(x1, y1, x2, y2, fill="red")
+
+    def _draw_vehicles(self, position, direction):
+        "Returns a polygon representing a robot with the specified parameters."
+        x, y = position.getX(), position.getY()
+        d1 = direction + 165
+        d2 = direction - 165
+        x1, y1 = self._map_coords(x, y)
+        x2, y2 = self._map_coords(x + 0.6 * math.sin(math.radians(d1)),
+                                  y + 0.6 * math.cos(math.radians(d1)))
+        x3, y3 = self._map_coords(x + 0.6 * math.sin(math.radians(d2)),
+                                  y + 0.6 * math.cos(math.radians(d2)))
+        return self.w.create_polygon([x1, y1, x2, y2, x3, y3], fill="red")
 
         # Draw some status text
         #self.robots = None
