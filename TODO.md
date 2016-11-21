@@ -27,7 +27,7 @@
 - Link moeilijkheid met grootte bord/vehicles
 
 ## Week 3: 
-- elke class een eigen bestand (Positions, Grid, Cars, Trucks) - Eline
+- ~~elke class een eigen bestand (Positions, Grid, Cars, Trucks) - Eline~~
 - moveTruck nog afmaken - Fjodor
 - emptyGrid / initalize car fixen - Fjodor 
 - stukje schrijven over breadth first algoritme - Wietske 
