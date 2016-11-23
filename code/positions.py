@@ -86,6 +86,10 @@ class Grid(object):
                 new_grid = GridPosition(i, j)
                 empty_grid.append(new_grid)
 
+        for j in range(0, len(self.all_vehicles)):
+            for i in range(0, len(self.empty_grid)):
+                if self.empty_grid[i] == self.all_vehicles[j].pos:
+                    self.empty_grid[i].remove
 
     def isRedOnExit(self, pos):
         """
