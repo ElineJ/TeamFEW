@@ -1,4 +1,4 @@
-import positions
+from positions import *
 # import visualize
 
 # === Grid
