@@ -84,14 +84,17 @@ def makeCars2():
 
 def carColors(all_vehicles):
     for i in range(0, len(all_vehicles)):
-        if all_vehicles[i].color == '':
-            all_vehicles[i].color =
-        elif all_vehicles[i].color == '':
-            all_vehicles[i].color =
-        elif all_vehicles[i].color == '':
-            all_vehicles[i].color =
-        elif all_vehicles[i].color == '':
-            all_vehicles[i].color =        
+        if all_vehicles[i].color == 'blue':
+            all_vehicles[i].color = '#5981F3'
+        elif all_vehicles[i].color == 'red':
+            all_vehicles[i].color = '#B63339'
+        elif all_vehicles[i].color == 'orange':
+            all_vehicles[i].color = '#E99F62'
+        elif all_vehicles[i].color == 'light-blue':
+            all_vehicles[i].color = '#96D8EE'
+        elif all_vehicles[i].color == 'yellow':
+            all_vehicles[i].color = '#D4D35F'
+
 
 class Visualization:
     def __init__(self, width, height, delay = 0.2):
