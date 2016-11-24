@@ -1,4 +1,4 @@
-def run():
+def run(dataset):
     import csv     # imports the csv module
     import sys      # imports the sys module
 
@@ -7,7 +7,7 @@ def run():
     global Grid
 
     # open csv file
-    f = open(sys.argv[1], 'rb')
+    f = dataset
 
     try:
         # create reader
