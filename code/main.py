@@ -6,15 +6,16 @@ import truck
 import car
 import visualize
 import csvtries
+import sys      # imports the sys module
 
 # open csv file
 f = open(sys.argv[1], 'rb')
 
 # get grid size
-s = open(sys.argv[2])
+s = sys.argv[2]
 
-exit = CarPosition(4, 2, 5, 2)
-Grid = Grid(s, s, exit)
+exit = positions.CarPosition(4, 2, 5, 2)
+Grid = positions.Grid(s, s, exit)
 csvtries.run(f)
 position = all_vehicles.Car[0].getCarPosition
 newGrid.all_vehicles.Car[0].moveCar(position, )

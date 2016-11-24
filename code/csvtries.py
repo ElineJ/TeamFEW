@@ -1,6 +1,5 @@
 def run(dataset):
     import csv     # imports the csv module
-    import sys      # imports the sys module
 
     global Car
     global Truck
