@@ -40,10 +40,36 @@ class Car(object):
 
 def makeCars():
     car = Car(0, 0, 0, 1, 'V', 'blue')
+    if car.color == 'blue':
+        car.color = '#5981F3'
     all_vehicles.append(car)
-    car2 = Car(4, 5, 4, 4, 'H', 'blue')
+    car2 = Car(4, 5, 4, 4, 'H', 'orange')
+    if car2.color == 'orange':
+        car2.color = '#E99F62'
+    all_vehicles.append(car2)
+    car3 = Car(2, 3, 2, 2, 'H', 'red')
+    if car3.color == 'red':
+        car3.color = '#B63339'
+    all_vehicles.append(car3)
+    car4 = Car(1, 2, 5, 5, 'H', 'blue')
+    if car4.color == 'blue':
+        car4.color = '#5981F3'
+    all_vehicles.append(car4)
+
+
+def makeCars2():
+    all_vehicles = []
+    car = Car(0, 0, 1, 2, 'V', 'blue')
+    if car.color == 'blue':
+        car.color = '#5981F3'
+    all_vehicles.append(car)
+    car2 = Car(4, 5, 4, 4, 'H', 'orange')
+    if car2.color == 'orange':
+        car2.color = '#E99F62'
     all_vehicles.append(car2)
     car3 = Car(1, 1, 1, 2, 'V', 'red')
+    if car3.color == 'red':
+        car3.color = '#B63339'
     all_vehicles.append(car3)
 
 
@@ -75,7 +101,7 @@ class Visualization:
                 y1 = row * self.cellheight
                 x2 = x1 + self.cellwidth
                 y2 = y1 + self.cellheight
-                self.rect[row, column] = self.w.create_rectangle(x1,y1,x2,y2, fill="#dbe8ff", tags="rect")
+                self.rect[row, column] = self.w.create_rectangle(x1,y1,x2,y2, fill="#363958", tags="rect")
 
         # draw vehicles
         for i in range(0, len(all_vehicles)):
@@ -83,7 +109,26 @@ class Visualization:
             if all_vehicles[i].orientation == 'V':
                 x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
             else:
-                x2, y2 = x1 + 2 * self.cellwidth , y1 + self.cellheight
+                x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
             self.rect[all_vehicles[1].x1, all_vehicles[i].y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
             print "x1, y1: ", x1, y1
             print "x2, y2: ", x2, y2
+
+
+    def update():
+
+        # Delete all existing vehicles
+        for vehicle in all_vehicles:
+            self.w.delete(vehicle)
+            self.master.update_idletasks()
+
+            # Draw new vehicles
+            for i in range(0, len(all_vehicles)):
+                x1, y1 = all_vehicles[i].x1 * self.cellwidth, all_vehicles[i].y1 * self.cellheight
+                if all_vehicles[i].orientation == 'V':
+                    x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
+                else:
+                    x2, y2 = x1 + 2 * self.cellwidth , y1 + self.cellheight
+                self.rect[all_vehicles[1].x1, all_vehicles[i].y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
+                print "x1, y1: ", x1, y1
+                print "x2, y2: ", x2, y2
