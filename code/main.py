@@ -6,3 +6,5 @@ import truck
 import car
 import visualize
 import csvtries
+
+csvtries.run()
