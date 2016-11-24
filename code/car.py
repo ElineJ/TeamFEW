@@ -6,7 +6,7 @@ class Car(object):
     Creates an object for a vehicle type of car
     """
     def __init__(self, x1, x2, y1, y2, orientation, color):
-        position = CarPosition(x1, x2, y1, y2)
+        position = positions.CarPosition(x1, x2, y1, y2)
         self.pos = position
         self.orientation = orientation
         self.color = color

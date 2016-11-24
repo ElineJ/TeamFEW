@@ -6,7 +6,7 @@ class Truck(object):
     Creates an object for a vehicle type of truck
     """
     def __init__(self, x1, x2, x3, y1, y2, y3, orientation, color):
-        position = TruckPosition(x1, x2, x3, y1, y2, y3)
+        position = positions.TruckPosition(x1, x2, x3, y1, y2, y3)
         self.pos = position
         self.orientation = orientation
         self.color = color

@@ -72,9 +72,10 @@ class Grid(object):
     Exit: the position of the exit
     all_vehicles: an array of all the vehicle position objects on the board
     """
-    all_vehicles = []
+
 
     def __init__(self, width, height, exit):
+        all_vehicles = []
         self.width = width
         self.height = height
         self.exit = exit

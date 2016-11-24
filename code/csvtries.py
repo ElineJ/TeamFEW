@@ -1,9 +1,15 @@
-def run(dataset):
-    import csv     # imports the csv module
+import positions
 
-    global Car
-    global Truck
-    global Grid
+import csv     # imports the csv module
+import grid
+import car
+import truck
+
+newGrid = positions.Grid(0,0,0)
+
+def run(dataset, width, height, exit):
+
+    newGrid = positions.Grid(width, height, exit)
 
     # open csv file
     f = dataset
@@ -42,8 +48,9 @@ def run(dataset):
                 # print "coordinates are x1 = " + x1 + x2
                 print "car"
 
+                newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                Grid.all_vehicles.append(Car(x1, x2, y1, y2, row[3], row[4]))
+                newGrid.all_vehicles.append(newCar)
 
             elif(row[0] == "truck"):
                 # get string of x coordinates
@@ -71,8 +78,9 @@ def run(dataset):
                 #print "coordinates are x1 = " + x1 + x2
                 print "truck"
 
+                newTruck = truck.Truck(x1, x2, x3, y1, y2, y3, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                Grid.all_vehicles.append(Truck(x1, x2, x3, y1, y2, y3, row[3], row[4]))
+                newGrid.all_vehicles.append(newTruck)
 
             elif(row[0] == "redcar"):
                 # get string of x coordinates
@@ -98,12 +106,19 @@ def run(dataset):
                 # print "coordinates are x1 = " + x1 + x2
                 # print "car"
 
+                newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                Grid.all_vehicles.append(Car(x1, x2, y1, y2, row[3], row[4]))
+                newGrid.all_vehicles.append(newCar)
 
                 print "redcar found"
     finally:
         # close file
         f.close()
 
-        print [Car.color for Car in Grid.all_vehicles]
+        print [Car.color for Car in newGrid.all_vehicles]
+
+        position = newGrid.all_vehicles[0].getCarPosition
+
+        print position
+
+        print newGrid.all_vehicles[0].color
