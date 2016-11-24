@@ -56,6 +56,7 @@ class Car(object):
                 new_pos = positions.CarPosition(x1, x2, self.pos.y1, self.pos.y2)
                 check_pos = positions.GridPosition(x2, self.pos.y2)
                 empty_pos = positions.GridPosition(self.pos.x1, self.pos.y1)
+                # TODO hier gaat iets mis!
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos)
