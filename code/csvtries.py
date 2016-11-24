@@ -120,19 +120,18 @@ def run(dataset, width, height, exit):
 
         print position
 
-<<<<<<< HEAD
+
         print newGrid.all_vehicles[0].color
 
         return newGrid
-=======
+
         print Grid.all_vehicles[0].color
 
-if __name__ == '__main__':
-    import sys
+#if __name__ == '__main__':
+#    import sys
     # open csv file
-    f = open(sys.argv[1], 'rb')
-    exit = positions.CarPosition(4, 2, 5, 2)
-    s = sys.argv[2]
-    w = int(s)
-    run(f, w, w, exit)
->>>>>>> bf0e20215812200e69716a2b7c59949af1381333
+#    f = open(sys.argv[1], 'rb')
+#    exit = positions.CarPosition(4, 2, 5, 2)
+#    s = sys.argv[2]
+#    w = int(s)
+#    run(f, w, w, exit)
