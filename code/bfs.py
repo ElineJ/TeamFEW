@@ -1,6 +1,6 @@
 import grid
-import car
-import truck
+from car import *
+from truck import *
 
 def runbfs(vehicles, exit):
     # make a list of all states that have happened
@@ -16,19 +16,20 @@ def runbfs(vehicles, exit):
 
         if instance not in visited:
             # add this instance to the visited set-ups
-            visited.add(instance)
+            visited.append(instance)
+
             for Car in instance:
                 # try moving them in both directions
                 # vehicles has to be updated
 
-                if Car.orientation = "V":
-                    Car = Car_down
+                if Car.orientation == "v":
+                    Car_down = Car
                     print "Vertical car"
 
-                    if moveCar(Car.getCarPosition, "up") == True:
-                        moveCar(Car.getCarPosition, "up")
+                    if Car.moveCar(Car.getCarPosition, "up") == True:
+                        Car.moveCar(Car.getCarPosition, "up")
 
-                        if: CarPosition == exit
+                        if CarPosition == exit:
                             return instance
                             break
                         # vehicles = new set-up
@@ -36,10 +37,10 @@ def runbfs(vehicles, exit):
                         else:
                             queue.append(instance)
 
-                    if moveCar(Car_down.getCarPosition, "down") == True:
-                        moveCar(Car_down.getCarPosition, "down")
+                    if Car.moveCar(Car_down.getCarPosition, "down") == True:
+                        Car.moveCar(Car_down.getCarPosition, "down")
 
-                        if: CarPosition == exit
+                        if CarPosition == exit:
                             return instance
                             break
                         # vehicles = new set-up
@@ -47,14 +48,14 @@ def runbfs(vehicles, exit):
                         else:
                             queue.append(instance)
 
-                if Car.orientation = "H":
-                    Car = Car_right
+                if Car.orientation == "H":
+                    Car_right = Car
                     print "Horizontal car"
 
-                    if moveCar(Car.getCarPosition, "left") == True:
-                        moveCar(Car.getCarPosition, "left")
+                    if Car.moveCar(Car.getCarPosition, "left") == True:
+                        Car.moveCar(Car.getCarPosition, "left")
 
-                        if: CarPosition == exit
+                        if CarPosition == exit:
                             return instance
                             break
                         # vehicles = new set-up
@@ -63,10 +64,10 @@ def runbfs(vehicles, exit):
                             queue.append(instance)
 
 
-                    if moveCar(Car_right.getCarPosition, "right") == True:
-                        moveCar(Car_right.getCarPosition, "right")
+                    if Car.moveCar(Car_right.getCarPosition, "right") == True:
+                        Car.moveCar(Car_right.getCarPosition, "right")
 
-                        if: CarPosition == exit
+                        if CarPosition == exit:
                             return instance
                             break
                         # vehicles = new set-up
@@ -75,8 +76,8 @@ def runbfs(vehicles, exit):
                             queue.append(instance)
 
             for Truck in instance:
-                if Truck.orientation = "V":
-                    Truck = Truck_down
+                if Truck.orientation == "V":
+                    Truck_down = Truck
                     print "Vertical truck"
 
                     if moveTruck(Truck.getTruckPosition, "up") == True:
@@ -93,8 +94,8 @@ def runbfs(vehicles, exit):
                         # add new set-up to queue
                         queue.append(instance)
 
-                if Truck.orientation = "H":
-                    Truck = Truck_right
+                if Truck.orientation == "H":
+                    Truck_right = Truck
                     print "Horizontal Truck"
 
                     if moveTruck(Truck.getTruckPosition, "left") == True:
@@ -110,3 +111,5 @@ def runbfs(vehicles, exit):
                         # vehicles = new set-up
                         # add new set-up to queue
                         queue.append(instance)
+        print queue
+        print visited
