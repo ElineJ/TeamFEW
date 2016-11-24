@@ -127,11 +127,19 @@ def run(dataset, width, height, exit):
 
         print Grid.all_vehicles[0].color
 
-if __name__ == '__main__':
-    import sys
+#if __name__ == '__main__':
+#    import sys
     # open csv file
+<<<<<<< HEAD
     f = open(sys.argv[1], 'rb')
     exit = positions.CarPosition(4, 2, 5, 2)
     s = sys.argv[2]
     w = int(s)
     run(f, w, w, exit)
+=======
+#    f = open(sys.argv[1], 'rb')
+#    exit = positions.CarPosition(4, 2, 5, 2)
+#    s = sys.argv[2]
+#    w = int(s)
+#    run(f, w, w, exit)
+>>>>>>> 793213f9333f910ff05436693d628097cf988966
