@@ -9,7 +9,7 @@ newGrid = positions.Grid(0,0,0)
 
 def run(dataset, width, height, exit):
 
-    newGrid = positions.Grid(width, height, exit)
+    Grid = positions.Grid(width, height, exit)
 
     # open csv file
     f = dataset
@@ -50,7 +50,7 @@ def run(dataset, width, height, exit):
 
                 newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                newGrid.all_vehicles.append(newCar)
+                Grid.all_vehicles.append(newCar)
 
             elif(row[0] == "truck"):
                 # get string of x coordinates
@@ -80,7 +80,7 @@ def run(dataset, width, height, exit):
 
                 newTruck = truck.Truck(x1, x2, x3, y1, y2, y3, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                newGrid.all_vehicles.append(newTruck)
+                Grid.all_vehicles.append(newTruck)
 
             elif(row[0] == "redcar"):
                 # get string of x coordinates
@@ -108,7 +108,7 @@ def run(dataset, width, height, exit):
 
                 newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                newGrid.all_vehicles.append(newCar)
+                Grid.all_vehicles.append(newCar)
 
                 print "redcar found"
     finally:
@@ -117,8 +117,17 @@ def run(dataset, width, height, exit):
 
         print [Car.color for Car in newGrid.all_vehicles]
 
-        position = newGrid.all_vehicles[0].getCarPosition
+        position = Grid.all_vehicles[0].getCarPosition
 
         print position
 
-        print newGrid.all_vehicles[0].color
+        print Grid.all_vehicles[0].color
+
+if __name__ == '__main__':
+    import sys
+    # open csv file
+    f = open(sys.argv[1], 'rb')
+    exit = positions.CarPosition(4, 2, 5, 2)
+    s = sys.argv[2]
+    w = int(s)
+    run(f, w, w, exit)

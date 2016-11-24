@@ -1,5 +1,5 @@
 import positions
-import visualize
+# import visualize
 
 # === Grid
 

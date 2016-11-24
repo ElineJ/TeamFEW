@@ -4,7 +4,7 @@ import positions
 import grid
 import truck
 import car
-import visualize
+# import visualize
 from csvtries import *
 import sys      # imports the sys module
 
@@ -20,11 +20,13 @@ exit = positions.CarPosition(4, 2, 5, 2)
 
 print s
 
+# run.main(sys.argv[1], sys.argv[2])
+
 run(f, w, w, exit)
 
-print newGrid.all_vehicles[0].color
+print Grid.all_vehicles[0].color
 
-position = newGrid.all_vehicles[0].getCarPosition
-newGrid.all_vehicles[0].moveCar(position, )
+position = Grid.all_vehicles[0].getCarPosition
+Grid.all_vehicles[0].moveCar(position, )
 
 f.close()
