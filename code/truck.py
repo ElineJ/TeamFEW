@@ -33,11 +33,11 @@ class Truck(object):
         Moves truck to new position
         """
         old_pos = self.getCarPosition()
-        
+
         if direction == 'right' or direction == 'down':
             # move vertical car down
             if self.orientation == 'V':
-                
+
                 y1 = self.pos.y1 + 1
                 y2 = self.pos.y2 + 1
                 y3 = self.pos.y3 + 1
@@ -62,7 +62,7 @@ class Truck(object):
                     self.setCarPosition(old_pos, new_pos)
                 else:
                     print("dit kan dus niet he")
-                    
+
         elif direction == 'left' or direction == 'up':
             # move vertical car up
             if self.orientation == 'V':
@@ -78,7 +78,7 @@ class Truck(object):
                     self.setCarPosition(old_pos, new_pos)
                 else:
                     print("dit kan dus niet he")
-                    
+
             # move horizontal car left
             else:
                 x2 = self.pos.x2 - 1

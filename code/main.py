@@ -15,7 +15,13 @@ f = open(sys.argv[1], 'rb')
 s = sys.argv[2]
 
 exit = positions.CarPosition(4, 2, 5, 2)
-Grid = positions.Grid(s, s, exit)
+#Grid = positions.Grid(s, s, exit)
+
+print s
+
+
 csvtries.run(f)
-position = all_vehicles.Car[0].getCarPosition
+position = Grid.all_vehicles.Car[0].getCarPosition
 newGrid.all_vehicles.Car[0].moveCar(position, )
+
+f.close()
