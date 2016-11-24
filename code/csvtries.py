@@ -120,11 +120,11 @@ def run(dataset, width, height, exit):
 
         print position
 
-<<<<<<< HEAD
+
         print newGrid.all_vehicles[0].color
 
         return newGrid
-=======
+
         print Grid.all_vehicles[0].color
 
 if __name__ == '__main__':
@@ -135,4 +135,3 @@ if __name__ == '__main__':
     s = sys.argv[2]
     w = int(s)
     run(f, w, w, exit)
->>>>>>> bf0e20215812200e69716a2b7c59949af1381333
