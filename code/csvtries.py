@@ -1,11 +1,10 @@
 import positions
-
 import csv     # imports the csv module
 import grid
 import car
 import truck
 
-newGrid = positions.Grid(0,0,0)
+#newGrid = positions.Grid(0,0,0)
 
 def run(dataset, width, height, exit):
 
@@ -122,3 +121,5 @@ def run(dataset, width, height, exit):
         print position
 
         print newGrid.all_vehicles[0].color
+
+        return newGrid
