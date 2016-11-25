@@ -28,8 +28,18 @@
 
 ## Week 3: 
 - ~~elke class een eigen bestand (Positions, Grid, Cars, Trucks) - Eline~~
-- moveTruck nog afmaken - Fjodor
-- emptyGrid / initalize car fixen - Fjodor 
-- stukje schrijven over breadth first algoritme - Wietske 
-- begin maken breadth first algoritme - Wietske
-- zorgen dat visualizatie update bij beweging - Eline
+- ~~moveTruck nog afmaken - Fjodor~~
+- ~~emptyGrid / initalize car fixen - Fjodor~~ 
+- ~~stukje schrijven over breadth first algoritme - Wietske~~ 
+- ~~begin maken breadth first algoritme - Wietske~~
+- ~~zorgen dat visualizatie update bij beweging - Eline~~
+
+## Week 4:
+- Eerste algoritme helemaal af
+    - Functie voor move-functies/if-statements in algoritme 
+    - Dictionary voor alle borden met unieke hash (string: coordinaten van alle auto's)
+    - new_instance aanmaken voor beweging 
+- Visualizatie bij programma runnen 
+- Checken moveCar-functies
+- Plannen/uitwerken 2 algoritmes 
+- Verder aan verslag werken 
