@@ -1,5 +1,6 @@
 # main code to run the simulation
 # import visualize
+from visualize import *
 import sys      # imports the sys module
 
 from positions import *
@@ -16,8 +17,11 @@ f = open(sys.argv[1], 'rb')
 exit = CarPosition(4, 2, 5, 2)
 width = int(sys.argv[2])
 
+# set up grid with vehicles
 grid = run(f, width, width, exit)
-print grid.all_vehicles[0].orientation
 f.close()
 
-runbfs(grid.all_vehicles, exit)
+# open visualization
+anim = Visualization(width, width, grid.all_vehicles)
+
+# runbfs(grid.all_vehicles, exit)
