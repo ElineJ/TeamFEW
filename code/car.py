@@ -51,6 +51,7 @@ class Car(object):
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
 
             # move horizontal car right
             else:
@@ -65,6 +66,7 @@ class Car(object):
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
 
         elif direction == 'left' or direction == 'down':
 
@@ -80,6 +82,7 @@ class Car(object):
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
 
             # move horizontal car left
             else:
@@ -93,5 +96,5 @@ class Car(object):
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
-
+                    return False
         # TODO: update position in all_vehicles?
