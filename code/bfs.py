@@ -2,110 +2,110 @@ from grid import *
 from car import *
 from truck import *
 
-def runbfs(vehicles, exit):
+def runbfs(grid, exit):
     # make a list of all states that have happened
     visited = []
 
     queue = []
     # make a queue of next steps
-    queue = [vehicles]
+    queue = [grid.all_vehicles]
 
     while queue:
-        # delete this grid set up from queue and save in instance
-        instance = queue.pop(0)
+        # delete this grid set up from queue and save in node
+        node = queue.pop(0)
 
-        if instance not in visited:
-            # add this instance to the visited set-ups
-            visited.append(instance)
+        if node not in visited:
+            # add this node to the visited set-ups
+            visited.append(node)
 
-            for Car in instance:
+            for Car in node:
                 # try moving them in both directions
-                # vehicles has to be updated
+                # grid has to be updated
 
                 if Car.orientation == "V":
                     Car_down = Car
                     print "Vertical car"
 
-                    if Car.moveCar(Car.getCarPosition, "up") == True:
-                        Car.moveCar(Car.getCarPosition, "up")
+                    if Car.moveCar(Car.getCarPosition, "up", grid) == True:
+                        Car.moveCar(Car.getCarPosition, "up", grid)
 
                         if CarPosition == exit:
-                            return instance
-                        # vehicles = new set-up
+                            return node
+                        # grid = new set-up
                         # add new set-up to queue
                         else:
-                            queue.append(instance)
+                            queue.append(node)
 
-                    if Car.moveCar(Car_down.getCarPosition, "down") == True:
-                        Car.moveCar(Car_down.getCarPosition, "down")
+                    if Car.moveCar(Car_down.getCarPosition, "down", grid) == True:
+                        Car.moveCar(Car_down.getCarPosition, "down", grid)
 
                         if CarPosition == exit:
-                            return instance
-                        # vehicles = new set-up
+                            return node
+                        # grid = new set-up
                         # add new set-up to queue
                         else:
-                            queue.append(instance)
+                            queue.append(node)
 
                 if Car.orientation == "H":
                     Car_right = Car
                     print "Horizontal car"
 
-                    if Car.moveCar(Car.getCarPosition, "left") == True:
-                        Car.moveCar(Car.getCarPosition, "left")
+                    if Car.moveCar(Car.getCarPosition, "left", grid) == True:
+                        Car.moveCar(Car.getCarPosition, "left", grid)
 
                         if CarPosition == exit:
-                            return instance
-                        # vehicles = new set-up
+                            return node
+                        # grid = new set-up
                         # add new set-up to queue
                         else:
-                            queue.append(instance)
+                            queue.append(node)
 
 
-                    if Car.moveCar(Car_right.getCarPosition, "right") == True:
-                        Car.moveCar(Car_right.getCarPosition, "right")
+                    if Car.moveCar(Car_right.getCarPosition, "right", grid) == True:
+                        Car.moveCar(Car_right.getCarPosition, "right", grid)
 
                         if CarPosition == exit:
-                            return instance
-                        # vehicles = new set-up
+                            return node
+                        # grid = new set-up
                         # add new set-up to queue
                         else:
-                            queue.append(instance)
+                            queue.append(node)
 
-            for Truck in instance:
+            for Truck in node:
                 if Truck.orientation == "V":
                     Truck_down = Truck
                     print "Vertical truck"
 
-                    if moveTruck(Truck.getTruckPosition, "up") == True:
-                        moveTruck(Truck.getTruckPosition, "up")
+                    if moveTruck(Truck.getTruckPosition, "up", grid) == True:
+                        moveTruck(Truck.getTruckPosition, "up", grid)
 
-                        # vehicles = new set-up
+                        # grid = new set-up
                         # add new set-up to queue
-                        queue.append(instance)
+                        queue.append(node)
 
-                    if moveTruck(Truck_down.getTruckPosition, "down") == True:
-                        moveTruck(Truck_down.getTruckPosition, "down")
+                    if moveTruck(Truck_down.getTruckPosition, "down", grid) == True:
+                        moveTruck(Truck_down.getTruckPosition, "down", grid)
 
-                        # vehicles = new set-up
+                        # grid = new set-up
                         # add new set-up to queue
-                        queue.append(instance)
+                        queue.append(node)
 
                 if Truck.orientation == "H":
                     Truck_right = Truck
                     print "Horizontal Truck"
 
-                    if moveTruck(Truck.getTruckPosition, "left") == True:
-                        moveTruck(Truck.getTruckPosition, "left")
+                    if moveTruck(Truck.getTruckPosition, "left", grid) == True:
+                        moveTruck(Truck.getTruckPosition, "left", grid)
 
-                        # vehicles = new set-up
+                        # grid = new set-up
                         # add new set-up to queue
-                        queue.append(instance)
+                        queue.append(node)
 
-                    if moveTruck(Truck_right.getTruckPosition, "right") == True:
-                        moveTruck(Truck_right.getTruckPosition, "right")
+                    if moveTruck(Truck_right.getTruckPosition, "right", grid) == True:
+                        moveTruck(Truck_right.getTruckPosition, "right", grid)
 
-                        # vehicles = new set-up
+                        # grid = new set-up
                         # add new set-up to queue
-                        queue.append(instance)
+                        queue.append(node)
         print queue
         print visited
