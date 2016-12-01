@@ -50,12 +50,13 @@ class TruckPosition(object):
         """
         Initializes a position with coordinates (x, x, x, y, y, y).
         """
-        self.x1 = x1
-        self.x2 = x2
-        self.x3 = x3
-        self.y1 = y1
-        self.y2 = y2
-        self.y3 = y3
+        self.x1 = int(x1)
+        self.x2 = int(x2)
+        self.y1 = int(y1)
+        self.y2 = int(y2)
+        self.x3 = int(x3)
+        self.y3 = int(y3)
+
     def getX(self):
         x = [self.x1, self.x2, self.x3]
         return x
