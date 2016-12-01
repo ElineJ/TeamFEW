@@ -56,7 +56,7 @@ class TruckPosition(object):
         self.y2 = int(y2)
         self.x3 = int(x3)
         self.y3 = int(y3)
-        
+
     def getX(self):
         x = [self.x1, self.x2, self.x3]
         return x
