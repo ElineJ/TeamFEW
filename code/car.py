@@ -17,24 +17,22 @@ class Car(object):
         """
         return self.pos
 
-    def setCarPosition(self, old_pos, new_pos, grid):
+    def setCarPosition(self, old_pos, new_pos, Grid):
         """
         Set the position of the car to position
 
         position: a Position object.
         """
-        Grid = grid
         for i in range(0, len(Grid.all_vehicles)):
             if Grid.all_vehicles[i] == old_pos:
                 Grid.all_vehicles[i] = new_pos
         self.pos = new_pos
 
-    def moveCar(self, position, direction, grid):
+    def moveCar(self, position, direction, Grid):
         """
         Moves car to new position
         """
         old_pos = self.getCarPosition()
-        Grid = grid
 
         if direction == 'right' or direction == 'up':
             # move vertical car up

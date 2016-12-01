@@ -168,5 +168,5 @@ def makestring(node, dictionary):
             string = string + x1 + x2 + x3 + y1 + y2 + y3
 
     print string
-    dict.update({string : True})
+    dict.update({string: True})
     return string

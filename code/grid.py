@@ -24,7 +24,8 @@ class Grid(object):
                 new_grid = GridPosition(i, j)
                 empty_grid.append(new_grid)
 
-        # remove the positions for vehicles from emtpy grid
+        # remove the positions for vehicles from empty grid
+        #TODO: dit deel werkt niet! 
         for i in range(0, len(self.all_vehicles)):
             empty_pos1 = GridPosition(all_vehicles[i].x1, all_vehicles[i].y1)
             empty_pos2 = GridPosition(all_vehicles[i].x2, all_vehicles[i].y2)

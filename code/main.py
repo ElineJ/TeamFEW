@@ -26,6 +26,7 @@ f.close()
 anim = Visualization(width, width, grid.all_vehicles)
 
 runrandom(grid, exit)
-runbfs(grid, exit)
+# runbfs(grid, exit)
 
-# anim.update()
+for i in range(0, len(grid.empty_grid)):
+    print "Empty grid position:", grid.empty_grid[i].x, grid.empty_grid[i].y
