@@ -8,7 +8,7 @@ from truck import *
 
 def carColors(all_vehicles):
     for i in range(0, len(all_vehicles)):
-        if all_vehicles[i].color == 'blue' or all_vehicles[i].color == 'dark-blue':
+        if all_vehicles[i].color == 'blue':
             all_vehicles[i].color = '#5981F3'
         elif all_vehicles[i].color == 'red':
             all_vehicles[i].color = '#B63339'
@@ -18,6 +18,14 @@ def carColors(all_vehicles):
             all_vehicles[i].color = '#96D8EE'
         elif all_vehicles[i].color == 'yellow':
             all_vehicles[i].color = '#D4D35F'
+        elif all_vehicles[i].color == 'dark-yellow':
+            all_vehicles[i].color = '#AEAE00'
+        elif all_vehicles[i].color == 'purple':
+            all_vehicles[i].color = '#A38AFF'
+        elif all_vehicles[i].color == 'grey':
+            all_vehicles[i].color = '#999999'
+        elif all_vehicles[i].color == 'green':
+            all_vehicles[i].color = '#4091A2'
 
 
 class Visualization:
@@ -80,14 +88,14 @@ class Visualization:
             if isinstance(all_vehicles[i], Car):
                 print "Car"
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'v':
+                if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
                 self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
             elif isinstance(all_vehicles[i], Truck):
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'v':
+                if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
@@ -116,14 +124,14 @@ class Visualization:
             if isinstance(all_vehicles[i], Car):
                 print "Car"
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'v':
+                if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
                 self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
             elif isinstance(all_vehicles[i], Truck):
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'v':
+                if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight

@@ -1,18 +1,19 @@
 vehicle,x,y,orientation,color
-car,"0, 0","0,1",V,green
+car,"0, 0","0, 1",V,green
 car,"0, 1","3, 3",H,blue
 car,"0, 0","4, 5",V,light-blue
 car,"0, 1","6, 6",H,orange
-car,"0, 0 ","7, 8 ",V,blue
-car,"3, 3 ","4, 5 ",V,green
-car,"3, 3 ","6, 7",V,blue
-car,"4, 5 ","6, 6 ",H,green
-car,"4, 4","7,8",V,orange
+car,"0, 0","7, 8",V,blue
+car,"3, 3","4, 5",V,green
+car,"3, 3","6, 7",V,blue
+car,"4, 5","6, 6",H,green
+car,"4, 4","7, 8",V,orange
 car,"5, 6","8, 8",H,light-blue
 car,"7, 8","8, 8",H,green
-redcar,"1, 2 ","4, 4",V,red
+redcar,"1, 2","4, 4",H,red
 truck,"1, 2, 3","0, 0, 0",H,yellow
-truck,"3, 3, 3 ","1, 2, 3",V,purple
+truck,"3, 3, 3","1, 2, 3",V,purple
+truck,"2, 2, 2","5, 6, 7",V,yellow
 truck,"1, 2, 3","8, 8, 8",H,grey
 truck,"5, 5, 5","0, 1, 2",V,grey
 truck,"5, 6, 7","3, 3, 3",H,dark-yellow
