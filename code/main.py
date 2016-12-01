@@ -24,4 +24,5 @@ f.close()
 # open visualization
 anim = Visualization(width, width, grid.all_vehicles)
 
-# runbfs(grid.all_vehicles, exit)
+runbfs(grid.all_vehicles, exit)
+anim.update()

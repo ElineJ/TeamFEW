@@ -1,4 +1,4 @@
-import grid
+from grid import *
 from car import *
 from truck import *
 
@@ -22,7 +22,7 @@ def runbfs(vehicles, exit):
                 # try moving them in both directions
                 # vehicles has to be updated
 
-                if Car.orientation == "v":
+                if Car.orientation == "V":
                     Car_down = Car
                     print "Vertical car"
 
@@ -31,7 +31,6 @@ def runbfs(vehicles, exit):
 
                         if CarPosition == exit:
                             return instance
-                            break
                         # vehicles = new set-up
                         # add new set-up to queue
                         else:
@@ -42,7 +41,6 @@ def runbfs(vehicles, exit):
 
                         if CarPosition == exit:
                             return instance
-                            break
                         # vehicles = new set-up
                         # add new set-up to queue
                         else:
@@ -57,7 +55,6 @@ def runbfs(vehicles, exit):
 
                         if CarPosition == exit:
                             return instance
-                            break
                         # vehicles = new set-up
                         # add new set-up to queue
                         else:
@@ -69,7 +66,6 @@ def runbfs(vehicles, exit):
 
                         if CarPosition == exit:
                             return instance
-                            break
                         # vehicles = new set-up
                         # add new set-up to queue
                         else:
