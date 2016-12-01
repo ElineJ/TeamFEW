@@ -86,7 +86,6 @@ class Visualization:
         # draw vehicles
         for i in range(0, len(all_vehicles)):
             if isinstance(all_vehicles[i], Car):
-                print "Car"
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
                 if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
@@ -101,9 +100,11 @@ class Visualization:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
                 self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
 
-        self.w.mainloop()
+        # self.time = 0
+        self.master.update()
+        #self.w.mainloop()
 
-    def update(self):
+    def update(self, all_vehicles):
         # Delete all existing vehicles
         for vehicle in all_vehicles:
             self.w.delete(vehicle)
@@ -119,10 +120,12 @@ class Visualization:
                 y2 = y1 + self.cellheight
                 self.rect[row, column] = self.w.create_rectangle(x1,y1,x2,y2, fill="#363958", tags="rect")
 
+        # change car colors
+        carColors(all_vehicles)
+
         # Draw new vehicles
         for i in range(0, len(all_vehicles)):
             if isinstance(all_vehicles[i], Car):
-                print "Car"
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
                 if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
@@ -136,6 +139,9 @@ class Visualization:
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
                 self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
+
+        self.master.update()
+        # time.sleep(self.delay)
 
     def done(self):
         "Indicate that the animation is done so that we allow the user to close the window."

@@ -49,10 +49,7 @@ class Grid(object):
         return False
 
     def isPositionEmpty(self, pos):
-        print pos.x
-        print pos.y
         for i in range(0, len(self.empty_grid)):
-
             if pos.x == self.empty_grid[i].x and pos.y == self.empty_grid[i].y:
                 return True
         return False

@@ -10,5 +10,5 @@ car,"3, 4","3, 3",H,blue
 car,"0, 0","4, 5",V,orange
 car,"2, 2","4, 5",V,green
 car,"4, 5","4, 4",H,green
-truck,"3, 4, 5","0, 0, 0",H,yellow
 redcar,"0, 1","2, 2",H,red
+truck,"3, 4, 5","0, 0, 0",H,yellow
