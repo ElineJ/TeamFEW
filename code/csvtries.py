@@ -101,5 +101,5 @@ def run(dataset, width, height, exit):
     finally:
         # close file
         f.close()
-
+        # grid.removeEmptyGrid()
         return grid

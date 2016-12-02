@@ -1,5 +1,5 @@
 import positions
-from grid import *
+# from grid import *
 
 class Car(object):
     """
