@@ -43,3 +43,14 @@
 - Checken moveCar-functies
 - Plannen/uitwerken 2 algoritmes 
 - Verder aan verslag werken 
+
+## VOOR ZONDAGAVOND
+- Empty grid moeten werken
+- Imports allemaal fixen 
+- Algoritme af 
+    - Dictionary werkend
+    - Scorefunctie (kijken naar kinderen) -> score: stap = 1 
+- Onderzoeksvraag verslag 
+- Wouter Mailen
+    
+
