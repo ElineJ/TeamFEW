@@ -9,7 +9,7 @@ from car import *
 from truck import *
 from csvtries import *
 from bfs import *
-from rndom import *
+#from rndom import *
 
 # open csv file
 f = open(sys.argv[1], 'rb')
@@ -25,7 +25,7 @@ f.close()
 # open visualization
 anim = Visualization(width, width, grid.all_vehicles)
 
-runrandom(grid, exit)
+#runrandom(grid, exit)
 runbfs(grid, exit)
 
 #for i in range(0, len(grid.empty_grid)):
