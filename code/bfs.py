@@ -165,8 +165,8 @@ def makestring(node):
     return string
 
 def adddictionary(string, dictionary):
-    string = string
+    #string = string
 
-    dicti = dictionary
+    #dictionary = dictionary
     dict2 = {string: 'True'}
-    dicti.update(dict2)
+    dictionary.update(dict2)
