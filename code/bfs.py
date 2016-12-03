@@ -71,7 +71,7 @@ def runbfs(grid, exit):
                     if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "right", new_node2) != False:
                         print "Car moved right"
                         # check if the car is at the exit
-                        if new_node2.all_vehicles[i].x2 == 5 and new_node2.all_vehicles[i].y2 == 2:
+                        if new_node2.all_vehicles[i].pos.x2 == 5 and new_node2.all_vehicles[i].pos.y2 == 2:
                             print "found exit"
                             return new_node2
 
@@ -137,14 +137,14 @@ def runbfs(grid, exit):
             #for i in range(0, len(queue)):
                 # print str(queue[i]) + str(i)
                 #print "wtf"
-                #for k, v in dictionary.iteritems():
-                #    print k, v
+        #for k, v in dictionary.iteritems():
+        #    print k, v
         print "Queue at end: " ,len(queue)
     return dictionary
 
+
     #for i in range(0, len(grid.all_vehicles)):
     #    print "Last position: ", grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.x2, grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.y2
-
 
 def makeString(node):
     string = ""

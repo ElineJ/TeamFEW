@@ -31,7 +31,7 @@ class Truck(object):
                     Grid.all_vehicles[i].pos.x3 == old_pos.x3 and
                     Grid.all_vehicles[i].pos.y3 == old_pos.y3):
 
-                    Grid.all_vehicles[i] = new_pos
+                    Grid.all_vehicles[i].pos = new_pos
                     print "Position changed"
         self.pos = new_pos
 
