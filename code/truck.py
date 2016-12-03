@@ -49,6 +49,7 @@ class Truck(object):
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
             # move horizontal truck right
             else:
                 x1 = self.pos.x1 + 1
@@ -62,6 +63,7 @@ class Truck(object):
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
 
         elif direction == 'left' or direction == 'up':
             # move vertical truck up
@@ -77,6 +79,7 @@ class Truck(object):
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
 
             # move horizontal truck left
             else:
@@ -91,5 +94,6 @@ class Truck(object):
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
                     print("dit kan dus niet he")
+                    return False
 
         # TODO: update position in all_vehicles?

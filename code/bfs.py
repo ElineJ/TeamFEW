@@ -1,6 +1,7 @@
 import grid
 import car
 import truck
+from copy import deepcopy
 
 def runbfs(grid, exit):
     # make a list of all states that have happened
@@ -18,124 +19,144 @@ def runbfs(grid, exit):
         check = makeString(node)
 
         if check not in dictionary:
-            # add this node to the visited set-ups
-            # dict.append(node)
+        # add this node to the visited set-ups
+        # dict.append(node)
 
             addDictionary(check, dictionary)
 
-            for i in range(0, len(node.all_vehicles)):
-                if isinstance(node.all_vehicles[i], car.Car):
-                # try moving them in both directions
-                # grid has to be updated
+        for i in range(0, len(node.all_vehicles)):
+            if isinstance(node.all_vehicles[i], car.Car):
+            # try moving them in both directions
+            # grid has to be updated
 
-                    if node.all_vehicles[i].orientation == "V":
-                        print "Vertical car"
-                        new_node = node
-                        if node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "up", new_node) != False:
-                            # node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "up", new_node)
+                if node.all_vehicles[i].orientation == "V":
+                    print "Vertical car"
 
-                            if node.all_vehicles[i].getCarPosition == exit:
+                    # use deepcopy to make a copy of nodes and the objects in node
+                    new_node = deepcopy(node)
+
+                    if new_node.all_vehicles[i].moveCar(new_node.all_vehicles[i].getCarPosition, "up", new_node) != False:
+                        # node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "up", new_node)
+
+                        #if CarPosition == exit:
+                        #    print "found exit"
+                        #    return new_node
+                        # grid = new set-up
+                        # add new set-up to queue
+
+                        string = makeString(new_node)
+                        # only add new set up if not already in dictionary
+                        if string not in dictionary:
+                            print "hier iets aan het doen"
+                            addDictionary(string, dictionary)
+                            queue.append(new_node)
+
+                    new_node2 = deepcopy(node)
+                    if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "down", new_node2) != False:
+                        # node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "down", new_node)
+
+                        # grid = new set-up
+                        # add new set-up to queue
+
+                        string = makeString(new_node2)
+                        if string not in dictionary:
+                            print "hier iets aan het doen"
+                            addDictionary(string, dictionary)
+                            queue.append(new_node2)
+
+                if node.all_vehicles[i].orientation == "H":
+                    print "Horizontal car"
+                    new_node = deepcopy(node)
+                    if new_node.all_vehicles[i].moveCar(new_node.all_vehicles[i].getCarPosition, "left", new_node) != False:
+                        #node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "left", new_node)
+
+                        # if horizontal car on exit this means the exit is found
+                        if new_node.all_vehicles[i].pos.x1 == 5:
+                            if new_node.all_vehicles[i].pos.y2 == 2:
                                 print "found exit"
                                 return new_node
-                            # grid = new set-up
-                            # add new set-up to queue
-                            else:
-                                queue.append(new_node)
-                                string = makeString(node)
+                        # grid = new set-up
+                        # add new set-up to queue
+                        else:
+                            string = makeString(new_node)
+                            if string not in dictionary:
+                                print "hier iets aan het doen"
                                 addDictionary(string, dictionary)
+                                queue.append(new_node)
 
-                        new_node = node
-                        if node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "down", new_node) != False:
-                            # node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "down", new_node)
+                    new_node2 = deepcopy(node)
+                    if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "right", new_node2) != False:
+                        #node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "right", new_node)
 
-                            if node.all_vehicles[i].getCarPosition == exit:
+                        if new_node2.all_vehicles[i].pos.x2 == 5:
+                            if new_node2.all_vehicles[i].pos.y2 == 2:
                                 print "found exit"
-                                return new_node
-                            # grid = new set-up
-                            # add new set-up to queue
-                            else:
-                                queue.append(new_node)
-                                string = makeString(node)
+                                return new_node2
+
+                        # grid = new set-up
+                        # add new set-up to queue
+                        else:
+                            string = makeString(new_node2)
+                            if string not in dictionary:
+                                print "hier iets aan het doen"
                                 addDictionary(string, dictionary)
+                                queue.append(new_node2)
 
-                    if node.all_vehicles[i].orientation == "H":
-                        print "Horizontal car"
-                        new_node = node
-                        if node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "left", new_node) != False:
-                            #node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "left", new_node)
-
-                            if node.all_vehicles[i].getCarPosition == exit:
-                                print "found exit"
-                                return new_node
-                            # grid = new set-up
-                            # add new set-up to queue
-                            else:
-                                queue.append(new_node)
-                                string = makeString(node)
-                                addDictionary(string, dictionary)
-
-                        new_node = node
-                        if node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "right", new_node) != False:
-                            #node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "right", new_node)
-
-                            if node.all_vehicles[i].getCarPosition == exit:
-                                print "found exit"
-                                return new_node
-
-                            # grid = new set-up
-                            # add new set-up to queue
-                            else:
-                                queue.append(new_node)
-                                string = makeString(node)
-                                addDictionary(string, dictionary)
-
-                elif isinstance(node.all_vehicles[i], truck.Truck):
-                    if node.all_vehicles[i].orientation == "V":
-                        print "Vertical truck"
-                        new_node = node
-                        if node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "up", new_node) != False:
-                            #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "up", new_node)
-                            # grid = new set-up
-                            # add new set-up to queue
-                            queue.append(new_node)
-                            string = makeString(node)
+            elif isinstance(node.all_vehicles[i], truck.Truck):
+                if node.all_vehicles[i].orientation == "V":
+                    print "Vertical truck"
+                    new_node = deepcopy(node)
+                    if new_node.all_vehicles[i].moveTruck(new_node.all_vehicles[i].getTruckPosition, "up", new_node) != False:
+                        #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "up", new_node)
+                        # grid = new set-up
+                        # add new set-up to queue
+                        string = makeString(new_node)
+                        if string not in dictionary:
+                            print "hier iets aan het doen"
                             addDictionary(string, dictionary)
-
-                        new_node = node
-                        if node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "down", new_node) != False:
-                            #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "down", new_node)
-                            # grid = new set-up
-                            # add new set-up to queue
                             queue.append(new_node)
-                            string = makeString(node)
+
+                    new_node2 = deepcopy(node)
+                    if new_node2.all_vehicles[i].moveTruck(new_node2.all_vehicles[i].getTruckPosition, "down", new_node2) != False:
+                        #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "down", new_node)
+                        # grid = new set-up
+                        # add new set-up to queue
+                        string = makeString(new_node2)
+                        if string not in dictionary:
+                            print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            queue.append(new_node2)
 
-                    if node.all_vehicles[i].orientation == "H":
-                        print "Horizontal Truck"
-                        new_node = node
-                        if node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "left", new_node) != False:
-                            #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "left", new_node)
+                if node.all_vehicles[i].orientation == "H":
+                    print "Horizontal Truck"
+                    new_node = deepcopy(node)
+                    if new_node.all_vehicles[i].moveTruck(new_node.all_vehicles[i].getTruckPosition, "left", new_node) != False:
+                        #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "left", new_node)
 
-                            # grid = new set-up
-                            # add new set-up to queue
+                        # grid = new set-up
+                        # add new set-up to queue
+                        string = makeString(new_node)
+                        if string not in dictionary:
+                            print "hier iets aan het doen"
+                            addDictionary(string, dictionary)
                             queue.append(new_node)
-                            string = makeString(node)
-                            addDictionary(string, dictionary)
 
-                        new_node = node
-                        if node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "right", new_node) != False:
-                            #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "right", new_node)
+                    new_node2 = deepcopy(node)
+                    if new_node2.all_vehicles[i].moveTruck(new_node2.all_vehicles[i].getTruckPosition, "right", new_node2) != False:
+                        #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "right", new_node)
 
-                            # grid = new set-up
-                            # add new set-up to queue
-                            queue.append(new_node)
-                            string = makeString(node)
+                        # grid = new set-up
+                        # add new set-up to queue
+                        string = makeString(new_node2)
+                        if string not in dictionary:
+                            print "hier iets aan het doen"
                             addDictionary(string, dictionary)
-                    for i in range(0, len(queue)):
-                        print str(queue[i]) + str(i)
-                    print "wtf"
-                    for k, v in dictionary.iteritems():
-                        print k, v
+                            queue.append(new_node2)
+                for i in range(0, len(queue)):
+                    print str(queue[i]) + str(i)
+                print "wtf"
+                for k, v in dictionary.iteritems():
+                    print k, v
         #print queue
         #print dict
     return dictionary
