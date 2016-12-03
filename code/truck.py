@@ -1,5 +1,4 @@
 import positions
-from grid import *
 
 class Truck(object):
     """

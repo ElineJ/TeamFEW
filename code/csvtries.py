@@ -1,12 +1,11 @@
-import positions
 import csv     # imports the csv module
-from grid import *
+import grid as g
 import car
 import truck
 
 def run(dataset, width, height, exit):
 
-    grid = Grid(width, height, exit)
+    grid = g.Grid(width, height, exit)
 
     # open csv file
     f = dataset
@@ -101,5 +100,5 @@ def run(dataset, width, height, exit):
     finally:
         # close file
         f.close()
-        # grid.removeEmptyGrid()
+        grid.removeEmptyGrid()
         return grid

@@ -1,8 +1,5 @@
 # All position objects for rush hour
 
-import numpy as np
-import pylab
-
 # === Position classes
 
 class GridPosition(object):
@@ -34,9 +31,11 @@ class CarPosition(object):
         self.x2 = int(x2)
         self.y1 = int(y1)
         self.y2 = int(y2)
+
     def getX(self):
         x = [self.x1, self.x2]
         return x
+
     def getY(self):
         y = [self.y1, self.y2]
         return y
@@ -60,6 +59,7 @@ class TruckPosition(object):
     def getX(self):
         x = [self.x1, self.x2, self.x3]
         return x
+
     def getY(self):
         y = [self.y1, self.y2, self.y3]
         return y

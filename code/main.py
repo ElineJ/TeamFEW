@@ -1,32 +1,26 @@
 # main code to run the simulation
-# import visualize
-from visualize import *
-import sys      # imports the sys module
+import visualize as vis
+import sys
 
-from positions import *
-from grid import *
-from car import *
-from truck import *
-from csvtries import *
-from bfs import *
-#from rndom import *
+import positions as pos
+import grid
+import csvtries
+import bfs
+import rndom as rd
 
 # open csv file
 f = open(sys.argv[1], 'rb')
 
 #
-exit = CarPosition(4, 2, 5, 2)
+exit = pos.CarPosition(4, 2, 5, 2)
 width = int(sys.argv[2])
 
 # set up grid with vehicles
-grid = run(f, width, width, exit)
+grid = csvtries.run(f, width, width, exit)
 f.close()
 
 # open visualization
-anim = Visualization(width, width, grid.all_vehicles)
+# anim = vis.Visualization(width, width, grid.all_vehicles)
 
-#runrandom(grid, exit)
-runbfs(grid, exit)
-
-#for i in range(0, len(grid.empty_grid)):
-    #print "Empty grid position:", grid.empty_grid[i].x, grid.empty_grid[i].y
+# rd.runrandom(grid, exit)
+bfs.runbfs(grid, exit)

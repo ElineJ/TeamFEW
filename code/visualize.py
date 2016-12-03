@@ -3,8 +3,9 @@
 from Tkinter import *
 import matplotlib
 matplotlib.use("TkAgg")
-from car import *
-from truck import *
+
+import car
+import truck
 
 def carColors(all_vehicles):
     for i in range(0, len(all_vehicles)):
@@ -38,8 +39,8 @@ class Visualization:
         self.height = height
         self.rows = height
         self.columns = width
-        self.cellwidth = 500/self.columns
-        self.cellheight = 500/self.rows
+        self.cellwidth = 500 / self.columns
+        self.cellheight = 500 / self.rows
 
         # Initialize a drawing surface
         self.master = Tk()
@@ -85,14 +86,14 @@ class Visualization:
 
         # draw vehicles
         for i in range(0, len(all_vehicles)):
-            if isinstance(all_vehicles[i], Car):
+            if isinstance(all_vehicles[i], car.Car):
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
                 if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
                 self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
-            elif isinstance(all_vehicles[i], Truck):
+            elif isinstance(all_vehicles[i], truck.Truck):
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
                 if all_vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
@@ -102,7 +103,7 @@ class Visualization:
 
         # self.time = 0
         self.master.update()
-        #self.w.mainloop()
+        self.w.mainloop()
 
     def update(self, all_vehicles):
         # Delete all existing vehicles
