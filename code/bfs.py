@@ -1,6 +1,6 @@
-from grid import *
-from car import *
-from truck import *
+import grid
+import car
+import truck
 from copy import deepcopy
 
 def runbfs(grid, exit):
@@ -16,16 +16,16 @@ def runbfs(grid, exit):
         node = queue.pop(0)
         print "we zijn hier"
 
-        check = makestring(node)
+        check = makeString(node)
 
         if check not in dictionary:
             # add this node to the visited set-ups
             # dict.append(node)
 
-            adddictionary(check, dictionary)
+            addDictionary(check, dictionary)
 
             for i in range(0, len(node.all_vehicles)):
-                if isinstance(node.all_vehicles[i], Car):
+                if isinstance(node.all_vehicles[i], car.Car):
                 # try moving them in both directions
                 # grid has to be updated
 
@@ -50,8 +50,8 @@ def runbfs(grid, exit):
                             # add new set-up to queue
                             else:
                                 queue.append(new_node)
-                                string = makestring(new_node)
-                                adddictionary(string, dictionary)
+                                string = makeString(new_node)
+                                addDictionary(string, dictionary)
 
                         new_node2 = deepcopy(node)
                         if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "down", new_node2) != False:
@@ -65,8 +65,8 @@ def runbfs(grid, exit):
                             # add new set-up to queue
                             else:
                                 queue.append(new_node2)
-                                string = makestring(new_node2)
-                                adddictionary(string, dictionary)
+                                string = makeString(new_node2)
+                                addDictionary(string, dictionary)
 
                     if node.all_vehicles[i].orientation == "H":
                         print "Horizontal car"
@@ -82,8 +82,8 @@ def runbfs(grid, exit):
                             # add new set-up to queue
                             else:
                                 queue.append(new_node)
-                                string = makestring(new_node)
-                                adddictionary(string, dictionary)
+                                string = makeString(new_node)
+                                addDictionary(string, dictionary)
 
                         new_node2 = deepcopy(node)
                         if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "right", new_node2) != False:
@@ -98,10 +98,10 @@ def runbfs(grid, exit):
                             # add new set-up to queue
                             else:
                                 queue.append(new_node2)
-                                string = makestring(new_node2)
-                                adddictionary(string, dictionary)
+                                string = makeString(new_node2)
+                                addDictionary(string, dictionary)
 
-                elif isinstance(node.all_vehicles[i], Truck):
+                elif isinstance(node.all_vehicles[i], truck.Truck):
                     if node.all_vehicles[i].orientation == "V":
                         print "Vertical truck"
                         new_node = deepcopy(node)
@@ -110,8 +110,8 @@ def runbfs(grid, exit):
                             # grid = new set-up
                             # add new set-up to queue
                             queue.append(new_node)
-                            string = makestring(new_node)
-                            adddictionary(string, dictionary)
+                            string = makeString(new_node)
+                            addDictionary(string, dictionary)
 
                         new_node2 = deepcopy(node)
                         if new_node2.all_vehicles[i].moveTruck(new_node2.all_vehicles[i].getTruckPosition, "down", new_node2) != False:
@@ -119,8 +119,8 @@ def runbfs(grid, exit):
                             # grid = new set-up
                             # add new set-up to queue
                             queue.append(new_node2)
-                            string = makestring(new_node2)
-                            adddictionary(string, dictionary)
+                            string = makeString(new_node2)
+                            addDictionary(string, dictionary)
 
                     if node.all_vehicles[i].orientation == "H":
                         print "Horizontal Truck"
@@ -131,8 +131,8 @@ def runbfs(grid, exit):
                             # grid = new set-up
                             # add new set-up to queue
                             queue.append(new_node)
-                            string = makestring(new_node)
-                            adddictionary(string, dictionary)
+                            string = makeString(new_node)
+                            addDictionary(string, dictionary)
 
                         new_node2 = deepcopy(node)
                         if new_node2.all_vehicles[i].moveTruck(new_node2.all_vehicles[i].getTruckPosition, "right", new_node2) != False:
@@ -141,8 +141,8 @@ def runbfs(grid, exit):
                             # grid = new set-up
                             # add new set-up to queue
                             queue.append(new_node2)
-                            string = makestring(new_node2)
-                            adddictionary(string, dictionary)
+                            string = makeString(new_node2)
+                            addDictionary(string, dictionary)
                     for i in range(0, len(queue)):
                         print str(queue[i]) + str(i)
                     print "wtf"
@@ -152,11 +152,11 @@ def runbfs(grid, exit):
         #print dict
     return dictionary
 
-def makestring(node):
+def makeString(node):
     string = ""
 
     for i in range(0, len(node.all_vehicles)):
-        if isinstance(node.all_vehicles[i], Car):
+        if isinstance(node.all_vehicles[i], car.Car):
             x1 = str(node.all_vehicles[i].pos.x1)
             x2 = str(node.all_vehicles[i].pos.x2)
             y1 = str(node.all_vehicles[i].pos.y1)
@@ -164,7 +164,7 @@ def makestring(node):
 
             string = string + x1 + x2 + y1 + y2
 
-        elif isinstance(node.all_vehicles[i], Truck):
+        elif isinstance(node.all_vehicles[i], truck.Truck):
             x1 = str(node.all_vehicles[i].pos.x1)
             x2 = str(node.all_vehicles[i].pos.x2)
             x3 = str(node.all_vehicles[i].pos.x3)
@@ -176,7 +176,7 @@ def makestring(node):
     print string
     return string
 
-def adddictionary(string, dictionary):
+def addDictionary(string, dictionary):
     #string = string
 
     #dictionary = dictionary
