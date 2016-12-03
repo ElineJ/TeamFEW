@@ -14,7 +14,7 @@ def runbfs(grid, exit):
     while queue:
         # delete this grid set up from queue and save in node
         node = queue.pop(0)
-        print "we zijn hier"
+        #print "we zijn hier"
 
         check = makeString(node)
 
@@ -39,7 +39,7 @@ def runbfs(grid, exit):
                         # node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "up", new_node)
 
                         #if CarPosition == exit:
-                        #    print "found exit"
+                        #    #print "found exit"
                         #    return new_node
                         # grid = new set-up
                         # add new set-up to queue
@@ -47,7 +47,7 @@ def runbfs(grid, exit):
                         string = makeString(new_node)
                         # only add new set up if not already in dictionary
                         if string not in dictionary:
-                            print "hier iets aan het doen"
+                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node)
 
@@ -60,7 +60,7 @@ def runbfs(grid, exit):
 
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            print "hier iets aan het doen"
+                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node2)
 
@@ -80,7 +80,7 @@ def runbfs(grid, exit):
                         else:
                             string = makeString(new_node)
                             if string not in dictionary:
-                                print "hier iets aan het doen"
+                                #print "hier iets aan het doen"
                                 addDictionary(string, dictionary)
                                 queue.append(new_node)
 
@@ -98,7 +98,7 @@ def runbfs(grid, exit):
                         else:
                             string = makeString(new_node2)
                             if string not in dictionary:
-                                print "hier iets aan het doen"
+                                #print "hier iets aan het doen"
                                 addDictionary(string, dictionary)
                                 queue.append(new_node2)
 
@@ -112,7 +112,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node)
                         if string not in dictionary:
-                            print "hier iets aan het doen"
+                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node)
 
@@ -123,7 +123,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            print "hier iets aan het doen"
+                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node2)
 
@@ -137,7 +137,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node)
                         if string not in dictionary:
-                            print "hier iets aan het doen"
+                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node)
 
@@ -149,16 +149,15 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            print "hier iets aan het doen"
+                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node2)
-                for i in range(0, len(queue)):
-                    print str(queue[i]) + str(i)
-                print "wtf"
-                for k, v in dictionary.iteritems():
-                    print k, v
-        #print queue
-        #print dict
+            for i in range(0, len(queue)):
+                print str(queue[i]) + str(i)
+                #print "wtf"
+                #for k, v in dictionary.iteritems():
+                #    print k, v
+        ##print queue
     return dictionary
 
 def makeString(node):
@@ -182,7 +181,7 @@ def makeString(node):
             y3 = str(node.all_vehicles[i].pos.y3)
 
             string = string + x1 + x2 + x3 + y1 + y2 + y3
-    print string
+    #print string
     return string
 
 def addDictionary(string, dictionary):
