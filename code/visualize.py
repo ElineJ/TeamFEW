@@ -78,6 +78,7 @@ class Visualization:
             self.rect[x1, y1] = self.w.create_rectangle(x1,y1,x2,y2, fill="black", tags="rect")
         # exit for 12x12 field
         if width == 12:
+            
             x1 = 12 * self.cellwidth
             y1 = 5 * self.cellheight
             x2 = 12 * self.cellwidth + 5

@@ -7,6 +7,11 @@ def runbfs(grid, exit):
     # make a list of all states that have happened
     dictionary = {}
 
+    for i in range(0, len(grid.all_vehicles)):
+        if isinstance(grid.all_vehicles[i], car.Car):
+            print "First position car: ", grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.x2, grid.all_vehicles[i].pos.y1, grid.all_vehicles[i].pos.y2
+        if isinstance(grid.all_vehicles[i], truck.Truck):
+            print "First position truck: ", grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.x2, grid.all_vehicles[i].pos.x3, grid.all_vehicles[i].pos.y1, grid.all_vehicles[i].pos.y2, grid.all_vehicles[i].pos.y3
     queue = []
     # make a queue of next steps
     queue = [grid]
@@ -30,8 +35,6 @@ def runbfs(grid, exit):
             # grid has to be updated
 
                 if node.all_vehicles[i].orientation == "V":
-                    print "Vertical car"
-
                     # use deepcopy to make a copy of nodes and the objects in node
                     new_node = deepcopy(node)
 
@@ -65,14 +68,13 @@ def runbfs(grid, exit):
                             queue.append(new_node2)
 
                 if node.all_vehicles[i].orientation == "H":
-                    print "Horizontal car"
                     new_node = deepcopy(node)
                     if new_node.all_vehicles[i].moveCar(new_node.all_vehicles[i].getCarPosition, "left", new_node) != False:
                         #node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "left", new_node)
 
                         # if horizontal car on exit this means the exit is found
-                        if new_node.all_vehicles[i].pos.x1 == 5:
-                            if new_node.all_vehicles[i].pos.y2 == 2:
+                        if new_node.all_vehicles[i].x1 == 5:
+                            if new_node.all_vehicles[i].y2 == 2:
                                 print "found exit"
                                 return new_node
                         # grid = new set-up
@@ -88,8 +90,8 @@ def runbfs(grid, exit):
                     if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "right", new_node2) != False:
                         #node.all_vehicles[i].moveCar(node.all_vehicles[i].getCarPosition, "right", new_node)
 
-                        if new_node2.all_vehicles[i].pos.x2 == 5:
-                            if new_node2.all_vehicles[i].pos.y2 == 2:
+                        if new_node2.all_vehicles[i].x2 == 5:
+                            if new_node2.all_vehicles[i].y2 == 2:
                                 print "found exit"
                                 return new_node2
 
@@ -104,7 +106,7 @@ def runbfs(grid, exit):
 
             elif isinstance(node.all_vehicles[i], truck.Truck):
                 if node.all_vehicles[i].orientation == "V":
-                    print "Vertical truck"
+                    # print "Vertical truck"
                     new_node = deepcopy(node)
                     if new_node.all_vehicles[i].moveTruck(new_node.all_vehicles[i].getTruckPosition, "up", new_node) != False:
                         #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "up", new_node)
@@ -128,7 +130,7 @@ def runbfs(grid, exit):
                             queue.append(new_node2)
 
                 if node.all_vehicles[i].orientation == "H":
-                    print "Horizontal Truck"
+                    # print "Horizontal Truck"
                     new_node = deepcopy(node)
                     if new_node.all_vehicles[i].moveTruck(new_node.all_vehicles[i].getTruckPosition, "left", new_node) != False:
                         #node.all_vehicles[i].moveTruck(node.all_vehicles[i].getTruckPosition, "left", new_node)
@@ -152,13 +154,17 @@ def runbfs(grid, exit):
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node2)
-            for i in range(0, len(queue)):
-                print str(queue[i]) + str(i)
+            #for i in range(0, len(queue)):
+                # print str(queue[i]) + str(i)
                 #print "wtf"
                 #for k, v in dictionary.iteritems():
                 #    print k, v
         ##print queue
-    return dictionary
+        return dictionary
+
+    for i in range(0, len(grid.all_vehicles)):
+        print "Last position: ", grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.x2, grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.y2
+
 
 def makeString(node):
     string = ""
