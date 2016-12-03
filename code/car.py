@@ -24,13 +24,14 @@ class Car(object):
         position: a Position object.
         """
         for i in range(0, len(Grid.all_vehicles)):
-            if (Grid.all_vehicles[i].pos.x1 == old_pos.x1 and
-                Grid.all_vehicles[i].pos.y1 == old_pos.y1 and
-                Grid.all_vehicles[i].pos.x2 == old_pos.x2 and
-                Grid.all_vehicles[i].pos.y2 == old_pos.y2):
+            if isinstance(Grid.all_vehicles[i], Car):
+                if (Grid.all_vehicles[i].pos.x1 == old_pos.x1 and
+                    Grid.all_vehicles[i].pos.y1 == old_pos.y1 and
+                    Grid.all_vehicles[i].pos.x2 == old_pos.x2 and
+                    Grid.all_vehicles[i].pos.y2 == old_pos.y2):
 
-                Grid.all_vehicles[i] = new_pos
-                print "Position changed"
+                    Grid.all_vehicles[i] = new_pos
+                    print "Position changed"
 
             # if Grid.all_vehicles[i] == old_pos:
             #     Grid.all_vehicles[i] = new_pos

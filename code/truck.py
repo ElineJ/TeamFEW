@@ -23,15 +23,16 @@ class Truck(object):
         position: a Position object.
         """
         for i in range(0, len(Grid.all_vehicles)):
-            if (Grid.all_vehicles[i].pos.x1 == old_pos.x1 and
-                Grid.all_vehicles[i].pos.y1 == old_pos.y1 and
-                Grid.all_vehicles[i].pos.x2 == old_pos.x2 and
-                Grid.all_vehicles[i].pos.y2 == old_pos.y2 and
-                Grid.all_vehicles[i].pos.x3 == old_pos.x3 and
-                Grid.all_vehicles[i].pos.y3 == old_pos.y3):
+            if isinstance(Grid.all_vehicles[i], Truck):
+                if (Grid.all_vehicles[i].pos.x1 == old_pos.x1 and
+                    Grid.all_vehicles[i].pos.y1 == old_pos.y1 and
+                    Grid.all_vehicles[i].pos.x2 == old_pos.x2 and
+                    Grid.all_vehicles[i].pos.y2 == old_pos.y2 and
+                    Grid.all_vehicles[i].pos.x3 == old_pos.x3 and
+                    Grid.all_vehicles[i].pos.y3 == old_pos.y3):
 
-                Grid.all_vehicles[i] = new_pos
-                print "Position changed"
+                    Grid.all_vehicles[i] = new_pos
+                    print "Position changed"
         self.pos = new_pos
 
     def moveTruck(self, position, direction, Grid):
