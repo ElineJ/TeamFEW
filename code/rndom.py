@@ -11,8 +11,6 @@ def runrandom(grid, exit):
     vehicles = grid.all_vehicles
     moves = 0;
     anim = vis.Visualization(6, 6, grid.all_vehicles)
-    #for i in range (0, len(grid.empty_grid)):
-    #    print "Empty tile before:", grid.empty_grid[i].x, grid.empty_grid[i].y
 
     for i in range(0, len(vehicles)):
         if isinstance(vehicles[i], car.Car):
@@ -63,9 +61,3 @@ def runrandom(grid, exit):
                     vehicles[i].moveTruck(vehicles[i].getTruckPosition, d, grid)
                     moves = +1
                     anim.update(vehicles)
-
-    # for i in range(0, len(vehicles)):
-    #     if isinstance(vehicles[i], car.Car):
-    #         print "New position car:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.y1, vehicles[i].pos.y2
-    #     elif isinstance(vehicles[i], truck.Truck):
-    #         print "New position truck:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.x3, vehicles[i].pos.y1, vehicles[i].pos.y2,  vehicles[i].pos.y3

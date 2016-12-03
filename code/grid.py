@@ -43,7 +43,7 @@ class Grid(object):
 
     def updateEmptyPosition(self, pos, new_pos):
         for i in range(0, len(self.empty_grid)):
-            if pos == self.empty_grid[i]:
+            if pos.x == self.empty_grid[i].x and pos.y == self.empty_grid[i].y:
                 self.empty_grid[i] = new_pos
 
     def removeEmptyGrid(self):
@@ -58,13 +58,10 @@ class Grid(object):
             for j in reversed(range(0, len(self.empty_grid))):
                 if self.empty_grid[j].x == empty_pos1.x and self.empty_grid[j].y == empty_pos1.y:
                     del self.empty_grid[j]
-                    #self.empty_grid.remove(self.empty_grid[j])
-                    print "Removed empty tile!"
+
                 elif self.empty_grid[j].x == empty_pos2.x and self.empty_grid[j].y == empty_pos2.y:
-                    # self.empty_grid.remove(self.empty_grid[j])
                     del self.empty_grid[j]
-                    print "Removed empty tile!"
+
                 elif isinstance(self.all_vehicles[i], truck.Truck):
                     if self.empty_grid[j].x == empty_pos3.x and self.empty_grid[j].y == empty_pos3.y:
                         del self.empty_grid[j]
-                        print "Removed empty tile!"
