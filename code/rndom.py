@@ -47,17 +47,13 @@ def runrandom(grid, exit):
                 # print "Current position truck:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.x3, vehicles[i].pos.y1, vehicles[i].pos.y2, vehicles[i].pos.y3
                 # move vertical truck in a random direction
                 if vehicles[i].orientation == 'V':
-                    # print "Truck"
                     d = v_direction[direction]
-                    # print d
                     if vehicles[i].moveTruck(vehicles[i].getTruckPosition, d, grid) != False:
                         moves += 1
                         # anim.update(vehicles)
                 # move horizontal truck into a random direction
                 else:
                     d = h_direction[direction]
-                    print "Current position truck:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.x3, vehicles[i].pos.y1, vehicles[i].pos.y2,  vehicles[i].pos.y3
-                    print d
                     if vehicles[i].moveTruck(vehicles[i].getTruckPosition, d, grid) != False:
                         moves += 1
                         # anim.update(vehicles)

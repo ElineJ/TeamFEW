@@ -11,9 +11,15 @@ import rndom as rd
 # open csv file
 f = open(sys.argv[1], 'rb')
 
-#
-exit = pos.GridPosition(5, 2)
 width = int(sys.argv[2])
+
+# check which exit to use
+if width == 6:
+    exit = pos.GridPosition(5, 2)
+elif width == 9:
+    exit = pos.GridPosition(8, 4)
+elif width == 12:
+    exit = pos.GridPosition(11, 5)        
 
 # set up grid with vehicles
 grid = csvtries.run(f, width, width, exit)
