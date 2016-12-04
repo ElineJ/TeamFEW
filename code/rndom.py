@@ -23,7 +23,7 @@ def runrandom(grid, exit):
                     d = v_direction[direction]
                     # print "Current position car:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.y1, vehicles[i].pos.y2
                     if vehicles[i].moveCar(vehicles[i].getCarPosition, d, grid) != False:
-                        print "Car moved up/down"
+                        # print "Car moved up/down"
                         moves += 1
                         # anim.update(vehicles)
                 # move horizontal car into a random direction
@@ -31,7 +31,7 @@ def runrandom(grid, exit):
                     d = h_direction[direction]
                     # print "Current position car:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.y1, vehicles[i].pos.y2
                     if vehicles[i].moveCar(vehicles[i].getCarPosition, d, grid) != False:
-                        print "Car moved left/right"
+                        # print "Car moved left/right"
                         moves += 1
                         # anim.update(vehicles)
                         # check if car is at exit

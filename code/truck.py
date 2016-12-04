@@ -32,7 +32,6 @@ class Truck(object):
                     Grid.all_vehicles[i].pos.y3 == old_pos.y3):
 
                     Grid.all_vehicles[i].pos = new_pos
-                    print "Position changed"
         self.pos = new_pos
 
     def moveTruck(self, position, direction, Grid):

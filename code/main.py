@@ -21,6 +21,7 @@ f.close()
 
 # open visualization
 # anim = vis.Visualization(width, width, grid.all_vehicles)
-
+print "--- Random algoritme ---"
 rd.runrandom(grid, exit)
+print "--- bfs ---"
 bfs.runbfs(grid, exit)

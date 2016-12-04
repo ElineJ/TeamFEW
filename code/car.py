@@ -30,7 +30,6 @@ class Car(object):
                     Grid.all_vehicles[i].pos.y2 == old_pos.y2):
 
                     Grid.all_vehicles[i].pos = new_pos
-                    print "Position changed"
         self.pos = new_pos
 
 
