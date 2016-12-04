@@ -15,7 +15,7 @@ def runbfs(grid, exit):
     queue = [grid]
 
     while queue:
-        print "Queue at start: " ,len(queue)
+        # print "Queue at start: " ,len(queue)
 
         # delete this grid set up from queue and save in node
         node = queue.pop(0)
@@ -45,7 +45,7 @@ def runbfs(grid, exit):
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node)
-                            print "Queue: ", len(queue)
+                            # print "Queue: ", len(queue)
 
                     new_node2 = deepcopy(node)
                     if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "down", new_node2) != False:
@@ -110,7 +110,7 @@ def runbfs(grid, exit):
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             queue.append(new_node2)
-                            print "Queue: ", len(queue)
+                            # print "Queue: ", len(queue)
 
                 elif node.all_vehicles[i].orientation == "H":
 
@@ -142,7 +142,7 @@ def runbfs(grid, exit):
                 #print "wtf"
         #for k, v in dictionary.iteritems():
         #    print k, v
-        print "Queue at end: " ,len(queue)
+        # print "Queue at end: " ,len(queue)
     return dictionary
 
 
