@@ -12,7 +12,7 @@ import rndom as rd
 f = open(sys.argv[1], 'rb')
 
 #
-exit = pos.CarPosition(4, 2, 5, 2)
+exit = pos.GridPosition(5, 2)
 width = int(sys.argv[2])
 
 # set up grid with vehicles

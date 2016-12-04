@@ -73,7 +73,7 @@ def runbfs(grid, exit):
                     if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "right", new_node2) != False:
                         # print "Car moved right"
                         # check if the car is at the exit
-                        if new_node2.all_vehicles[i].pos.x2 == 5 and new_node2.all_vehicles[i].pos.y2 == 2:
+                        if new_node2.all_vehicles[i].pos.x2 == exit.x and new_node2.all_vehicles[i].pos.y2 == exit.y:
                             print "found exit"
                             print("--- %s seconds ---" % (time.time() - start_time))
                             return new_node2
