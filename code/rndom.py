@@ -39,6 +39,7 @@ def runrandom(grid, exit):
                             print "Found exit!"
                             print "Moves:", moves
                             print("--- %s seconds ---" % (time.time() - start_time))
+                            # print moves,("%s seconds" % (time.time() - start_time))
                             return False
 
             elif isinstance(vehicles[i], truck.Truck):
