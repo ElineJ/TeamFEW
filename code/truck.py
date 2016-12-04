@@ -54,7 +54,6 @@ class Truck(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
             # move horizontal truck right
             else:
@@ -68,7 +67,6 @@ class Truck(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
 
         elif direction == 'left' or direction == 'up':
@@ -84,7 +82,6 @@ class Truck(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
 
             # move horizontal truck left
@@ -99,7 +96,4 @@ class Truck(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
-
-        # TODO: update position in all_vehicles?

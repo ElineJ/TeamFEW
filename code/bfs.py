@@ -1,6 +1,8 @@
 import car
 import truck
 from copy import deepcopy
+import time
+start_time = time.time()
 
 
 def runbfs(grid, exit):
@@ -73,6 +75,7 @@ def runbfs(grid, exit):
                         # check if the car is at the exit
                         if new_node2.all_vehicles[i].pos.x2 == 5 and new_node2.all_vehicles[i].pos.y2 == 2:
                             print "found exit"
+                            print("--- %s seconds ---" % (time.time() - start_time))
                             return new_node2
 
                         # grid = new set-up

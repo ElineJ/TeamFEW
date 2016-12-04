@@ -1,5 +1,4 @@
 import positions as pos
-# from grid import *
 
 class Car(object):
     """
@@ -32,9 +31,6 @@ class Car(object):
 
                     Grid.all_vehicles[i].pos = new_pos
                     print "Position changed"
-
-            # if Grid.all_vehicles[i] == old_pos:
-            #     Grid.all_vehicles[i] = new_pos
         self.pos = new_pos
 
 
@@ -47,7 +43,6 @@ class Car(object):
 
         if direction == 'right' or direction == 'up':
             # move vertical car up
-
             if self.orientation == 'V':
 
                 y1 = self.pos.y1 - 1
@@ -59,7 +54,6 @@ class Car(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
 
             # move horizontal car right
@@ -69,12 +63,11 @@ class Car(object):
                 new_pos = pos.CarPosition(x1, x2, self.pos.y1, self.pos.y2)
                 check_pos = pos.GridPosition(x2, self.pos.y2)
                 empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
-                # TODO hier gaat iets mis!
+                # check if move is possible
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
 
         elif direction == 'left' or direction == 'down':
@@ -90,7 +83,6 @@ class Car(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
 
             # move horizontal car left
@@ -104,6 +96,4 @@ class Car(object):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setCarPosition(old_pos, new_pos, Grid)
                 else:
-                    # print("dit kan dus niet he")
                     return False
-        # TODO: update position in all_vehicles?

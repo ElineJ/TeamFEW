@@ -22,5 +22,5 @@ f.close()
 # open visualization
 # anim = vis.Visualization(width, width, grid.all_vehicles)
 
-# rd.runrandom(grid, exit)
+rd.runrandom(grid, exit)
 bfs.runbfs(grid, exit)

@@ -45,7 +45,6 @@ class Grid(object):
         for i in range(0, len(self.empty_grid)):
             if pos.x == self.empty_grid[i].x and pos.y == self.empty_grid[i].y:
                 self.empty_grid[i] = new_pos
-                print "Empty position updated"
 
     def removeEmptyGrid(self):
 
