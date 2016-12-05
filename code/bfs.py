@@ -9,7 +9,7 @@ def runbfs(grid, exit):
 
     # make a list of all states that have happened
     dictionary = {}
-
+    counter = 0
     # make a queue of next steps
     queue = []
     queue = [grid]
@@ -25,6 +25,9 @@ def runbfs(grid, exit):
             # add this node to the visited set-ups
             # dict.append(node)
             addDictionary(check, dictionary)
+
+
+
 
         for i in range(0, len(node.all_vehicles)):
             if isinstance(node.all_vehicles[i], car.Car):
@@ -44,6 +47,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node)
                             # print "Queue: ", len(queue)
 
@@ -57,6 +61,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node2)
 
                 elif node.all_vehicles[i].orientation == "H":
@@ -67,6 +72,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node)
 
                     new_node2 = deepcopy(node)
@@ -76,6 +82,7 @@ def runbfs(grid, exit):
                         if new_node2.all_vehicles[i].pos.x2 == exit.x and new_node2.all_vehicles[i].pos.y2 == exit.y:
                             print "found exit"
                             print("--- %s seconds ---" % (time.time() - start_time))
+                            print counter
                             return new_node2
 
                         # grid = new set-up
@@ -85,6 +92,7 @@ def runbfs(grid, exit):
                             if string not in dictionary:
                                 #print "hier iets aan het doen"
                                 addDictionary(string, dictionary)
+                                counter += 1
                                 queue.append(new_node2)
 
             elif isinstance(node.all_vehicles[i], truck.Truck):
@@ -99,6 +107,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node)
 
                     new_node2 = deepcopy(node)
@@ -109,6 +118,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node2)
                             # print "Queue: ", len(queue)
 
@@ -124,6 +134,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node)
 
                     new_node2 = deepcopy(node)
@@ -136,6 +147,7 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
+                            counter += 1
                             queue.append(new_node2)
             #for i in range(0, len(queue)):
                 # print str(queue[i]) + str(i)
