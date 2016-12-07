@@ -78,7 +78,6 @@ class Visualization:
             self.rect[x1, y1] = self.w.create_rectangle(x1,y1,x2,y2, fill="black", tags="rect")
         # exit for 12x12 field
         if width == 12:
-            
             x1 = 12 * self.cellwidth
             y1 = 5 * self.cellheight
             x2 = 12 * self.cellwidth + 5
@@ -94,6 +93,7 @@ class Visualization:
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
                 self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
+
             elif isinstance(all_vehicles[i], truck.Truck):
                 x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
                 if all_vehicles[i].orientation == 'V':

@@ -9,6 +9,7 @@ def runbfs(grid, exit):
 
     # make a list of all states that have happened
     dictionary = {}
+    # graph = {}
     counter = 0
     # make a queue of next steps
     queue = []
@@ -23,11 +24,7 @@ def runbfs(grid, exit):
 
         if check not in dictionary:
             # add this node to the visited set-ups
-            # dict.append(node)
             addDictionary(check, dictionary)
-
-
-
 
         for i in range(0, len(node.all_vehicles)):
             if isinstance(node.all_vehicles[i], car.Car):
@@ -37,29 +34,32 @@ def runbfs(grid, exit):
                     # use deepcopy to make a copy of nodes and the objects in node
                     new_node = deepcopy(node)
 
-                    # moved = new_node.all_vehicles[i].moveCar(new_node.all_vehicles[i].getCarPosition, "up", new_node)
                     if new_node.all_vehicles[i].moveCar(new_node.all_vehicles[i].getCarPosition, "up", new_node) != False:
                         # print "Car moved up"
                         # grid = new set-up
+
+                        # add node to graph
+                        # graph[makeString(new_node)] = makeString(node)
+
                         # add new set-up to queue
                         string = makeString(new_node)
                         # only add new set up if not already in dictionary
                         if string not in dictionary:
-                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             counter += 1
                             queue.append(new_node)
-                            # print "Queue: ", len(queue)
 
                     new_node2 = deepcopy(node)
                     if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "down", new_node2) != False:
                         # print "Car moved down"
                         # grid = new set-up
-                        # add new set-up to queue
 
+                        # add node to graph
+                        # graph[makeString(new_node2)] = makeString(node)
+
+                        # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             counter += 1
                             queue.append(new_node2)
@@ -67,10 +67,13 @@ def runbfs(grid, exit):
                 elif node.all_vehicles[i].orientation == "H":
                     new_node = deepcopy(node)
                     if new_node.all_vehicles[i].moveCar(new_node.all_vehicles[i].getCarPosition, "left", new_node) != False:
+
+                        # add node to graph
+                        graph[makeString(new_node)] = makeString(node)
+
                         # print "Car moved left"
                         string = makeString(new_node)
                         if string not in dictionary:
-                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             counter += 1
                             queue.append(new_node)
@@ -78,12 +81,17 @@ def runbfs(grid, exit):
                     new_node2 = deepcopy(node)
                     if new_node2.all_vehicles[i].moveCar(new_node2.all_vehicles[i].getCarPosition, "right", new_node2) != False:
                         # print "Car moved right"
+
+                        # add node to graph
+                        # graph[makeString(new_node2)] = makeString(node)
+
                         # check if the car is at the exit
                         if new_node2.all_vehicles[i].pos.x2 == exit.x and new_node2.all_vehicles[i].pos.y2 == exit.y:
                             print "found exit"
                             print("--- %s seconds ---" % (time.time() - start_time))
                             print counter
-                            return new_node2
+                            # print graph
+                            # return graph
 
                         # grid = new set-up
                         # add new set-up to queue
@@ -101,6 +109,10 @@ def runbfs(grid, exit):
                     new_node = deepcopy(node)
                     if new_node.all_vehicles[i].moveTruck(new_node.all_vehicles[i].getTruckPosition, "up", new_node) != False:
                         # print "truck moved up"
+
+                        # add node to graph
+                        # graph[makeString(new_node)] = makeString(node)
+
                         # grid = new set-up
                         # add new set-up to queue
                         string = makeString(new_node)
@@ -113,6 +125,10 @@ def runbfs(grid, exit):
                     new_node2 = deepcopy(node)
                     if new_node2.all_vehicles[i].moveTruck(new_node2.all_vehicles[i].getTruckPosition, "down", new_node2) != False:
                         # print "truck moved down"
+
+                        # add node to graph
+                        # graph[makeString(new_node2)] = makeString(node)
+
                         # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
@@ -128,11 +144,13 @@ def runbfs(grid, exit):
                     if new_node.all_vehicles[i].moveTruck(new_node.all_vehicles[i].getTruckPosition, "left", new_node) != False:
                         # print "truck moved left"
 
+                        # add node to graph
+                        # graph[makeString(new_node)] = makeString(node)
+
                         # grid = new set-up
                         # add new set-up to queue
                         string = makeString(new_node)
                         if string not in dictionary:
-                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             counter += 1
                             queue.append(new_node)
@@ -141,25 +159,19 @@ def runbfs(grid, exit):
                     if new_node2.all_vehicles[i].moveTruck(new_node2.all_vehicles[i].getTruckPosition, "right", new_node2) != False:
                         # print "truck moved right"
 
+                        # add node to graph
+                        # graph[makeString(new_node2)] = makeString(node)
+
                         # grid = new set-up
                         # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            #print "hier iets aan het doen"
                             addDictionary(string, dictionary)
                             counter += 1
                             queue.append(new_node2)
-            #for i in range(0, len(queue)):
-                # print str(queue[i]) + str(i)
-                #print "wtf"
-        #for k, v in dictionary.iteritems():
-        #    print k, v
-        # print "Queue at end: " ,len(queue)
+
     return dictionary
 
-
-    #for i in range(0, len(grid.all_vehicles)):
-    #    print "Last position: ", grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.x2, grid.all_vehicles[i].pos.x1, grid.all_vehicles[i].pos.y2
 
 def makeString(node):
     string = ""
@@ -182,10 +194,8 @@ def makeString(node):
             y3 = str(node.all_vehicles[i].pos.y3)
 
             string = string + x1 + x2 + x3 + y1 + y2 + y3
-    #print string
     return string
 
 def addDictionary(string, dictionary):
-    #dictionary = dictionary
     dict2 = {string: 'True'}
     dictionary.update(dict2)

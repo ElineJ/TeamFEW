@@ -19,7 +19,7 @@ if width == 6:
 elif width == 9:
     exit = pos.GridPosition(8, 4)
 elif width == 12:
-    exit = pos.GridPosition(11, 5)        
+    exit = pos.GridPosition(11, 5)
 
 # set up grid with vehicles
 grid = csvtries.run(f, width, width, exit)
