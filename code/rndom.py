@@ -31,7 +31,6 @@ def runrandom(grid, exit):
                 # move vertical car in a random direction
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]
-                    # print "Current position car:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.y1, vehicles[i].pos.y2
                     if vehicles[i].moveCar(vehicles[i].getCarPosition, d, grid) != False:
                         # print "Car moved up/down"
                         moves += 1
@@ -39,7 +38,6 @@ def runrandom(grid, exit):
                 # move horizontal car into a random direction
                 else:
                     d = h_direction[direction]
-                    # print "Current position car:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.y1, vehicles[i].pos.y2
                     if vehicles[i].moveCar(vehicles[i].getCarPosition, d, grid) != False:
                         # print "Car moved left/right"
                         moves += 1
@@ -54,7 +52,6 @@ def runrandom(grid, exit):
 
             elif isinstance(vehicles[i], truck.Truck):
                 direction = random.randint(0, 1)
-                # print "Current position truck:", vehicles[i].pos.x1, vehicles[i].pos.x2, vehicles[i].pos.x3, vehicles[i].pos.y1, vehicles[i].pos.y2, vehicles[i].pos.y3
                 # move vertical truck in a random direction
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]

@@ -24,9 +24,7 @@ elif width == 12:
 
 # set up grid with vehicles
 grid_rnd = csvtries.run(f, width, width, exit)
-
 grid_bfs = deepcopy(grid_rnd)
-#grid_bfs = csvtries.run(f, width, width, exit)
 f.close()
 
 # open visualization
