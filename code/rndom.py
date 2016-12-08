@@ -12,7 +12,17 @@ def runrandom(grid, exit):
     h_direction = ["left", "right"]
     vehicles = grid.all_vehicles
     moves = 0;
-    # anim = vis.Visualization(6, 6, grid.all_vehicles)
+
+    # set up visualization
+    # if exit.x == 5:
+    #     width = 6
+    # elif exit.x == 9:
+    #     width = 9
+    # else:
+    #     width = 12
+
+    # open window with visualization
+    # anim = vis.Visualization(width, width, vehicles)
 
     while True:
         for i in range(0, len(vehicles)):
@@ -57,3 +67,5 @@ def runrandom(grid, exit):
                     if vehicles[i].moveTruck(vehicles[i].getTruckPosition, d, grid) != False:
                         moves += 1
                         # anim.update(vehicles)
+
+    # anim.done()
