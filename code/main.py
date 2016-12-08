@@ -7,6 +7,7 @@ import grid
 import csvtries
 import bfs
 import rndom as rd
+from copy import deepcopy
 
 # open csv file
 f = open(sys.argv[1], 'rb')
@@ -22,12 +23,15 @@ elif width == 12:
     exit = pos.GridPosition(11, 5)
 
 # set up grid with vehicles
-grid = csvtries.run(f, width, width, exit)
+grid_rnd = csvtries.run(f, width, width, exit)
+
+grid_bfs = deepcopy(grid_rnd)
+#grid_bfs = csvtries.run(f, width, width, exit)
 f.close()
 
 # open visualization
 # anim = vis.Visualization(width, width, grid.all_vehicles)
 print "--- Random algoritme ---"
-rd.runrandom(grid, exit)
+rd.runrandom(grid_rnd, exit)
 print "--- bfs ---"
-bfs.runbfs(grid, exit)
+bfs.runbfs(grid_bfs, exit)
