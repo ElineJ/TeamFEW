@@ -21,13 +21,15 @@ def runbfs(grid, exit):
 
     # make a list of all states that have happened
     dictionary = {}
-    parents = {}
-    start = makeString(grid)
+    # parents = {}
+    # start = makeString(grid)
 
-    counter = 0
+    # counter = 0
     # make a queue of next steps
     queue = []
     queue = [grid]
+
+    begin = makeString(grid)
 
     while queue:
         # print "Queue at start: ", len(queue)
@@ -35,11 +37,11 @@ def runbfs(grid, exit):
         # delete this grid set up from queue and save in node
         node = queue.pop(0)
         check = makeString(node)
-        parents[node] = start
+        # parents[node] = start
         if check not in dictionary:
             # add this node to the visited set-ups
-            parents[node] = check
-            addDictionary(check, dictionary)
+            # parents[node] = check
+            addDictionary(check, dictionary, begin)
 
         for i in range(0, len(node.all_vehicles)):
             if isinstance(node.all_vehicles[i], car.Car):
@@ -57,7 +59,7 @@ def runbfs(grid, exit):
                         string = makeString(new_node)
                         # only add new set up if not already in dictionary
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node)
                             # anim.update(new_node.all_vehicles)
 
@@ -69,7 +71,7 @@ def runbfs(grid, exit):
 
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node2)
                             # anim.update(new_node2.all_vehicles)
 
@@ -81,7 +83,7 @@ def runbfs(grid, exit):
 
                         string = makeString(new_node)
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node)
                             # anim.update(new_node.all_vehicles)
 
@@ -93,23 +95,24 @@ def runbfs(grid, exit):
                         if new_node2.all_vehicles[i].pos.x2 == exit.x and new_node2.all_vehicles[i].pos.y2 == exit.y:
                             print "found exit"
                             print("--- %s seconds ---" % (time.time() - start_time))
-                            print counter
+                            amountSteps(dictionary, check, begin)
+                            # print counter
                             return new_node2
                             # anim.update(new_node2.all_vehicles)
-                            solution = [exit]
-                            n = exit
-                            while n in parents and parents[n]:
-                                solution.append(parents[n])
-                                n = parents[n]
-
-                            return solution[::-1]
+                            # solution = [exit]
+                            # n = exit
+                            # while n in parents and parents[n]:
+                            #     solution.append(parents[n])
+                            #     n = parents[n]
+                            #
+                            # return solution[::-1]
 
                         # grid = new set-up
                         # add new set-up to queue
                         else:
                             string = makeString(new_node2)
                             if string not in dictionary:
-                                addDictionary(string, dictionary)
+                                addDictionary(string, dictionary, check)
                                 queue.append(new_node2)
                                 # anim.update(new_node2.all_vehicles)
 
@@ -124,7 +127,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node)
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node)
                             # anim.update(new_node.all_vehicles)
 
@@ -135,7 +138,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node2)
                             # anim.update(new_node2.all_vehicles)
 
@@ -149,7 +152,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node)
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node)
                             # anim.update(new_node.all_vehicles)
 
@@ -161,7 +164,7 @@ def runbfs(grid, exit):
                         # add new set-up to queue
                         string = makeString(new_node2)
                         if string not in dictionary:
-                            addDictionary(string, dictionary)
+                            addDictionary(string, dictionary, check)
                             queue.append(new_node2)
                             # anim.update(new_node2.all_vehicles)
 
@@ -193,6 +196,22 @@ def makeString(node):
 
     return string
 
-def addDictionary(string, dictionary):
-    dict2 = {string: 'True'}
+def addDictionary(string, dictionary, check):
+    dict2 = {string: check}
     dictionary.update(dict2)
+
+def amountSteps(dictionary, parent, begin):
+    counter = 0
+    while parent:
+        for key, value in dictionary.iteritems():
+            #print str(key) + "key"
+            node = key
+            if parent == node:
+                #print str(begin) + "begin"
+                #print parent
+                #print node
+                counter += 1
+                if parent == begin:
+                    print "Counter = " + str(counter)
+                    return counter
+                parent = value

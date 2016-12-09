@@ -41,7 +41,7 @@ def runbfs(grid, exit):
         if check not in dictionary:
             # add this node to the visited set-ups
             # parents[node] = check
-            addDictionary(check, dictionary, 'begin')
+            addDictionary(check, dictionary, begin)
 
         for i in range(0, len(node.all_vehicles)):
             if isinstance(node.all_vehicles[i], car.Car):
@@ -93,9 +93,9 @@ def runbfs(grid, exit):
 
                         # check if the car is at the exit
                         if new_node2.all_vehicles[i].pos.x2 == exit.x and new_node2.all_vehicles[i].pos.y2 == exit.y:
-                            amountSteps(dictionary, check, begin)
                             print "found exit"
                             print("--- %s seconds ---" % (time.time() - start_time))
+                            amountSteps(dictionary, check, begin)
                             # print counter
                             return new_node2
                             # anim.update(new_node2.all_vehicles)
@@ -204,13 +204,14 @@ def amountSteps(dictionary, parent, begin):
     counter = 0
     while parent:
         for key, value in dictionary.iteritems():
-            #print value
+            #print str(key) + "key"
             node = key
-            print node
-            print parent
             if parent == node:
+                #print str(begin) + "begin"
+                #print parent
+                #print node
                 counter += 1
-                parent = node
                 if parent == begin:
-                    print counter
+                    print "Counter = " + str(counter)
                     return counter
+                parent = value
