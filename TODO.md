@@ -52,5 +52,19 @@
     - Scorefunctie (kijken naar kinderen) -> score: stap = 1 
 - Onderzoeksvraag verslag 
 - Wouter Mailen
+
+## Week 6:
+- Readme
+    - Hoe te runnen
+    - Libraries
+    - Beschrijvingen files
+- Verslag: onderzoeksvraag
+- Test-functie: kijken naar geheugen
+- Bfs: 
+    - deepcopy anders
+    - dictionary voor visualisatie doen
+- Nieuw algoritme: kijken vanaf resultaat 
+- Random: verbetering met archief 
+
     
 
