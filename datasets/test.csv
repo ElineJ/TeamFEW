@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 vehicle,x,y,orientation,color
 car,"3, 4","2, 2",H,red
+=======
+vehicle,x,y,orientation,color
+car,"3, 4","2, 2",H,red
+>>>>>>> caabb9df7d64936a9a3b0a858318d5667877bb21

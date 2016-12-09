@@ -5,13 +5,14 @@ import truck
 import random
 import time
 
-start_time = time.time()
-def runrandom(grid, exit):
 
+def runrandom(grid, exit):
+    start_time = time.time()
     v_direction = ["up", "down"]
     h_direction = ["left", "right"]
     vehicles = grid.all_vehicles
     moves = 0;
+    results = []
 
     # set up visualization
     # if exit.x == 5:
@@ -44,11 +45,14 @@ def runrandom(grid, exit):
                         # anim.update(vehicles)
                         # check if car is at exit
                         if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
-                            print "Found exit!"
-                            print "Moves:", moves
-                            print("--- %s seconds ---" % (time.time() - start_time))
+                            # print "Found exit!"
+                            # print "Moves:", moves
+                            # print("--- %s seconds ---" % (time.time() - start_time))
+                            # del results[:]
+                            results.append(moves)
+                            results.append("%.6s" % (time.time() - start_time))
                             # print moves,("%s seconds" % (time.time() - start_time))
-                            return False
+                            return results
 
             elif isinstance(vehicles[i], truck.Truck):
                 direction = random.randint(0, 1)
@@ -66,3 +70,4 @@ def runrandom(grid, exit):
                         # anim.update(vehicles)
 
     # anim.done()
+    # return results
