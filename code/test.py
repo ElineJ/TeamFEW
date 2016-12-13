@@ -28,16 +28,14 @@ grid_rnd = csvtries.run(f, width, height, exit)
 # grid_bfs = deepcopy(grid_rnd)
 f.close()
 
-for i in range (0, num_runs):
+for i in range(0, num_runs):
     new_grid = deepcopy(grid_rnd)
     # print "--- Random algoritme ---"
     result = rd.runrandom(new_grid, exit)
     # print result
     # add result to csv file
-    with open('../results/random_7.csv', 'a') as testFile:
+    with open('../results/test.csv', 'a') as testFile:
         testFileWriter = csv.writer(testFile)
         testFileWriter.writerow(result)
 
 print "done"
-#print "--- bfs ---"
-#bfs.runbfs(grid_bfs, exit)

@@ -34,7 +34,7 @@ class Truck(object):
                     Grid.all_vehicles[i].pos = new_pos
         self.pos = new_pos
 
-    def moveTruck(self, position, direction, Grid):
+    def moveTruck(self, direction, Grid):
         """
         Moves truck to new position
         """

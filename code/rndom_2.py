@@ -14,6 +14,8 @@ def runrandom(grid, exit):
     moves = 0
     results = []
 
+    # make a list of all states that have happened
+    dictionary = {}
     # set up visualization
     # if exit.x == 5:
     #     width = 6
@@ -26,16 +28,19 @@ def runrandom(grid, exit):
     # anim = vis.Visualization(width, width, vehicles)
 
     while True:
+        makeString(vehicles)
+        addDictionary(vehicles, dictionary)
+
         for i in range(0, len(vehicles)):
             if isinstance(vehicles[i], car.Car):
                 direction = random.randint(0, 1)
                 # move vertical car in a random direction
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]
-                    if vehicles[i].moveCar(d, grid):
-                        # vehicles[i].moveCar(d, grid)
+                    if vehicles[i].moveCar(d, grid) != False:
                         moves += 1
                         # anim.update(vehicles)
+
                 # move horizontal car into a random direction
                 else:
                     d = h_direction[direction]
@@ -69,3 +74,33 @@ def runrandom(grid, exit):
                         # anim.update(vehicles)
 
     # anim.done()
+
+
+def makeString(vehicles):
+    string = ""
+
+    for i in range(0, len(vehicles)):
+        if isinstance(vehicles[i], car.Car):
+            x1 = str(vehicles[i].pos.x1)
+            x2 = str(vehicles[i].pos.x2)
+            y1 = str(vehicles[i].pos.y1)
+            y2 = str(vehicles[i].pos.y2)
+
+            string = string + x1 + x2 + y1 + y2
+
+        elif isinstance(vehicles[i], truck.Truck):
+            x1 = str(vehicles[i].pos.x1)
+            x2 = str(vehicles[i].pos.x2)
+            x3 = str(vehicles[i].pos.x3)
+            y1 = str(vehicles[i].pos.y1)
+            y2 = str(vehicles[i].pos.y2)
+            y3 = str(vehicles[i].pos.y3)
+
+            string = string + x1 + x2 + x3 + y1 + y2 + y3
+
+    return string
+
+
+def addDictionary(string, dictionary):
+    dict2 = {string: True}
+    dictionary.update(dict2)
