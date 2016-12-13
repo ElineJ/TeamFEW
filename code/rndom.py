@@ -24,7 +24,6 @@ def runrandom(grid, exit):
 
     # open window with visualization
     # anim = vis.Visualization(width, width, vehicles)
-
     while True:
         for i in range(0, len(vehicles)):
             if isinstance(vehicles[i], car.Car):
@@ -32,14 +31,15 @@ def runrandom(grid, exit):
                 # move vertical car in a random direction
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]
-                    if vehicles[i].moveCar(d, grid):
-                        # vehicles[i].moveCar(d, grid)
+                    if vehicles[i].checkMove(d, grid):
+                        vehicles[i].moveCar(d, grid)
                         moves += 1
                         # anim.update(vehicles)
                 # move horizontal car into a random direction
                 else:
                     d = h_direction[direction]
-                    if vehicles[i].moveCar(d, grid) != False:
+                    if vehicles[i].checkMove(d, grid):
+                        vehicles[i].moveCar(d, grid)
                         moves += 1
                         # anim.update(vehicles)
                         # check if car is at exit
@@ -58,13 +58,15 @@ def runrandom(grid, exit):
                 # move vertical truck in a random direction
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]
-                    if vehicles[i].moveTruck(d, grid) != False:
+                    if vehicles[i].checkMove(d, grid):
+                        vehicles[i].moveTruck(d, grid)
                         moves += 1
                         # anim.update(vehicles)
                 # move horizontal truck into a random direction
                 else:
                     d = h_direction[direction]
-                    if vehicles[i].moveTruck(d, grid) != False:
+                    if vehicles[i].checkMove(d, grid):
+                        vehicles[i].moveTruck(d, grid)
                         moves += 1
                         # anim.update(vehicles)
 

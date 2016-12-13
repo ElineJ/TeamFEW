@@ -32,6 +32,21 @@ class Car(object):
                     Grid.all_vehicles[i].pos = new_pos
         self.pos = new_pos
 
+    # def setPreviousPos(self, old_pos, new_pos, Grid):
+    #     """
+    #     Set the position of the car to position
+    #
+    #     position: a Position object.
+    #     """
+    #     for i in range(0, len(Grid.all_vehicles)):
+    #         if isinstance(Grid.all_vehicles[i], Car):
+    #             if (Grid.all_vehicles[i].pos.x1 == new_pos.x1 and
+    #                Grid.all_vehicles[i].pos.y1 == new_pos.y1 and
+    #                Grid.all_vehicles[i].pos.x2 == new_pos.x2 and
+    #                Grid.all_vehicles[i].pos.y2 == new_pos.y2):
+    #                 Grid.all_vehicles[i].pos = old_pos
+    #     self.pos = old_pos
+
     def moveCar(self, direction, Grid):
         """
         Moves car to new position
@@ -135,7 +150,6 @@ class Car(object):
                     return True
                 else:
                     return False
-
             elif direction == 'right':
                 # move horizontal car right
                 x1 = self.pos.x1 + 1

@@ -25,15 +25,15 @@ class Grid(object):
                 new_grid = pos.GridPosition(i, j)
                 empty_grid.append(new_grid)
 
-    def isRedOnExit(self, pos):
-        """
-        Checks if the red car is at the exit
-
-        Returns True if it is, False if it isn't
-        """
-        if pos == self.exit:
-            return True
-        return False
+    # def isRedOnExit(self, pos):
+    #     """
+    #     Checks if the red car is at the exit
+    #
+    #     Returns True if it is, False if it isn't
+    #     """
+    #     if pos == self.exit:
+    #         return True
+    #     return False
 
     def isPositionEmpty(self, pos):
         for i in range(0, len(self.empty_grid)):
