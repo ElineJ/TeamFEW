@@ -4,7 +4,7 @@ import positions as pos
 import grid
 import csvtries
 import bfs
-import rndom_2 as rd
+import rndom as rd
 from copy import deepcopy
 
 import csv

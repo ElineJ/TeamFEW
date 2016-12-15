@@ -44,8 +44,8 @@ def runrandom(grid, exit):
                         # anim.update(vehicles)
                         # check if car is at exit
                         if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
-                            # print "Found exit!"
-                            # print "Moves:", moves
+                            print "Found exit!"
+                            print "Moves:", moves
                             # del results[:]
                             results.append(moves)
                             results.append("%.6s" % (time.time() - start_time))

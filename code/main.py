@@ -1,3 +1,6 @@
+# usage of file:
+# python main.py <game number (1-7)>
+
 # main code to run the simulation
 import visualize as vis
 import sys
@@ -9,21 +12,31 @@ import bfs
 import rndom as rd
 from copy import deepcopy
 
-# open csv file
-f = open(sys.argv[1], 'rb')
+# array of all files for the games
+games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
+   '../datasets/Game #3.csv', '../datasets/Game #4.csv', '../datasets/Game #5.csv',
+   '../datasets/Game #6.csv', '../datasets/Game #7.csv']
 
-width = int(sys.argv[2])
+# check if game exists, open file for game
+game = int(sys.argv[1])
+if game == 0 or game > 7:
+    sys.exit("Game does not exist, choose 1 - 7")
+else:
+    f = open(games[game], 'rb')
 
-# check which exit to use
-if width == 6:
+# set up exits for each of the games
+if game == 1 or game == 2 or game == 3:
     exit = pos.GridPosition(5, 2)
-elif width == 9:
+    width, height = 6, 6
+elif game == 4 or game == 5 or game == 6:
     exit = pos.GridPosition(8, 4)
-elif width == 12:
+    width, height = 9, 9
+elif game == 7:
     exit = pos.GridPosition(11, 5)
+    width, height = 12, 12
 
 # set up grid with vehicles
-grid_rnd = csvtries.run(f, width, width, exit)
+grid_rnd = csvtries.run(f, width, height, exit)
 grid_bfs = deepcopy(grid_rnd)
 f.close()
 
@@ -32,4 +45,4 @@ f.close()
 print "--- Random algoritme ---"
 rd.runrandom(grid_rnd, exit)
 print "--- bfs ---"
-bfs.runbfs(grid_bfs, exit)
+# bfs.runbfs(grid_bfs, exit)
