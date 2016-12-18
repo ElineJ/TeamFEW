@@ -2,8 +2,9 @@
 # python main.py <game number (1-7)>
 
 # main code to run the simulation
-import visualize as vis
 import sys
+sys.dont_write_bytecode = True
+import visualize as vis
 
 import positions as pos
 import grid

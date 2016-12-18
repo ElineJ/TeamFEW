@@ -1,6 +1,5 @@
 import positions as pos
 
-
 class Truck(object):
     """
     Creates an object for a vehicle type of truck

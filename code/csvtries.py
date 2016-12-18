@@ -2,6 +2,8 @@ import csv     # imports the csv module
 import grid as g
 import car
 import truck
+import sys
+sys.dont_write_bytecode = True
 
 def run(dataset, width, height, exit):
 

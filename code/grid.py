@@ -2,6 +2,7 @@ import positions as pos
 import car
 import truck
 
+
 # === Grid
 
 class Grid(object):

@@ -6,6 +6,7 @@ import random
 import time
 
 
+
 def runrandom(grid, exit):
     start_time = time.time()
     v_direction = ["up", "down"]

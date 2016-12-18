@@ -1,5 +1,4 @@
 # All position objects for rush hour
-
 # === Position classes
 
 class GridPosition(object):
