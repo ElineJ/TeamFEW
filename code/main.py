@@ -41,8 +41,8 @@ grid_bfs = deepcopy(grid_rnd)
 f.close()
 
 # open visualization
-# anim = vis.Visualization(width, width, grid.all_vehicles)
+# anim = vis.Visualization(width, width, grid.vehicles)
 print "--- Random algoritme ---"
 rd.runrandom(grid_rnd, exit)
 print "--- bfs ---"
-# bfs.runbfs(grid_bfs, exit)
+bfs.runbfs(grid_bfs, exit)

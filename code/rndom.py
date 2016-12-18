@@ -10,7 +10,7 @@ def runrandom(grid, exit):
     start_time = time.time()
     v_direction = ["up", "down"]
     h_direction = ["left", "right"]
-    vehicles = grid.all_vehicles
+    vehicles = grid.vehicles
     moves = 0
     results = []
 
@@ -32,14 +32,14 @@ def runrandom(grid, exit):
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]
                     if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveCar(d, grid)
+                        vehicles[i].move(d, grid)
                         moves += 1
                         # anim.update(vehicles)
                 # move horizontal car into a random direction
                 else:
                     d = h_direction[direction]
                     if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveCar(d, grid)
+                        vehicles[i].move(d, grid)
                         moves += 1
                         # anim.update(vehicles)
                         # check if car is at exit
@@ -59,14 +59,14 @@ def runrandom(grid, exit):
                 if vehicles[i].orientation == 'V':
                     d = v_direction[direction]
                     if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveTruck(d, grid)
+                        vehicles[i].move(d, grid)
                         moves += 1
                         # anim.update(vehicles)
                 # move horizontal truck into a random direction
                 else:
                     d = h_direction[direction]
                     if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveTruck(d, grid)
+                        vehicles[i].move(d, grid)
                         moves += 1
                         # anim.update(vehicles)
 

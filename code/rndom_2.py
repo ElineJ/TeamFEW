@@ -10,7 +10,7 @@ def runrandom(grid, exit):
     start_time = time.time()
     v_direction = ["up", "down"]
     h_direction = ["left", "right"]
-    vehicles = grid.all_vehicles
+    vehicles = grid.vehicles
     moves = 0
     results = []
 

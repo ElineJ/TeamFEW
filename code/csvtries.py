@@ -43,7 +43,7 @@ def run(dataset, width, height, exit):
 
                 newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                grid.all_vehicles.append(newCar)
+                grid.vehicles.append(newCar)
 
             elif(row[0] == "truck"):
                 # get string of x coordinates
@@ -70,7 +70,7 @@ def run(dataset, width, height, exit):
 
                 newTruck = truck.Truck(x1, x2, x3, y1, y2, y3, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                grid.all_vehicles.append(newTruck)
+                grid.vehicles.append(newTruck)
 
             elif(row[0] == "redcar"):
                 # get string of x coordinates
@@ -95,7 +95,7 @@ def run(dataset, width, height, exit):
 
                 newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
                 # add car with the values from csv file to the list of cars
-                grid.all_vehicles.append(newCar)
+                grid.vehicles.append(newCar)
 
     finally:
         # close file

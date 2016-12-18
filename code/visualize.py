@@ -7,30 +7,30 @@ matplotlib.use("TkAgg")
 import car
 import truck
 
-def carColors(all_vehicles):
-    for i in range(0, len(all_vehicles)):
-        if all_vehicles[i].color == 'blue':
-            all_vehicles[i].color = '#5981F3'
-        elif all_vehicles[i].color == 'red':
-            all_vehicles[i].color = '#B63339'
-        elif all_vehicles[i].color == 'orange':
-            all_vehicles[i].color = '#E99F62'
-        elif all_vehicles[i].color == 'light-blue':
-            all_vehicles[i].color = '#96D8EE'
-        elif all_vehicles[i].color == 'yellow':
-            all_vehicles[i].color = '#D4D35F'
-        elif all_vehicles[i].color == 'dark-yellow':
-            all_vehicles[i].color = '#AEAE00'
-        elif all_vehicles[i].color == 'purple':
-            all_vehicles[i].color = '#A38AFF'
-        elif all_vehicles[i].color == 'grey':
-            all_vehicles[i].color = '#999999'
-        elif all_vehicles[i].color == 'green':
-            all_vehicles[i].color = '#4091A2'
+def carColors(vehicles):
+    for i in range(0, len(vehicles)):
+        if vehicles[i].color == 'blue':
+            vehicles[i].color = '#5981F3'
+        elif vehicles[i].color == 'red':
+            vehicles[i].color = '#B63339'
+        elif vehicles[i].color == 'orange':
+            vehicles[i].color = '#E99F62'
+        elif vehicles[i].color == 'light-blue':
+            vehicles[i].color = '#96D8EE'
+        elif vehicles[i].color == 'yellow':
+            vehicles[i].color = '#D4D35F'
+        elif vehicles[i].color == 'dark-yellow':
+            vehicles[i].color = '#AEAE00'
+        elif vehicles[i].color == 'purple':
+            vehicles[i].color = '#A38AFF'
+        elif vehicles[i].color == 'grey':
+            vehicles[i].color = '#999999'
+        elif vehicles[i].color == 'green':
+            vehicles[i].color = '#4091A2'
 
 
 class Visualization:
-    def __init__(self, width, height, all_vehicles, delay = 0.2):
+    def __init__(self, width, height, vehicles, delay = 0.2):
 
         # Number of seconds to pause after each frame
         self.delay = delay
@@ -50,7 +50,7 @@ class Visualization:
         self.master.title("Rush hour")
 
         # change car colors
-        carColors(all_vehicles)
+        carColors(vehicles)
 
         # draw a grid
         self.rect = {}
@@ -85,30 +85,30 @@ class Visualization:
             self.rect[x1, y1] = self.w.create_rectangle(x1,y1,x2,y2, fill="black", tags="rect")
 
         # draw vehicles
-        for i in range(0, len(all_vehicles)):
-            if isinstance(all_vehicles[i], car.Car):
-                x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'V':
+        for i in range(0, len(vehicles)):
+            if isinstance(vehicles[i], car.Car):
+                x1, y1 = int(vehicles[i].pos.x1) * self.cellwidth, int(vehicles[i].pos.y1) * self.cellheight
+                if vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
-                self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
 
-            elif isinstance(all_vehicles[i], truck.Truck):
-                x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'V':
+            elif isinstance(vehicles[i], truck.Truck):
+                x1, y1 = int(vehicles[i].pos.x1) * self.cellwidth, int(vehicles[i].pos.y1) * self.cellheight
+                if vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
-                self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
 
         # self.time = 0
         self.master.update()
         # self.w.mainloop()
 
-    def update(self, all_vehicles):
+    def update(self, vehicles):
         # Delete all existing vehicles
-        for vehicle in all_vehicles:
+        for vehicle in vehicles:
             self.w.delete(vehicle)
             self.master.update_idletasks()
 
@@ -123,24 +123,24 @@ class Visualization:
                 self.rect[row, column] = self.w.create_rectangle(x1,y1,x2,y2, fill="#363958", tags="rect")
 
         # change car colors
-        carColors(all_vehicles)
+        carColors(vehicles)
 
         # Draw new vehicles
-        for i in range(0, len(all_vehicles)):
-            if isinstance(all_vehicles[i], car.Car):
-                x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'V':
+        for i in range(0, len(vehicles)):
+            if isinstance(vehicles[i], car.Car):
+                x1, y1 = int(vehicles[i].pos.x1) * self.cellwidth, int(vehicles[i].pos.y1) * self.cellheight
+                if vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
-                self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
-            elif isinstance(all_vehicles[i], truck.Truck):
-                x1, y1 = int(all_vehicles[i].pos.x1) * self.cellwidth, int(all_vehicles[i].pos.y1) * self.cellheight
-                if all_vehicles[i].orientation == 'V':
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
+            elif isinstance(vehicles[i], truck.Truck):
+                x1, y1 = int(vehicles[i].pos.x1) * self.cellwidth, int(vehicles[i].pos.y1) * self.cellheight
+                if vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
-                self.rect[all_vehicles[1].pos.x1, all_vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = all_vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
 
         self.master.update()
         # time.sleep(self.delay)
