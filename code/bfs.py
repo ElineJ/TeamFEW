@@ -25,6 +25,7 @@ def runbfs(grid, exit):
             addDictionary(check, dictionary, begin)
 
         for i in range(0, len(node.vehicles)):
+
             # move vertical vehicles
             if node.vehicles[i].orientation == "V":
                 # use deepcopy to make a copy of nodes and the objects in node
@@ -45,7 +46,7 @@ def runbfs(grid, exit):
                         addDictionary(string, dictionary, check)
                         queue.append(new_node2)
 
-
+            # move horizontal vehicles
             elif node.vehicles[i].orientation == "H":
                 new_node = deepcopy(node)
                 if new_node.vehicles[i].move("left", new_node) != False:
