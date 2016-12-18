@@ -8,42 +8,24 @@ start_time = time.time()
 
 def runbfs(grid, exit):
 
-    # set up visualization
-    # if exit.x == 5:
-    #     width = 6
-    # elif exit.x == 9:
-    #     width = 9
-    # else:
-    #     width = 12
-
-    # open window with visualization
-    # anim = vis.Visualization(width, width, grid.vehicles)
-
     # make a list of all states that have happened
     dictionary = {}
-    # parents = {}
-    # start = makeString(grid)
-    # counter = 0
+
     # make a queue of next steps
     queue = []
     queue = [grid]
-
     begin = makeString(grid)
 
     while queue:
         # delete this grid set up from queue and save in node
         node = queue.pop(0)
         check = makeString(node)
-        # parents[node] = start
         if check not in dictionary:
             # add this node to the visited set-ups
-            # parents[node] = check
             addDictionary(check, dictionary, begin)
 
         for i in range(0, len(node.vehicles)):
-            # if isinstance(node.vehicles[i], car.Car):
-            # try moving them in both directions
-            # grid has to be updated
+            # move vertical vehicles
             if node.vehicles[i].orientation == "V":
                 # use deepcopy to make a copy of nodes and the objects in node
                 new_node = deepcopy(node)
@@ -51,11 +33,9 @@ def runbfs(grid, exit):
                 if new_node.vehicles[i].move("up", new_node) != False:
                     # add new set-up to queue
                     string = makeString(new_node)
-                    # only add new set up if not already in dictionary
                     if string not in dictionary:
                         addDictionary(string, dictionary, check)
                         queue.append(new_node)
-                        # anim.update(new_node.vehicles)
 
                 new_node2 = deepcopy(node)
                 if new_node2.vehicles[i].move("down", new_node2) != False:
@@ -64,28 +44,23 @@ def runbfs(grid, exit):
                     if string not in dictionary:
                         addDictionary(string, dictionary, check)
                         queue.append(new_node2)
-                        # anim.update(new_node2.vehicles)
+
 
             elif node.vehicles[i].orientation == "H":
                 new_node = deepcopy(node)
                 if new_node.vehicles[i].move("left", new_node) != False:
-                    # anim.update(new_node.vehicles)
-
+                    # add set-up to dictionary
                     string = makeString(new_node)
                     if string not in dictionary:
                         addDictionary(string, dictionary, check)
                         queue.append(new_node)
-                        # anim.update(new_node.vehicles)
 
                 new_node2 = deepcopy(node)
                 if new_node2.vehicles[i].move("right", new_node2) != False:
                     # check if the car is at the exit
                     if new_node2.vehicles[i].pos.x2 == exit.x and new_node2.vehicles[i].pos.y2 == exit.y:
-                        print "found exit"
                         print("--- %s seconds ---" % (time.time() - start_time))
-                        amountSteps(dictionary, check, begin)
-                        return new_node2
-                        # anim.update(new_node2.vehicles)
+                        return amountSteps(dictionary, check, begin)
 
                     # add new set-up to queue
                     else:
@@ -93,10 +68,6 @@ def runbfs(grid, exit):
                         if string not in dictionary:
                             addDictionary(string, dictionary, check)
                             queue.append(new_node2)
-                            # anim.update(new_node2.vehicles)
-
-    return dictionary
-    # anim.done()
 
 
 def makeString(node):
