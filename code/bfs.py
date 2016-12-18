@@ -86,15 +86,7 @@ def runbfs(grid, exit):
                         amountSteps(dictionary, check, begin)
                         return new_node2
                         # anim.update(new_node2.vehicles)
-                        # solution = [exit]
-                        # n = exit
-                        # while n in parents and parents[n]:
-                        #     solution.append(parents[n])
-                        #     n = parents[n]
-                        #
-                        # return solution[::-1]
 
-                    # grid = new set-up
                     # add new set-up to queue
                     else:
                         string = makeString(new_node2)
@@ -143,9 +135,6 @@ def amountSteps(dictionary, parent, begin):
         for key, value in dictionary.iteritems():
             node = key
             if parent == node:
-                print str(begin) + "begin"
-                # print parent
-                # print node
                 counter += 1
                 if parent == begin:
                     print "Counter = " + str(counter)
