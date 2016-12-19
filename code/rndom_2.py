@@ -1,8 +1,8 @@
+import random
+import time
 import visualize as vis
 import car
 import truck
-import random
-import time
 
 
 def runrandom(grid, exit):
@@ -98,7 +98,6 @@ def makeString(vehicles):
             x2 = str(vehicles[i].pos.x2)
             y1 = str(vehicles[i].pos.y1)
             y2 = str(vehicles[i].pos.y2)
-
             string = string + x1 + x2 + y1 + y2
 
         elif isinstance(vehicles[i], truck.Truck):
@@ -108,7 +107,6 @@ def makeString(vehicles):
             y1 = str(vehicles[i].pos.y1)
             y2 = str(vehicles[i].pos.y2)
             y3 = str(vehicles[i].pos.y3)
-
             string = string + x1 + x2 + x3 + y1 + y2 + y3
 
     return string

@@ -3,8 +3,6 @@ import car
 import truck
 
 
-# === Grid
-
 class Grid(object):
     """
     Sets up a grid for the game with a given width and height

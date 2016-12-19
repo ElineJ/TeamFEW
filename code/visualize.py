@@ -1,11 +1,9 @@
-# Visualization code for the game Rush hour
-
 from Tkinter import *
 import matplotlib
 matplotlib.use("TkAgg")
-
 import car
 import truck
+
 
 def carColors(vehicles):
     for i in range(0, len(vehicles)):

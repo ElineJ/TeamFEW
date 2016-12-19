@@ -1,11 +1,11 @@
 import sys
+import csv
+from copy import deepcopy
+import rndom as rd
 import positions as pos
 import csvtries
 import bfs
-import rndom as rd
-from copy import deepcopy
 
-import csv
 
 # open csv file
 f = open(sys.argv[1], 'rb')

@@ -4,11 +4,11 @@
 # main code to run the simulation
 import sys
 sys.dont_write_bytecode = True
+import rndom as rd
+from copy import deepcopy
 import positions as pos
 import csvtries
 import bfs
-import rndom as rd
-from copy import deepcopy
 # import visualize as vis
 
 # array of all files for the games

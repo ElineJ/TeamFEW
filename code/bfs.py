@@ -1,16 +1,14 @@
+from copy import deepcopy
 import visualize as vis
 import car
 import truck
-from copy import deepcopy
 import time
 start_time = time.time()
 
 
 def runbfs(grid, exit):
-
     # make a list of all states that have happened
     dictionary = {}
-
     # make a queue of next steps
     queue = []
     queue = [grid]
@@ -25,19 +23,16 @@ def runbfs(grid, exit):
             addDictionary(check, dictionary, begin)
 
         for i in range(0, len(node.vehicles)):
-
             # move vertical vehicles
             if node.vehicles[i].orientation == "V":
                 # use deepcopy to make a copy of nodes and the objects in node
                 new_node = deepcopy(node)
-
                 if new_node.vehicles[i].move("up", new_node) != False:
                     # add new set-up to queue
                     string = makeString(new_node)
                     if string not in dictionary:
                         addDictionary(string, dictionary, check)
                         queue.append(new_node)
-
                 new_node2 = deepcopy(node)
                 if new_node2.vehicles[i].move("down", new_node2) != False:
                     # add new set-up to queue
@@ -55,14 +50,12 @@ def runbfs(grid, exit):
                     if string not in dictionary:
                         addDictionary(string, dictionary, check)
                         queue.append(new_node)
-
                 new_node2 = deepcopy(node)
                 if new_node2.vehicles[i].move("right", new_node2) != False:
                     # check if the car is at the exit
                     if new_node2.vehicles[i].pos.x2 == exit.x and new_node2.vehicles[i].pos.y2 == exit.y:
                         print("--- %s seconds ---" % (time.time() - start_time))
                         return amountSteps(dictionary, check, begin)
-
                     # add new set-up to queue
                     else:
                         string = makeString(new_node2)
@@ -80,7 +73,6 @@ def makeString(node):
             x2 = str(node.vehicles[i].pos.x2)
             y1 = str(node.vehicles[i].pos.y1)
             y2 = str(node.vehicles[i].pos.y2)
-
             string = string + x1 + x2 + y1 + y2
 
         elif isinstance(node.vehicles[i], truck.Truck):
@@ -90,7 +82,6 @@ def makeString(node):
             y1 = str(node.vehicles[i].pos.y1)
             y2 = str(node.vehicles[i].pos.y2)
             y3 = str(node.vehicles[i].pos.y3)
-
             string = string + x1 + x2 + x3 + y1 + y2 + y3
 
     return string

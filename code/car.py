@@ -162,5 +162,3 @@ class Car(object):
                     return True
                 else:
                     return False
-
-    # def generateMove(dictionary, Grid):

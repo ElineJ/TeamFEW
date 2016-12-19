@@ -1,6 +1,7 @@
 # All position objects for rush hour
 # === Position classes
 
+
 class GridPosition(object):
     """
     A Position representing the empty position on the grid
@@ -17,6 +18,7 @@ class GridPosition(object):
 
     def getY(self):
         return self.y
+
 
 class CarPosition(object):
     """
