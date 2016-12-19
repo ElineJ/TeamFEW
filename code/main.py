@@ -1,12 +1,8 @@
 #!/usr/bin/env python
-# usage of file:
-# python main.py <game number (1-7)>
-
-# main code to run the simulation
 import sys
 sys.dont_write_bytecode = True
-import rndom as rd
 from copy import deepcopy
+import rndom as rd
 import positions as pos
 import csvtries
 import bfs
@@ -14,8 +10,9 @@ import bfs
 
 # array of all files for the games
 games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
-   '../datasets/Game #3.csv', '../datasets/Game #4.csv', '../datasets/Game #5.csv',
-   '../datasets/Game #6.csv', '../datasets/Game #7.csv']
+         '../datasets/Game #3.csv', '../datasets/Game #4.csv',
+         '../datasets/Game #5.csv', '../datasets/Game #6.csv',
+         '../datasets/Game #7.csv']
 
 # check if game exists, open file for game
 game = int(sys.argv[1])

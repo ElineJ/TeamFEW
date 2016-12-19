@@ -13,12 +13,6 @@ class GridPosition(object):
         self.x = x
         self.y = y
 
-    def getX(self):
-        return self.x
-
-    def getY(self):
-        return self.y
-
 
 class CarPosition(object):
     """

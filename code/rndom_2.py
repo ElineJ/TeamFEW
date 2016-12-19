@@ -1,11 +1,16 @@
 import random
 import time
-import visualize as vis
+# import visualize as vis
 import car
 import truck
 
 
 def runrandom(grid, exit):
+    """
+    Algorithm that loops through all vehicles and moves each vehicle
+    in a random direction (up/down or left/right) until it finds and exit.
+    Skips positions the grid has already been in.
+    """
     start_time = time.time()
     v_direction = ["up", "down"]
     h_direction = ["left", "right"]
@@ -22,76 +27,54 @@ def runrandom(grid, exit):
     #     width = 9
     # else:
     #     width = 12
-    string = makeString(vehicles)
-    addDictionary(string, dictionary)
+    string = make_string(vehicles)
+    add_dictionary(string, dictionary)
     # open window with visualization
     # anim = vis.Visualization(width, width, vehicles)
 
     while not_at_exit:
         for i in range(0, len(vehicles)):
-            if isinstance(vehicles[i], car.Car):
-                direction = random.randint(0, 1)
-                # move vertical car in a random direction
-                if vehicles[i].orientation == 'V':
-                    d = v_direction[direction]
-                    if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveCar(d, grid)
-                        check = makeString(vehicles)
-                        if check not in dictionary:
-                            moves += 1
-                            addDictionary(check, dictionary)
-                            # anim.update(vehicles)
-                # move horizontal car into a random direction
-                else:
-                    d = h_direction[direction]
-                    if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveCar(d, grid)
-                        check = makeString(vehicles)
-                        if check not in dictionary:
-                            vehicles[i].moveCar(d, grid)
-                            moves += 1
-                            addDictionary(check, dictionary)
-                            # anim.update(vehicles)
-                            # check if car is at exit
-                            if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
-                                # print "Found exit!"
-                                # print "Moves:", moves
-                                # print("--- %s seconds ---" % (time.time() - start_time))
-                                # del results[:]
-                                results.append(moves)
-                                results.append("%.6s" % (time.time() - start_time))
-                                # print moves,("%s seconds" % (time.time() - start_time))
-                                return results
-
-            elif isinstance(vehicles[i], truck.Truck):
-                direction = random.randint(0, 1)
-                # move vertical truck in a random direction
-                if vehicles[i].orientation == 'V':
-                    d = v_direction[direction]
-                    if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveTruck(d, grid)
-                        check = makeString(vehicles)
-                        if check not in dictionary:
-                            moves += 1
-                            addDictionary(check, dictionary)
-                            # anim.update(vehicles)
-                # move horizontal truck into a random direction
-                else:
-                    d = h_direction[direction]
-                    if vehicles[i].checkMove(d, grid):
-                        vehicles[i].moveTruck(d, grid)
-                        check = makeString(vehicles)
-                        if check not in dictionary:
-                            moves += 1
-                            addDictionary(check, dictionary)
-                            # anim.update(vehicles)
-
+            number = random.randint(0, 1)
+            # move vertical car in a random direction
+            if vehicles[i].orientation == 'V':
+                direction = v_direction[number]
+                if vehicles[i].checkMove(direction, grid):
+                    vehicles[i].moveCar(direction, grid)
+                    check = make_string(vehicles)
+                    if check not in dictionary:
+                        moves += 1
+                        add_dictionary(check, dictionary)
+                        # anim.update(vehicles)
+            # move horizontal car into a random direction
+            else:
+                direction = h_direction[number]
+                if vehicles[i].checkMove(direction, grid):
+                    vehicles[i].moveCar(direction, grid)
+                    check = make_string(vehicles)
+                    if check not in dictionary:
+                        vehicles[i].moveCar(direction, grid)
+                        moves += 1
+                        add_dictionary(check, dictionary)
+                        # anim.update(vehicles)
+                        # check if car is at exit
+                        if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
+                            # print "Found exit!"
+                            # print "Moves:", moves
+                            # print("--- %s seconds ---" % (time.time() - start_time))
+                            # del results[:]
+                            results.append(moves)
+                            results.append("%.6s" % (time.time() - start_time))
+                            # print moves,("%s seconds" % (time.time() - start_time))
+                            return results
     # anim.done()
 
 
-def makeString(vehicles):
+def make_string(vehicles):
+    """
+    Creates a unique string of the position coordinates
+    of all vehicles in the current grid.
+    """
     string = ""
-
     for i in range(0, len(vehicles)):
         if isinstance(vehicles[i], car.Car):
             x1 = str(vehicles[i].pos.x1)
@@ -112,6 +95,10 @@ def makeString(vehicles):
     return string
 
 
-def addDictionary(string, dictionary):
+def add_dictionary(string, dictionary):
+    """
+    Adds unique string of vehicle positions to
+    dictionary to track visited set-ups
+    """
     dict2 = {string: True}
     dictionary.update(dict2)

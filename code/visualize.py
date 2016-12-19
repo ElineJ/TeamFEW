@@ -28,7 +28,7 @@ def carColors(vehicles):
 
 
 class Visualization:
-    def __init__(self, width, height, vehicles, delay = 0.2):
+    def __init__(self, width, height, vehicles, delay=0.2):
 
         # Number of seconds to pause after each frame
         self.delay = delay
@@ -58,7 +58,7 @@ class Visualization:
                 y1 = row * self.cellheight
                 x2 = x1 + self.cellwidth
                 y2 = y1 + self.cellheight
-                self.rect[row, column] = self.w.create_rectangle(x1,y1,x2,y2, fill="#363958", tags="rect")
+                self.rect[row, column] = self.w.create_rectangle(x1, y1, x2, y2, fill="#363958", tags="rect")
 
         # draw exit depending on size of field
         if width == 6:
@@ -73,14 +73,14 @@ class Visualization:
             y1 = 4 * self.cellheight
             x2 = 9 * self.cellwidth + 5
             y2 = y1 + self.cellheight
-            self.rect[x1, y1] = self.w.create_rectangle(x1,y1,x2,y2, fill="black", tags="rect")
+            self.rect[x1, y1] = self.w.create_rectangle(x1, y1, x2, y2, fill="black", tags="rect")
         # exit for 12x12 field
         if width == 12:
             x1 = 12 * self.cellwidth
             y1 = 5 * self.cellheight
             x2 = 12 * self.cellwidth + 5
             y2 = y1 + self.cellheight
-            self.rect[x1, y1] = self.w.create_rectangle(x1,y1,x2,y2, fill="black", tags="rect")
+            self.rect[x1, y1] = self.w.create_rectangle(x1, y1, x2, y2, fill="black", tags="rect")
 
         # draw vehicles
         for i in range(0, len(vehicles)):
@@ -90,7 +90,7 @@ class Visualization:
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
-                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill=vehicles[i].color)
 
             elif isinstance(vehicles[i], truck.Truck):
                 x1, y1 = int(vehicles[i].pos.x1) * self.cellwidth, int(vehicles[i].pos.y1) * self.cellheight
@@ -98,7 +98,7 @@ class Visualization:
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
-                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill=vehicles[i].color)
 
         # self.time = 0
         self.master.update()
@@ -131,14 +131,14 @@ class Visualization:
                     x2, y2 = x1 + self.cellwidth, y1 + 2 * self.cellheight
                 else:
                     x2, y2 = x1 + 2 * self.cellwidth, y1 + self.cellheight
-                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill=vehicles[i].color)
             elif isinstance(vehicles[i], truck.Truck):
                 x1, y1 = int(vehicles[i].pos.x1) * self.cellwidth, int(vehicles[i].pos.y1) * self.cellheight
                 if vehicles[i].orientation == 'V':
                     x2, y2 = x1 + self.cellwidth, y1 + 3 * self.cellheight
                 else:
                     x2, y2 = x1 + 3 * self.cellwidth, y1 + self.cellheight
-                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill = vehicles[i].color)
+                self.rect[vehicles[1].pos.x1, vehicles[i].pos.y1] = self.w.create_rectangle(x1, y1, x2, y2, fill=vehicles[i].color)
 
         self.master.update()
         # time.sleep(self.delay)

@@ -1,5 +1,4 @@
 import positions as pos
-import car
 import truck
 
 

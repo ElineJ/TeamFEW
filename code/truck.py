@@ -102,57 +102,28 @@ class Truck(object):
         """
         Checks if car can move to next position
         """
-        old_pos = self.getTruckPosition()
-
         # movement for vertical Truck
         if self.orientation == 'V':
             # move vertical Truck up
             if direction == 'up':
                 y1 = self.pos.y1 - 1
-                y2 = self.pos.y2 - 1
-                y3 = self.pos.y3 - 1
-                new_pos = pos.TruckPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 check_pos = pos.GridPosition(self.pos.x1, y1)
-                empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
-                if Grid.isPositionEmpty(check_pos):
-                    return True
-                else:
-                    return False
+                return bool(Grid.isPositionEmpty(check_pos))
             elif direction == 'down':
                 # move vertical Truck down
-                y1 = self.pos.y1 + 1
-                y2 = self.pos.y2 + 1
                 y3 = self.pos.y3 + 1
-                new_pos = pos.TruckPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 check_pos = pos.GridPosition(self.pos.x1, y3)
-                empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
-                if Grid.isPositionEmpty(check_pos):
-                    return True
-                else:
-                    return False
+                return bool(Grid.isPositionEmpty(check_pos))
 
         elif self.orientation == 'H':
             if direction == 'left':
                 # move horizontal Truck left
                 x1 = self.pos.x1 - 1
-                x2 = self.pos.x2 - 1
-                x3 = self.pos.y3 - 1
-                new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 check_pos = pos.GridPosition(x1, self.pos.y1)
-                empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
-                if Grid.isPositionEmpty(check_pos):
-                    return True
-                else:
-                    return False
+                return bool(Grid.isPositionEmpty(check_pos))
+
             elif direction == 'right':
                 # move horizontal Truck right
-                x1 = self.pos.x1 + 1
-                x2 = self.pos.x2 + 1
                 x3 = self.pos.y3 + 1
-                new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 check_pos = pos.GridPosition(x3, self.pos.y1)
-                empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
-                if Grid.isPositionEmpty(check_pos):
-                    return True
-                else:
-                    return False
+                return bool(Grid.isPositionEmpty(check_pos))
