@@ -12,6 +12,12 @@ class Car(object):
         self.color = color
         self.old_pos = position
 
+    # def __eq__(self, other):
+    #     return (self.pos == other.pos)
+    #
+    # def __ne__(self, other):
+    #     return not self.__eq__(other)
+
     def setCarPosition(self, old_pos, new_pos, Grid):
         """
         Set the position of the car to position
@@ -115,14 +121,12 @@ class Car(object):
             if direction == 'up':
                 y1, y2 = self.pos.y1 - 1, self.pos.y2 - 1
                 check_pos = pos.GridPosition(self.pos.x1, y1)
-                # empty_pos = pos.GridPosition(self.pos.x1, self.pos.y2)
                 return bool(Grid.isPositionEmpty(check_pos))
             elif direction == 'down':
                 # move vertical car down
                 y1 = self.pos.y1 + 1
                 y2 = self.pos.y2 + 1
                 check_pos = pos.GridPosition(self.pos.x2, y2)
-                # empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 return bool(Grid.isPositionEmpty(check_pos))
 
         elif self.orientation == 'H':
@@ -131,13 +135,11 @@ class Car(object):
                 x1 = self.pos.x1 - 1
                 x2 = self.pos.x2 - 1
                 check_pos = pos.GridPosition(x1, self.pos.y1)
-                # empty_pos = pos.GridPosition(self.pos.x2, self.pos.y2)
                 return bool(Grid.isPositionEmpty(check_pos))
             elif direction == 'right':
                 # move horizontal car right
                 x1 = self.pos.x1 + 1
                 x2 = self.pos.x2 + 1
                 check_pos = pos.GridPosition(x2, self.pos.y2)
-                # empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 # check if move is possible
                 return bool(Grid.isPositionEmpty(check_pos))

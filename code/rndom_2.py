@@ -33,13 +33,13 @@ def runrandom(grid, exit):
     # anim = vis.Visualization(width, width, vehicles)
 
     while not_at_exit:
-        for i in range(0, len(vehicles)):
+        for vehicle in vehicles:
             number = random.randint(0, 1)
             # move vertical car in a random direction
-            if vehicles[i].orientation == 'V':
+            if vehicle.orientation == 'V':
                 direction = v_direction[number]
-                if vehicles[i].checkMove(direction, grid):
-                    vehicles[i].moveCar(direction, grid)
+                if vehicle.checkMove(direction, grid):
+                    vehicle.move(direction, grid)
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
@@ -48,19 +48,19 @@ def runrandom(grid, exit):
             # move horizontal car into a random direction
             else:
                 direction = h_direction[number]
-                if vehicles[i].checkMove(direction, grid):
-                    vehicles[i].moveCar(direction, grid)
+                if vehicle.checkMove(direction, grid):
+                    vehicle.move(direction, grid)
                     check = make_string(vehicles)
                     if check not in dictionary:
-                        vehicles[i].moveCar(direction, grid)
+                        vehicle.move(direction, grid)
                         moves += 1
                         add_dictionary(check, dictionary)
                         # anim.update(vehicles)
                         # check if car is at exit
-                        if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
+                        if vehicle.pos.x2 == exit.x and vehicle.pos.y2 == exit.y:
                             # print "Found exit!"
-                            # print "Moves:", moves
-                            # print("--- %s seconds ---" % (time.time() - start_time))
+                            print "Moves:", moves
+                            print("--- %s seconds ---" % (time.time() - start_time))
                             # del results[:]
                             results.append(moves)
                             results.append("%.6s" % (time.time() - start_time))

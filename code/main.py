@@ -2,7 +2,7 @@
 import sys
 sys.dont_write_bytecode = True
 from copy import deepcopy
-import rndom as rd
+import rndom_2 as rd
 import positions as pos
 import csvtries
 import bfs
