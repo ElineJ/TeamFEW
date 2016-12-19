@@ -7,24 +7,24 @@
 - ~~Data van games invoeren~~
 
 #### Overig:
-- Researchen state-space case (Googlen/schrijven voor verslag)
+- ~~Researchen state-space case (Googlen/schrijven voor verslag)~~
 
 ## Week 2:
 
 #### Code:
 - ~~Grid met auto's maken~~
 - ~~Data importeren voor de games --> in objects.py toevoegen~~
-- Eerste algoritme:
-    - Random algoritme implementeren
-    - Nadenken over beter algoritme
+- ~~Eerste algoritme:~~
+    - ~~Random algoritme implementeren~~
+    - ~~Nadenken over beter algoritme~~
 - ~~Functie voor beweging van auto's maken --> moet nog worden verbeterd~~
 - ~~Kijken naar visualisatie~~
-- ~~Datasets aanpassen~~ --> er zitten nog fouten in sommige?
+- ~~Datasets aanpassen~~
 - ~~Functie voor checken of ergens een auto is of niet en randen grid~~
 
 #### Overig:
-- Opzoeken onder- en bovengrens
-- Link moeilijkheid met grootte bord/vehicles
+- ~~Opzoeken onder- en bovengrens~~
+- ~~Link moeilijkheid met grootte bord/vehicles~~
 
 ## Week 3: 
 - ~~elke class een eigen bestand (Positions, Grid, Cars, Trucks) - Eline~~
@@ -35,27 +35,27 @@
 - ~~zorgen dat visualizatie update bij beweging - Eline~~
 
 ## Week 4:
-- Eerste algoritme helemaal af
-    - Functie voor move-functies/if-statements in algoritme 
-    - Dictionary voor alle borden met unieke hash (string: coordinaten van alle auto's)
-    - new_instance aanmaken voor beweging 
-- Visualizatie bij programma runnen 
-- Checken moveCar-functies
-- Plannen/uitwerken 2 algoritmes 
-- Verder aan verslag werken 
+- ~~Eerste algoritme helemaal af~~
+    ~~- Functie voor move-functies/if-statements in algoritme ~~
+    ~~- Dictionary voor alle borden met unieke hash (string: coordinaten van alle auto's)~~
+    ~~- new_instance aanmaken voor beweging~~
+- ~~Visualizatie bij programma runnen~~
+- ~~Checken moveCar-functies~~
+- ~~Plannen/uitwerken 2 algoritmes~~
+- ~~Verder aan verslag werken~~ 
 
 ## VOOR ZONDAGAVOND
-- Empty grid moeten werken
-- Imports allemaal fixen 
-- Algoritme af 
-    - Dictionary werkend
-    - Scorefunctie (kijken naar kinderen) -> score: stap = 1 
-- Onderzoeksvraag verslag 
-- Wouter Mailen
+- ~~Empty grid moeten werken~~
+- ~~Imports allemaal fixen~~ 
+- ~~Algoritme af~~
+    - ~~Dictionary werkend~~
+    - ~~Scorefunctie (kijken naar kinderen) -> score: stap = 1~~ 
+- ~~Onderzoeksvraag verslag~~
+- ~~Wouter Mailen~~
 
 ## Week 6:
 - Readme
-    - Hoe te runnen
+    - ~~Hoe te runnen~~
     - Libraries
     - Beschrijvingen files
 - Verslag: onderzoeksvraag
@@ -64,7 +64,13 @@
     - deepcopy anders
     - dictionary voor visualisatie doen
 - Nieuw algoritme: kijken vanaf resultaat 
-- Random: verbetering met archief 
+- ~~Random: verbetering met archief~~
 
-    
-
+## Week 7: 
+- Verslag af 
+- Bfs runnen op borden 4 - 7
+- Derde algoritme af 
+- Style: 
+    - Comments in alle bestanden checken/verbeteren
+    - Bfs korter maken door gebruiken functies 
+    - Style van code checken - Style Guide: [1](https://www.python.org/dev/peps/pep-0008/), [2](https://google.github.io/styleguide/pyguide.html)
