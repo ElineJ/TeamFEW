@@ -4,14 +4,12 @@
 # main code to run the simulation
 import sys
 sys.dont_write_bytecode = True
-import visualize as vis
-
 import positions as pos
-import grid
 import csvtries
 import bfs
 import rndom as rd
 from copy import deepcopy
+# import visualize as vis
 
 # array of all files for the games
 games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',

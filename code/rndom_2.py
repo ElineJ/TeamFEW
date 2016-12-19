@@ -1,10 +1,8 @@
 import visualize as vis
-import grid
 import car
 import truck
 import random
 import time
-
 
 
 def runrandom(grid, exit):

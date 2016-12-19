@@ -1,7 +1,5 @@
 import sys
-
 import positions as pos
-import grid
 import csvtries
 import bfs
 import rndom as rd
