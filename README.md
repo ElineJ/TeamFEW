@@ -14,10 +14,10 @@ The number represents one of the seven boards the algoritm can solve. In order t
 
 ### Prerequisites (TODO)
 
-What things you need to install the software and how to install them
+The code is written in `Python 2.7`. Running it in Python 3 might cause problems. Running the program requires installation of `Matplotlib`. If this is not yet installed on your computer, you can find installation instructions for your operating system [here](http://matplotlib.org/users/installing.html).
 
 ```
-Give examples
+Give examples of how to check if matplotlib is installed
 ```
 
 ## Methods (TODO)
