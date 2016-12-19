@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # usage of file:
 # python main.py <game number (1-7)>
 

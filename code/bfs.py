@@ -1,8 +1,8 @@
 from copy import deepcopy
 import visualize as vis
+import time
 import car
 import truck
-import time
 start_time = time.time()
 
 

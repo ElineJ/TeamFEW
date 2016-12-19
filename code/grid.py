@@ -57,10 +57,8 @@ class Grid(object):
             for j in reversed(range(0, len(self.empty_grid))):
                 if self.empty_grid[j].x == empty_pos1.x and self.empty_grid[j].y == empty_pos1.y:
                     del self.empty_grid[j]
-
                 elif self.empty_grid[j].x == empty_pos2.x and self.empty_grid[j].y == empty_pos2.y:
                     del self.empty_grid[j]
-
                 elif isinstance(self.vehicles[i], truck.Truck):
                     if self.empty_grid[j].x == empty_pos3.x and self.empty_grid[j].y == empty_pos3.y:
                         del self.empty_grid[j]

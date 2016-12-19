@@ -12,7 +12,7 @@ def runrandom(grid, exit):
     vehicles = grid.vehicles
     moves = 0
     results = []
-
+    not_at_exit = True
     # make a list of all states that have happened
     dictionary = {}
     # set up visualization
@@ -27,7 +27,7 @@ def runrandom(grid, exit):
     # open window with visualization
     # anim = vis.Visualization(width, width, vehicles)
 
-    while True:
+    while not_at_exit:
         for i in range(0, len(vehicles)):
             if isinstance(vehicles[i], car.Car):
                 direction = random.randint(0, 1)
