@@ -3,7 +3,7 @@ A solver and visualization of the game Rush Hour for the Heuristieken course.
 
 ## Usage
 
-From the terminal, you can run the program with the following command: 
+In `main` the program will run the `random` and `breadth first search` algorithm. You can run the program in the terminal with the following command: 
 
 ```
 python main.py 1
@@ -19,6 +19,8 @@ What things you need to install the software and how to install them
 ```
 Give examples
 ```
+
+## Methods (TODO)
 
 ## Running the tests (TODO)
 
