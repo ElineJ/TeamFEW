@@ -6,6 +6,8 @@ import rndom_2 as rd
 import positions as pos
 import csvtries
 import bfs
+import car
+import truck
 import visualize as vis
 
 # array of all files for the games
@@ -13,7 +15,6 @@ games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #3.csv', '../datasets/Game #4.csv',
          '../datasets/Game #5.csv', '../datasets/Game #6.csv',
          '../datasets/Game #7.csv']
-
 
 def main():
     # check if game exists, open file for game
@@ -37,6 +38,8 @@ def main():
     # set up grid with vehicles
     grid_rnd = csvtries.run(f, width, height, exit)
     grid_bfs = deepcopy(grid_rnd)
+    grid_test = grid_rnd.copy_grid()
+
     f.close()
 
     # open visualization
@@ -44,7 +47,7 @@ def main():
     print "--- Random algoritme ---"
     rd.runrandom(grid_rnd, exit)
     print "--- bfs ---"
-    bfs.runbfs(grid_bfs, exit)
+    bfs.runbfs(grid_test, exit)
 
 if __name__ == "__main__":
     main()

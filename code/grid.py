@@ -21,7 +21,7 @@ class Grid(object):
         for i in range(0, height):
             for j in range(0, width):
                 new_grid = pos.GridPosition(i, j)
-                empty_grid.add(new_grid)
+                self.empty_grid.add(new_grid)
 
     def car_at_exit(self, pos):
         """
@@ -55,4 +55,23 @@ class Grid(object):
                 if empty_pos3 in self.empty_grid:
                     self.empty_grid.remove(empty_pos3)
 
-        # print len(self.empty_grid)
+    def copy_grid(self):
+        """
+        Creates a unique copy of current grid
+        """
+        gridcopy = Grid(self.width, self.height, self.exit)
+        for i in range(0, gridcopy.height):
+            for j in range(0, gridcopy.width):
+                new_grid = pos.GridPosition(i, j)
+                gridcopy.empty_grid.add(new_grid)
+
+        for vehicle in self.vehicles:
+            if isinstance(vehicle, car.Car):
+                new_car = car.Car(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2, vehicle.orientation, vehicle.color)
+                gridcopy.vehicles.append(new_car)
+            elif isinstance(vehicle, truck.Truck):
+                new_truck = truck.Truck(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3, vehicle.orientation, vehicle.color)
+                gridcopy.vehicles.append(new_truck)
+
+        gridcopy.removeEmptyGrid()
+        return gridcopy
