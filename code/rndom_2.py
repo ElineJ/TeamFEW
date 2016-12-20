@@ -5,6 +5,7 @@ import car
 import truck
 
 
+# @profile
 def runrandom(grid, exit):
     """
     Algorithm that loops through all vehicles and moves each vehicle
@@ -23,7 +24,7 @@ def runrandom(grid, exit):
     # set up visualization
     # if exit.x == 5:
     #     width = 6
-    # elif exit.x == 9:
+    # elif exit.x == 8:
     #     width = 9
     # else:
     #     width = 12
@@ -38,8 +39,7 @@ def runrandom(grid, exit):
             # move vertical car in a random direction
             if vehicle.orientation == 'V':
                 direction = v_direction[number]
-                if vehicle.checkMove(direction, grid):
-                    vehicle.move(direction, grid)
+                if vehicle.move(direction, grid):
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
@@ -48,11 +48,9 @@ def runrandom(grid, exit):
             # move horizontal car into a random direction
             else:
                 direction = h_direction[number]
-                if vehicle.checkMove(direction, grid):
-                    vehicle.move(direction, grid)
+                if vehicle.move(direction, grid):
                     check = make_string(vehicles)
                     if check not in dictionary:
-                        vehicle.move(direction, grid)
                         moves += 1
                         add_dictionary(check, dictionary)
                         # anim.update(vehicles)

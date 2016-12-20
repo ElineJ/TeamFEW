@@ -6,6 +6,7 @@ import truck
 start_time = time.time()
 
 
+# @profile
 def runbfs(grid, exit):
     """
     Breadth First Search algorithm that finds the shortest path

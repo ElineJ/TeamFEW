@@ -1,5 +1,6 @@
 import positions as pos
 import truck
+import car
 
 
 class Grid(object):
@@ -23,6 +24,12 @@ class Grid(object):
                 new_grid = pos.GridPosition(i, j)
                 empty_grid.append(new_grid)
 
+        # for vehicle in self.vehicles:
+        #     if isinstance(vehicle, car.Car):
+        #         print "Car:", vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2
+        #     elif isinstance(vehicle, truck.Truck):
+        #         print "Truck:", vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3,
+        #         vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3
     # def isRedOnExit(self, pos):
     #     """
     #     Checks if the red car is at the exit
@@ -33,16 +40,22 @@ class Grid(object):
     #         return True
     #     return False
 
+    # @profile
     def isPositionEmpty(self, pos):
+        # print "Position:", pos.x, pos.y
         for i in range(0, len(self.empty_grid)):
-            if pos.x == self.empty_grid[i].x and pos.y == self.empty_grid[i].y:
+            # print bool(pos == self.empty_grid[i])
+            if pos == self.empty_grid[i]:
+                # print "Position Empty"
                 return True
         return False
 
+    # @profile
     def updateEmptyPosition(self, pos, new_pos):
         for i in range(0, len(self.empty_grid)):
-            if pos.x == self.empty_grid[i].x and pos.y == self.empty_grid[i].y:
+            if pos == self.empty_grid[i]:
                 self.empty_grid[i] = new_pos
+                # print "Removed empty pos"
 
     def removeEmptyGrid(self):
 
@@ -54,10 +67,19 @@ class Grid(object):
                 empty_pos3 = pos.GridPosition(self.vehicles[i].pos.x3, self.vehicles[i].pos.y3)
             # check for the positions in empty_grid
             for j in reversed(range(0, len(self.empty_grid))):
-                if self.empty_grid[j].x == empty_pos1.x and self.empty_grid[j].y == empty_pos1.y:
+                if self.empty_grid[j] == empty_pos1:
                     del self.empty_grid[j]
-                elif self.empty_grid[j].x == empty_pos2.x and self.empty_grid[j].y == empty_pos2.y:
+                elif self.empty_grid[j] == empty_pos2:
                     del self.empty_grid[j]
                 elif isinstance(self.vehicles[i], truck.Truck):
-                    if self.empty_grid[j].x == empty_pos3.x and self.empty_grid[j].y == empty_pos3.y:
+                    if self.empty_grid[j] == empty_pos3:
                         del self.empty_grid[j]
+
+        for grid in self.empty_grid:
+            print "Empty grid:", grid.x, grid.y
+
+        for vehicle in self.vehicles:
+            if isinstance(vehicle, car.Car):
+                print "Car:", vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2
+            elif isinstance(vehicle, truck.Truck):
+                print "Truck:", vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3

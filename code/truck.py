@@ -25,12 +25,7 @@ class Truck(object):
         """
         for i in range(0, len(Grid.vehicles)):
             if isinstance(Grid.vehicles[i], Truck):
-                if (Grid.vehicles[i].pos.x1 == old_pos.x1 and
-                   Grid.vehicles[i].pos.y1 == old_pos.y1 and
-                   Grid.vehicles[i].pos.x2 == old_pos.x2 and
-                   Grid.vehicles[i].pos.y2 == old_pos.y2 and
-                   Grid.vehicles[i].pos.x3 == old_pos.x3 and
-                   Grid.vehicles[i].pos.y3 == old_pos.y3):
+                if (Grid.vehicles[i].pos == old_pos):
                     Grid.vehicles[i].pos = new_pos
         self.pos = new_pos
 
@@ -75,7 +70,7 @@ class Truck(object):
                 # move horizontal Truck left
                 x1 = self.pos.x1 - 1
                 x2 = self.pos.x2 - 1
-                x3 = self.pos.y3 - 1
+                x3 = self.pos.x3 - 1
                 new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 check_pos = pos.GridPosition(x1, self.pos.y1)
                 empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
@@ -88,7 +83,7 @@ class Truck(object):
                 # move horizontal Truck right
                 x1 = self.pos.x1 + 1
                 x2 = self.pos.x2 + 1
-                x3 = self.pos.y3 + 1
+                x3 = self.pos.x3 + 1
                 new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 check_pos = pos.GridPosition(x3, self.pos.y1)
                 empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)

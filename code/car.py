@@ -26,11 +26,9 @@ class Car(object):
         """
         for i in range(0, len(Grid.vehicles)):
             if isinstance(Grid.vehicles[i], Car):
-                if (Grid.vehicles[i].pos.x1 == old_pos.x1 and
-                   Grid.vehicles[i].pos.y1 == old_pos.y1 and
-                   Grid.vehicles[i].pos.x2 == old_pos.x2 and
-                   Grid.vehicles[i].pos.y2 == old_pos.y2):
+                if Grid.vehicles[i].pos == old_pos:
                     Grid.vehicles[i].pos = new_pos
+                    # print "set new position"
         self.pos = new_pos
 
     def setPreviousPos(self, old_pos, new_pos, Grid):
@@ -48,6 +46,7 @@ class Car(object):
                     Grid.vehicles[i].pos = old_pos
         self.pos = old_pos
 
+    # @profile
     def move(self, direction, Grid):
         """
         Moves car to new position
@@ -109,6 +108,7 @@ class Car(object):
                 else:
                     return False
 
+    # @profile
     def checkMove(self, direction, Grid):
         """
         Checks if car can move to next position

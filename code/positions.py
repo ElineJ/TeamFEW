@@ -13,6 +13,12 @@ class GridPosition(object):
         self.x = x
         self.y = y
 
+    def __eq__(self, other):
+        return (self.x == other.x and self.y == other.y)
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
 
 class CarPosition(object):
     """
@@ -27,13 +33,22 @@ class CarPosition(object):
         self.y1 = int(y1)
         self.y2 = int(y2)
 
-    def getX(self):
-        x = [self.x1, self.x2]
-        return x
+    def __eq__(self, other):
+        return (self.x1 == other.x1 and
+                self.x2 == other.x2 and
+                self.y1 == other.y1 and
+                self.y2 == other.y2)
 
-    def getY(self):
-        y = [self.y1, self.y2]
-        return y
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    # def getX(self):
+    #     x = [self.x1, self.x2]
+    #     return x
+    #
+    # def getY(self):
+    #     y = [self.y1, self.y2]
+    #     return y
 
 
 class TruckPosition(object):
@@ -46,15 +61,26 @@ class TruckPosition(object):
         """
         self.x1 = int(x1)
         self.x2 = int(x2)
+        self.x3 = int(x3)
         self.y1 = int(y1)
         self.y2 = int(y2)
-        self.x3 = int(x3)
         self.y3 = int(y3)
 
-    def getX(self):
-        x = [self.x1, self.x2, self.x3]
-        return x
+    def __eq__(self, other):
+        return (self.x1 == other.x1 and
+                self.x2 == other.x2 and
+                self.x3 == other.x3 and
+                self.y1 == other.y1 and
+                self.y2 == other.y2 and
+                self.y3 == other.y3)
 
-    def getY(self):
-        y = [self.y1, self.y2, self.y3]
-        return y
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    # def getX(self):
+    #     x = [self.x1, self.x2, self.x3]
+    #     return x
+    #
+    # def getY(self):
+    #     y = [self.y1, self.y2, self.y3]
+    #     return y

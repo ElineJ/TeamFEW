@@ -2,11 +2,11 @@
 import sys
 sys.dont_write_bytecode = True
 from copy import deepcopy
-import rndom_2 as rd
+import rndom as rd
 import positions as pos
 import csvtries
 import bfs
-# import visualize as vis
+import visualize as vis
 
 # array of all files for the games
 games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
@@ -38,7 +38,7 @@ grid_bfs = deepcopy(grid_rnd)
 f.close()
 
 # open visualization
-# anim = vis.Visualization(width, width, grid.vehicles)
+# anim = vis.Visualization(width, width, grid_rnd.vehicles)
 print "--- Random algoritme ---"
 rd.runrandom(grid_rnd, exit)
 print "--- bfs ---"

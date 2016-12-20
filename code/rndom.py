@@ -1,8 +1,9 @@
 import random
 import time
-# import visualize as vis
+import visualize as vis
 
 
+# @profile
 def runrandom(grid, exit):
     """
     Algorithm that loops through all vehicles and moves each vehicle
@@ -15,28 +16,36 @@ def runrandom(grid, exit):
     moves = 0
     results = []
     not_at_exit = True
+    # print "Exit:", exit.x, exit.y
+    # set up visualization
+    # if exit.x == 5:
+    #     width = 6
+    # elif exit.x == 8:
+    #     width = 9
+    # else:
+    #     width = 12
 
     # open window with visualization
     # anim = vis.Visualization(width, width, vehicles)
     while not_at_exit:
-        for vehicle in vehicles:
+        for i in range(0, len(vehicles)):
             number = random.randint(0, 1)
             # move vertical car in a random direction
-            if vehicle.orientation == 'V':
+            if vehicles[i].orientation == 'V':
                 direction = v_direction[number]
-                if vehicle.checkMove(direction, grid):
-                    vehicle.move(direction, grid)
+                if vehicles[i].move(direction, grid) != False:
+                    # print "Test"
                     moves += 1
                     # anim.update(vehicles)
             # move horizontal car into a random direction
-            else:
+            elif vehicles[i].orientation == 'H':
                 direction = h_direction[number]
-                if vehicle.checkMove(direction, grid):
-                    vehicle.move(direction, grid)
+                if vehicles[i].move(direction, grid) != False:
                     moves += 1
+                    # print moves
                     # anim.update(vehicles)
                     # check if car is at exit
-                    if vehicle.pos.x2 == exit.x and vehicle.pos.y2 == exit.y:
+                    if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
                         print "Found exit!"
                         print "Moves:", moves
                         # del results[:]
