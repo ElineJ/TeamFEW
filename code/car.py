@@ -34,13 +34,10 @@ class Car(object):
 
         position: a Position object.
         """
-        for i in range(0, len(Grid.vehicles)):
-            if isinstance(Grid.vehicles[i], Car):
-                if (Grid.vehicles[i].pos.x1 == new_pos.x1 and
-                   Grid.vehicles[i].pos.y1 == new_pos.y1 and
-                   Grid.vehicles[i].pos.x2 == new_pos.x2 and
-                   Grid.vehicles[i].pos.y2 == new_pos.y2):
-                    Grid.vehicles[i].pos = old_pos
+        for vehicle in Grid.vehicles:
+            if isinstance(vehicle, Car):
+                if vehicle.pos == new_pos:
+                    vehicle.pos = old_pos
         self.pos = old_pos
 
     def move(self, direction, Grid):
