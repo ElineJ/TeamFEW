@@ -74,12 +74,3 @@ class Grid(object):
                 elif isinstance(self.vehicles[i], truck.Truck):
                     if self.empty_grid[j] == empty_pos3:
                         del self.empty_grid[j]
-
-        for grid in self.empty_grid:
-            print "Empty grid:", grid.x, grid.y
-
-        for vehicle in self.vehicles:
-            if isinstance(vehicle, car.Car):
-                print "Car:", vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2
-            elif isinstance(vehicle, truck.Truck):
-                print "Truck:", vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3
