@@ -66,7 +66,7 @@ class Visualization:
             y1 = 2 * self.cellheight
             x2 = 6 * self.cellwidth + 5
             y2 = y1 + self.cellheight
-            self.rect[x1, y1] = self.w.create_rectangle(x1,y1,x2,y2, fill="black", tags="rect")
+            self.rect[x1, y1] = self.w.create_rectangle(x1, y1, x2, y2, fill="black", tags="rect")
         # exit for 9x9 field
         if width == 9:
             x1 = 9 * self.cellwidth

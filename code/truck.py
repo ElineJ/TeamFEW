@@ -11,12 +11,17 @@ class Truck(object):
         self.orientation = orientation
         self.color = color
 
+    def __str__(self):
+        return (str(self.pos.x1) + str(self.pos.x2) + str(self.pos.x3) +
+                str(self.pos.y1) + str(self.pos.y2) + str(self.pos.y3))
+
     def getTruckPosition(self):
         """
         Returns the current position of vehicle
         """
         return self.pos
 
+    # @profile
     def setTruckPosition(self, old_pos, new_pos, Grid):
         """
         Set the position of the truck to position
@@ -29,6 +34,7 @@ class Truck(object):
                     Grid.vehicles[i].pos = new_pos
         self.pos = new_pos
 
+    # @profile
     def move(self, direction, Grid):
         """
         Moves truck to new position

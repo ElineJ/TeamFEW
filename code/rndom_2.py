@@ -39,23 +39,23 @@ def runrandom(grid, exit):
             # move vertical car in a random direction
             if vehicle.orientation == 'V':
                 direction = v_direction[number]
-                if vehicle.move(direction, grid):
+                if vehicle.move(direction, grid) != False:
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
                         add_dictionary(check, dictionary)
                         # anim.update(vehicles)
             # move horizontal car into a random direction
-            else:
+            elif vehicle.orientation == 'H':
                 direction = h_direction[number]
-                if vehicle.move(direction, grid):
+                if vehicle.move(direction, grid) != False:
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
                         add_dictionary(check, dictionary)
                         # anim.update(vehicles)
                         # check if car is at exit
-                        if vehicle.pos.x2 == exit.x and vehicle.pos.y2 == exit.y:
+                        if grid.car_at_exit(vehicle.pos):
                             # print "Found exit!"
                             print "Moves:", moves
                             print("--- %s seconds ---" % (time.time() - start_time))
@@ -73,23 +73,8 @@ def make_string(vehicles):
     of all vehicles in the current grid.
     """
     string = ""
-    for i in range(0, len(vehicles)):
-        if isinstance(vehicles[i], car.Car):
-            x1 = str(vehicles[i].pos.x1)
-            x2 = str(vehicles[i].pos.x2)
-            y1 = str(vehicles[i].pos.y1)
-            y2 = str(vehicles[i].pos.y2)
-            string = string + x1 + x2 + y1 + y2
-
-        elif isinstance(vehicles[i], truck.Truck):
-            x1 = str(vehicles[i].pos.x1)
-            x2 = str(vehicles[i].pos.x2)
-            x3 = str(vehicles[i].pos.x3)
-            y1 = str(vehicles[i].pos.y1)
-            y2 = str(vehicles[i].pos.y2)
-            y3 = str(vehicles[i].pos.y3)
-            string = string + x1 + x2 + x3 + y1 + y2 + y3
-
+    for vehicle in vehicles:
+        string = string + str(vehicle)
     return string
 
 

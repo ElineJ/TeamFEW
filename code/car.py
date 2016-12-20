@@ -12,11 +12,9 @@ class Car(object):
         self.color = color
         self.old_pos = position
 
-    # def __eq__(self, other):
-    #     return (self.pos == other.pos)
-    #
-    # def __ne__(self, other):
-    #     return not self.__eq__(other)
+    def __str__(self):
+        return (str(self.pos.x1) + str(self.pos.x2) +
+                str(self.pos.y1) + str(self.pos.y2))
 
     def setCarPosition(self, old_pos, new_pos, Grid):
         """
@@ -24,11 +22,10 @@ class Car(object):
 
         position: a Position object.
         """
-        for i in range(0, len(Grid.vehicles)):
-            if isinstance(Grid.vehicles[i], Car):
-                if Grid.vehicles[i].pos == old_pos:
-                    Grid.vehicles[i].pos = new_pos
-                    # print "set new position"
+        for vehicle in Grid.vehicles:
+            if isinstance(vehicle, Car):
+                if vehicle.pos == old_pos:
+                    vehicle.pos = new_pos
         self.pos = new_pos
 
     def setPreviousPos(self, old_pos, new_pos, Grid):
@@ -46,12 +43,10 @@ class Car(object):
                     Grid.vehicles[i].pos = old_pos
         self.pos = old_pos
 
-    # @profile
     def move(self, direction, Grid):
         """
         Moves car to new position
         """
-        self.old_pos = self.pos
 
         # movement for vertical car
         if self.orientation == 'V':
@@ -64,7 +59,7 @@ class Car(object):
                 empty_pos = pos.GridPosition(self.pos.x1, self.pos.y2)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setCarPosition(self.old_pos, new_pos, Grid)
+                    self.setCarPosition(self.pos, new_pos, Grid)
                 else:
                     return False
             elif direction == 'down':
@@ -76,7 +71,7 @@ class Car(object):
                 empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setCarPosition(self.old_pos, new_pos, Grid)
+                    self.setCarPosition(self.pos, new_pos, Grid)
                 else:
                     return False
 
@@ -90,7 +85,7 @@ class Car(object):
                 empty_pos = pos.GridPosition(self.pos.x2, self.pos.y2)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setCarPosition(self.old_pos, new_pos, Grid)
+                    self.setCarPosition(self.pos, new_pos, Grid)
                 else:
                     return False
 
@@ -104,11 +99,10 @@ class Car(object):
                 # check if move is possible
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setCarPosition(self.old_pos, new_pos, Grid)
+                    self.setCarPosition(self.pos, new_pos, Grid)
                 else:
                     return False
 
-    # @profile
     def checkMove(self, direction, Grid):
         """
         Checks if car can move to next position

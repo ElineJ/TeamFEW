@@ -58,7 +58,7 @@ def runbfs(grid, exit):
                 new_node2 = deepcopy(node)
                 if new_node2.vehicles[i].move("right", new_node2) != False:
                     # check if the car is at the exit
-                    if new_node2.vehicles[i].pos.x2 == exit.x and new_node2.vehicles[i].pos.y2 == exit.y:
+                    if new_node2.car_at_exit(new_node2.vehicles[i].pos):
                         print "--- %s seconds ---" % (time.time() - start_time)
                         return amount_steps(dictionary, check, begin)
                     # add new set-up to queue
@@ -75,23 +75,8 @@ def make_string(node):
     of all vehicles in the current grid.
     """
     string = ""
-    for i in range(0, len(node.vehicles)):
-        if isinstance(node.vehicles[i], car.Car):
-            x1 = str(node.vehicles[i].pos.x1)
-            x2 = str(node.vehicles[i].pos.x2)
-            y1 = str(node.vehicles[i].pos.y1)
-            y2 = str(node.vehicles[i].pos.y2)
-            string = string + x1 + x2 + y1 + y2
-
-        elif isinstance(node.vehicles[i], truck.Truck):
-            x1 = str(node.vehicles[i].pos.x1)
-            x2 = str(node.vehicles[i].pos.x2)
-            x3 = str(node.vehicles[i].pos.x3)
-            y1 = str(node.vehicles[i].pos.y1)
-            y2 = str(node.vehicles[i].pos.y2)
-            y3 = str(node.vehicles[i].pos.y3)
-            string = string + x1 + x2 + x3 + y1 + y2 + y3
-
+    for vehicle in node.vehicles:
+        string = string + str(vehicle)
     return string
 
 

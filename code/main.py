@@ -2,7 +2,7 @@
 import sys
 sys.dont_write_bytecode = True
 from copy import deepcopy
-import rndom as rd
+import rndom_2 as rd
 import positions as pos
 import csvtries
 import bfs
@@ -23,13 +23,13 @@ else:
 
 # set up exits for each of the games
 if game == 1 or game == 2 or game == 3:
-    exit = pos.GridPosition(5, 2)
+    exit = pos.CarPosition(4, 5, 2, 2)
     width, height = 6, 6
 elif game == 4 or game == 5 or game == 6:
-    exit = pos.GridPosition(8, 4)
+    exit = pos.CarPosition(7, 8, 4, 4)
     width, height = 9, 9
 elif game == 7:
-    exit = pos.GridPosition(11, 5)
+    exit = pos.CarPosition(10, 11, 5, 5)
     width, height = 12, 12
 
 # set up grid with vehicles
