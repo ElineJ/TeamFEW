@@ -22,6 +22,20 @@ Give examples of how to check if matplotlib is installed
 
 ## Methods (TODO)
 
+## Files ##
+
+File          | Description
+------------- | -------------
+main          | Main file to run the program
+bfs           | A breadth first algorithm 
+rndm          | A random algorithm
+positions     | Position classes for Grid, Car and Truck
+grid          | Implementation of the grid of the game
+car           | Car 
+truck         | truck
+visualize     | Visualization of the game
+csvtries      | File to import the game data from csv and set-up board
+
 ## Running the tests (TODO)
 
 Explain how to run the automated tests for this system
