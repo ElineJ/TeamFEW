@@ -32,10 +32,8 @@ class Car(object):
 
         position: a Position object.
         """
-        for vehicle in Grid.vehicles:
-            if isinstance(vehicle, Car):
-                if vehicle.pos == old_pos:
-                    vehicle.pos = new_pos
+        car = Grid.vehicles.index(self)
+        Grid.vehicles[car].pos = new_pos
         self.pos = new_pos
 
     def setPreviousPos(self, old_pos, new_pos, Grid):

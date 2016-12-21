@@ -38,10 +38,8 @@ class Truck(object):
 
         position: a Position object.
         """
-        for i in range(0, len(Grid.vehicles)):
-            if isinstance(Grid.vehicles[i], Truck):
-                if (Grid.vehicles[i].pos == old_pos):
-                    Grid.vehicles[i].pos = new_pos
+        truck = Grid.vehicles.index(self)
+        Grid.vehicles[truck].pos = new_pos
         self.pos = new_pos
 
     # @profile
