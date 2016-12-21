@@ -1,6 +1,6 @@
 from copy import deepcopy
 import time
-# import visualize as vis
+import visualize as vis
 import car
 import truck
 start_time = time.time()
@@ -60,7 +60,7 @@ def runbfs(grid, exit):
                     # check if the car is at the exit
                     if new_node2.car_at_exit(new_node2.vehicles[i].pos):
                         print "--- %s seconds ---" % (time.time() - start_time)
-                        return amount_steps(dictionary, check, begin)
+                        return amount_steps(dictionary, check, begin, new_node2)
                     # add new set-up to queue
                     else:
                         string = make_string(new_node2)
@@ -89,18 +89,59 @@ def add_dictionary(string, dictionary, check):
     dictionary.update(dict2)
 
 
-def amount_steps(dictionary, parent, begin):
+def amount_steps(dictionary, parent, begin, grid):
     """
     Counts the steps it has taken for the red car
     to get to the exit.
     """
     counter = 0
+    steps = []
     while parent:
         for key, value in dictionary.iteritems():
             node = key
             if parent == node:
                 counter += 1
+                steps.insert(0, node)
                 if parent == begin:
                     print "Counter = " + str(counter)
+                    #print steps
+                    visualobject(steps, grid)
                     return counter
                 parent = value
+
+def visualobject(steps, grid):
+    # open window with visualization
+    anim = vis.Visualization(width, width, vehicles)
+
+    # go through all set ups in list
+    for i in range(0, len(steps)):
+        counter = 0
+
+        # change coordinates for cars and trucks in grid
+        for j in range(0, len(grid.vehicles)):
+            string = steps[i]
+            if isinstance(grid.vehicles[j], truck.Truck):
+                x1 = string[counter]
+                x2 = string[counter + 1]
+                x3 = string[counter + 2]
+                y1 = string[counter + 3]
+                y2 = string[counter + 4]
+                y3 = string[counter + 5]
+                counter += 6
+                grid.vehicles[j].pos.x1 = x1
+                grid.vehicles[j].pos.x2 = x2
+                grid.vehicles[j].pos.x3 = x3
+                grid.vehicles[j].pos.y1 = y1
+                grid.vehicles[j].pos.y2 = y2
+                grid.vehicles[j].pos.y3 = y3
+            elif isinstance(grid.vehicles[j], car.Car):
+                x1 = string[counter]
+                x2 = string[counter + 1]
+                y1 = string[counter + 2]
+                y2 = string[counter + 3]
+                counter += 4
+                grid.vehicles[j].pos.x1 = x1
+                grid.vehicles[j].pos.x2 = x2
+                grid.vehicles[j].pos.y1 = y1
+                grid.vehicles[j].pos.y2 = y2
+        anim.update(vehicles)
