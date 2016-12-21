@@ -32,7 +32,7 @@ rndm          | A random algorithm
 positions     | Position classes for Grid, Car and Truck
 grid          | Implementation of the grid of the game
 car           | Car 
-truck         | truck
+truck         | Truck
 visualize     | Visualization of the game
 csvtries      | File to import the game data from csv and set-up board
 
