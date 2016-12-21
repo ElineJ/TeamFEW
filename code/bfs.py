@@ -111,7 +111,7 @@ def amount_steps(dictionary, parent, begin, grid):
 
 def visualobject(steps, grid):
     # open window with visualization
-    anim = vis.Visualization(6, 6, grid.vehicles)
+    anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
 
     # go through all set ups in list
     for i in range(0, len(steps)):
@@ -121,27 +121,17 @@ def visualobject(steps, grid):
         for j in range(0, len(grid.vehicles)):
             string = steps[i]
             if isinstance(grid.vehicles[j], truck.Truck):
-                x1 = string[counter]
-                x2 = string[counter + 1]
-                x3 = string[counter + 2]
-                y1 = string[counter + 3]
-                y2 = string[counter + 4]
-                y3 = string[counter + 5]
+                grid.vehicles[j].pos.x1 = string[counter]
+                grid.vehicles[j].pos.x2 = string[counter + 1]
+                grid.vehicles[j].pos.x3 = string[counter + 2]
+                grid.vehicles[j].pos.y1 = string[counter + 3]
+                grid.vehicles[j].pos.y2 = string[counter + 4]
+                grid.vehicles[j].pos.y3 = string[counter + 5]
                 counter += 6
-                grid.vehicles[j].pos.x1 = x1
-                grid.vehicles[j].pos.x2 = x2
-                grid.vehicles[j].pos.x3 = x3
-                grid.vehicles[j].pos.y1 = y1
-                grid.vehicles[j].pos.y2 = y2
-                grid.vehicles[j].pos.y3 = y3
             elif isinstance(grid.vehicles[j], car.Car):
-                x1 = string[counter]
-                x2 = string[counter + 1]
-                y1 = string[counter + 2]
-                y2 = string[counter + 3]
+                grid.vehicles[j].pos.x1 = string[counter]
+                grid.vehicles[j].pos.x2 = string[counter + 1]
+                grid.vehicles[j].pos.y1 = string[counter + 2]
+                grid.vehicles[j].pos.y2 = string[counter + 3]
                 counter += 4
-                grid.vehicles[j].pos.x1 = x1
-                grid.vehicles[j].pos.x2 = x2
-                grid.vehicles[j].pos.y1 = y1
-                grid.vehicles[j].pos.y2 = y2
         anim.update(grid.vehicles)
