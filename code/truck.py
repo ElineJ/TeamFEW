@@ -61,6 +61,7 @@ class Truck(object):
                     empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
+                    return True
                 else:
                     return False
             elif direction == 'down':
@@ -74,6 +75,7 @@ class Truck(object):
                     empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
+                    return True
                 else:
                     return False
 
@@ -89,6 +91,7 @@ class Truck(object):
                     empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
+                    return True
                 else:
                     return False
             elif direction == 'right':
@@ -102,6 +105,7 @@ class Truck(object):
                     empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
+                    return True
                 else:
                     return False
 

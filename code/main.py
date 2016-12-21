@@ -44,8 +44,8 @@ def main():
 
     # open visualization
     # anim = vis.Visualization(width, width, grid_rnd.vehicles)
-    # print "--- Random algoritme ---"
-    # rd.runrandom(grid_rnd, exit)
+    print "--- Random algoritme ---"
+    rd.runrandom(grid_rnd, exit)
     print "--- bfs ---"
     bfs.runbfs(grid_test, exit)
 

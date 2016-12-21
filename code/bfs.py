@@ -31,14 +31,14 @@ def runbfs(grid, exit):
             if node.vehicles[i].orientation == "V":
                 # use deepcopy to make a copy of nodes and the objects in node
                 new_node = node.copy_grid()
-                if new_node.vehicles[i].move("up", new_node) != False:
+                if new_node.vehicles[i].move("up", new_node):
                     # add new set-up to queue
                     string = make_string(new_node)
                     if string not in dictionary:
                         add_dictionary(string, dictionary, check)
                         queue.append(new_node)
                 new_node2 = node.copy_grid()
-                if new_node2.vehicles[i].move("down", new_node2) != False:
+                if new_node2.vehicles[i].move("down", new_node2):
                     # add new set-up to queue
                     string = make_string(new_node2)
                     if string not in dictionary:
@@ -48,14 +48,14 @@ def runbfs(grid, exit):
             # move horizontal vehicles
             elif node.vehicles[i].orientation == "H":
                 new_node = node.copy_grid()
-                if new_node.vehicles[i].move("left", new_node) != False:
+                if new_node.vehicles[i].move("left", new_node):
                     # add set-up to dictionary
                     string = make_string(new_node)
                     if string not in dictionary:
                         add_dictionary(string, dictionary, check)
                         queue.append(new_node)
                 new_node2 = node.copy_grid()
-                if new_node2.vehicles[i].move("right", new_node2) != False:
+                if new_node2.vehicles[i].move("right", new_node2):
                     # check if the car is at the exit
                     if new_node2.car_at_exit(new_node2.vehicles[i].pos):
                         print "--- %s seconds ---" % (time.time() - start_time)
