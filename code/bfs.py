@@ -111,7 +111,7 @@ def amount_steps(dictionary, parent, begin, grid):
 
 def visualobject(steps, grid):
     # open window with visualization
-    anim = vis.Visualization(width, width, vehicles)
+    anim = vis.Visualization(6, 6, grid.vehicles)
 
     # go through all set ups in list
     for i in range(0, len(steps)):
@@ -144,4 +144,4 @@ def visualobject(steps, grid):
                 grid.vehicles[j].pos.x2 = x2
                 grid.vehicles[j].pos.y1 = y1
                 grid.vehicles[j].pos.y2 = y2
-        anim.update(vehicles)
+        anim.update(grid.vehicles)
