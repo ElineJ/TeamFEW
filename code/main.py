@@ -15,7 +15,7 @@ games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #3.csv', '../datasets/Game #4.csv',
          '../datasets/Game #5.csv', '../datasets/Game #6.csv',
          '../datasets/Game #7.csv']
-
+# @profile
 def main():
     # check if game exists, open file for game
     game = int(sys.argv[1])
@@ -44,8 +44,8 @@ def main():
 
     # open visualization
     # anim = vis.Visualization(width, width, grid_rnd.vehicles)
-    print "--- Random algoritme ---"
-    rd.runrandom(grid_rnd, exit)
+    # print "--- Random algoritme ---"
+    # rd.runrandom(grid_rnd, exit)
     print "--- bfs ---"
     bfs.runbfs(grid_test, exit)
 

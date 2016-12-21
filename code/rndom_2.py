@@ -60,8 +60,8 @@ def runrandom(grid, exit):
                             del results[:]
                             results.append(moves)
                             results.append("%.6s" % (time.time() - start_time))
-                            print "Moves:", moves
-                            print("--- %s seconds ---" % (time.time() - start_time))
+                            # print "Moves:", moves
+                            # print("--- %s seconds ---" % (time.time() - start_time))
                             # print moves,("%s seconds" % (time.time() - start_time))
                             return results
     # anim.done()

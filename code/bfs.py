@@ -1,4 +1,3 @@
-from copy import deepcopy
 import time
 import visualize as vis
 import car
@@ -68,7 +67,7 @@ def runbfs(grid, exit):
                             add_dictionary(string, dictionary, check)
                             queue.append(new_node2)
 
-
+# @profile
 def make_string(node):
     """
     Creates a unique string of the position coordinates
@@ -79,7 +78,7 @@ def make_string(node):
         string = string + str(vehicle)
     return string
 
-
+# @profile
 def add_dictionary(string, dictionary, check):
     """
     Adds a unique string of vehicle positions to
@@ -104,38 +103,38 @@ def amount_steps(dictionary, parent, begin, grid):
                 steps.insert(0, node)
                 if parent == begin:
                     print "Counter = " + str(counter)
-                    #print steps
-                    visualobject(steps, grid)
+                    # print steps
+                    # visualobject(steps, grid)
                     return counter
                 parent = value
 
-def visualobject(steps, grid):
-    """
-    Translates the array of coordinates into grid objects
-    for the visualization.
-    """
-    # open window with visualization
-    anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
-
-    # go through all set ups in list
-    for i in range(0, len(steps)):
-        counter = 0
-
-        # change coordinates for cars and trucks in grid
-        for j in range(0, len(grid.vehicles)):
-            string = steps[i]
-            if isinstance(grid.vehicles[j], truck.Truck):
-                grid.vehicles[j].pos.x1 = string[counter]
-                grid.vehicles[j].pos.x2 = string[counter + 1]
-                grid.vehicles[j].pos.x3 = string[counter + 2]
-                grid.vehicles[j].pos.y1 = string[counter + 3]
-                grid.vehicles[j].pos.y2 = string[counter + 4]
-                grid.vehicles[j].pos.y3 = string[counter + 5]
-                counter += 6
-            elif isinstance(grid.vehicles[j], car.Car):
-                grid.vehicles[j].pos.x1 = string[counter]
-                grid.vehicles[j].pos.x2 = string[counter + 1]
-                grid.vehicles[j].pos.y1 = string[counter + 2]
-                grid.vehicles[j].pos.y2 = string[counter + 3]
-                counter += 4
-        anim.update(grid.vehicles)
+# def visualobject(steps, grid):
+#     """
+#     Translates the array of coordinates into grid objects
+#     for the visualization.
+#     """
+#     # open window with visualization
+#     anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
+#
+#     # go through all set ups in list
+#     for i in range(0, len(steps)):
+#         counter = 0
+#
+#         # change coordinates for cars and trucks in grid
+#         for j in range(0, len(grid.vehicles)):
+#             string = steps[i]
+#             if isinstance(grid.vehicles[j], truck.Truck):
+#                 grid.vehicles[j].pos.x1 = string[counter]
+#                 grid.vehicles[j].pos.x2 = string[counter + 1]
+#                 grid.vehicles[j].pos.x3 = string[counter + 2]
+#                 grid.vehicles[j].pos.y1 = string[counter + 3]
+#                 grid.vehicles[j].pos.y2 = string[counter + 4]
+#                 grid.vehicles[j].pos.y3 = string[counter + 5]
+#                 counter += 6
+#             elif isinstance(grid.vehicles[j], car.Car):
+#                 grid.vehicles[j].pos.x1 = string[counter]
+#                 grid.vehicles[j].pos.x2 = string[counter + 1]
+#                 grid.vehicles[j].pos.y1 = string[counter + 2]
+#                 grid.vehicles[j].pos.y2 = string[counter + 3]
+#                 counter += 4
+#         anim.update(grid.vehicles)

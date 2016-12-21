@@ -53,7 +53,7 @@ def test():
         result = rd.runrandom(new_grid, exit)
         # print result
         # add result to csv file
-        with open('../results/test.csv', 'a') as testFile:
+        with open('../results/random2_3.csv', 'a') as testFile:
             testFileWriter = csv.writer(testFile)
             testFileWriter.writerow(result)
 

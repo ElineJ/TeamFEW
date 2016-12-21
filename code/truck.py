@@ -55,10 +55,10 @@ class Truck(object):
                 y1 = self.pos.y1 - 1
                 y2 = self.pos.y2 - 1
                 y3 = self.pos.y3 - 1
-                new_pos = pos.TruckPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 check_pos = pos.GridPosition(self.pos.x1, y1)
-                empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                 if Grid.isPositionEmpty(check_pos):
+                    new_pos = pos.TruckPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
+                    empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
@@ -68,10 +68,10 @@ class Truck(object):
                 y1 = self.pos.y1 + 1
                 y2 = self.pos.y2 + 1
                 y3 = self.pos.y3 + 1
-                new_pos = pos.TruckPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
                 check_pos = pos.GridPosition(self.pos.x1, y3)
-                empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 if Grid.isPositionEmpty(check_pos):
+                    new_pos = pos.TruckPosition(self.pos.x1, self.pos.x2, self.pos.x3, y1, y2, y3)
+                    empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
@@ -83,10 +83,10 @@ class Truck(object):
                 x1 = self.pos.x1 - 1
                 x2 = self.pos.x2 - 1
                 x3 = self.pos.x3 - 1
-                new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 check_pos = pos.GridPosition(x1, self.pos.y1)
-                empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                 if Grid.isPositionEmpty(check_pos):
+                    new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
+                    empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
@@ -96,10 +96,10 @@ class Truck(object):
                 x1 = self.pos.x1 + 1
                 x2 = self.pos.x2 + 1
                 x3 = self.pos.x3 + 1
-                new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
                 check_pos = pos.GridPosition(x3, self.pos.y1)
-                empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 if Grid.isPositionEmpty(check_pos):
+                    new_pos = pos.TruckPosition(x1, x2, x3, self.pos.y1, self.pos.y2, self.pos.y3)
+                    empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                     Grid.updateEmptyPosition(check_pos, empty_pos)
                     self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
