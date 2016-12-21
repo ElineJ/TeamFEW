@@ -110,6 +110,10 @@ def amount_steps(dictionary, parent, begin, grid):
                 parent = value
 
 def visualobject(steps, grid):
+    """
+    Translates the array of coordinates into grid objects
+    for the visualization.
+    """
     # open window with visualization
     anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
 
