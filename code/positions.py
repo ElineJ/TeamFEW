@@ -36,6 +36,7 @@ class CarPosition(object):
         self.x2 = int(x2)
         self.y1 = int(y1)
         self.y2 = int(y2)
+        self.id = str(x1) + str(x2) + str(y1) + str(y2)
 
     def __eq__(self, other):
         return (self.x1 == other.x1 and
@@ -69,6 +70,8 @@ class TruckPosition(object):
         self.y1 = int(y1)
         self.y2 = int(y2)
         self.y3 = int(y3)
+        self.id = (str(x1) + str(x2) + str(x3) +
+                  str(y1) + str(y2) + str(y3))
 
     def __eq__(self, other):
         return (self.x1 == other.x1 and

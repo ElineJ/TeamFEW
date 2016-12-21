@@ -59,12 +59,17 @@ class Grid(object):
         """
         Creates a unique copy of current grid
         """
+        # create new instance of grid and delete previous attributes
         gridcopy = Grid(self.width, self.height, self.exit)
-        for i in range(0, gridcopy.height):
-            for j in range(0, gridcopy.width):
-                new_grid = pos.GridPosition(i, j)
-                gridcopy.empty_grid.add(new_grid)
+        gridcopy.empty_grid.clear()
+        del gridcopy.vehicles[:]
 
+        # add empty_grid positions
+        for empty in self.empty_grid:
+            empty_pos = pos.GridPosition(empty.x, empty.y)
+            gridcopy.empty_grid.add(empty_pos)
+
+        # add vehicles to grid
         for vehicle in self.vehicles:
             if isinstance(vehicle, car.Car):
                 new_car = car.Car(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2, vehicle.orientation, vehicle.color)
@@ -73,5 +78,4 @@ class Grid(object):
                 new_truck = truck.Truck(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3, vehicle.orientation, vehicle.color)
                 gridcopy.vehicles.append(new_truck)
 
-        gridcopy.removeEmptyGrid()
         return gridcopy

@@ -11,10 +11,20 @@ class Car(object):
         self.orientation = orientation
         self.color = color
         self.old_pos = position
+        self.type = "car"
 
     def __str__(self):
         return (str(self.pos.x1) + str(self.pos.x2) +
                 str(self.pos.y1) + str(self.pos.y2))
+
+    def __eq__(self, other):
+        return (self.type == other.type and self.pos.id == other.pos.id)
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __hash__(self):
+        return hash(self.type + self.pos.id)
 
     def setCarPosition(self, old_pos, new_pos, Grid):
         """

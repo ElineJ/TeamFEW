@@ -10,10 +10,20 @@ class Truck(object):
         self.pos = position
         self.orientation = orientation
         self.color = color
+        self.type = "truck"
 
     def __str__(self):
         return (str(self.pos.x1) + str(self.pos.x2) + str(self.pos.x3) +
                 str(self.pos.y1) + str(self.pos.y2) + str(self.pos.y3))
+
+    def __eq__(self, other):
+        return (self.type == other.type and self.pos.id == other.pos.id)
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __hash__(self):
+        return hash(self.type + self.pos.id)
 
     def getTruckPosition(self):
         """
@@ -40,8 +50,6 @@ class Truck(object):
         Moves truck to new position
         """
 
-        old_pos = self.getTruckPosition()
-
         # movement for vertical Truck
         if self.orientation == 'V':
             # move vertical Truck up
@@ -54,7 +62,7 @@ class Truck(object):
                 empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setTruckPosition(old_pos, new_pos, Grid)
+                    self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
                     return False
             elif direction == 'down':
@@ -67,7 +75,7 @@ class Truck(object):
                 empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setTruckPosition(old_pos, new_pos, Grid)
+                    self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
                     return False
 
@@ -82,7 +90,7 @@ class Truck(object):
                 empty_pos = pos.GridPosition(self.pos.x3, self.pos.y3)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setTruckPosition(old_pos, new_pos, Grid)
+                    self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
                     return False
             elif direction == 'right':
@@ -95,7 +103,7 @@ class Truck(object):
                 empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
                 if Grid.isPositionEmpty(check_pos):
                     Grid.updateEmptyPosition(check_pos, empty_pos)
-                    self.setTruckPosition(old_pos, new_pos, Grid)
+                    self.setTruckPosition(self.pos, new_pos, Grid)
                 else:
                     return False
 
