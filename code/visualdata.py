@@ -12,14 +12,27 @@ games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #5.csv', '../datasets/Game #6.csv',
          '../datasets/Game #7.csv']
 
+# TODO: add datasets
+datasets = ['none', '../results/gameresult1.csv', '..results/gameresult2.csv',
+        '../results/gameresult3.csv']
+
 def run():
     """
     Visualizes one of the games using a dataset containing the path
     found using the breadth-first search algorithm.
     """
 
+    # create list of steps
+    steps = []
+
     # get the dataset of the path
-    data = sys.argv[1]
+    data = int(sys.argv[1])
+    if data == 0 or data > 7:
+        sys.exit("Game does not exist, choose 1 - 7")
+    else:
+        f = open(datasets[data], 'rb')
+        reader = csv.reader(f)
+        steps = list(reader)
 
     # get the grid of the game
     game = int(sys.argv[2])
@@ -41,14 +54,6 @@ def run():
 
     # set up grid with vehicles
     grid = csvtries.run(f, width, height, exit)
-
-    # create list of steps
-    steps = []
-
-    # open data of paht
-    with open(data, 'rb') as f:
-        reader = csv.reader(f)
-        steps = list(reader)
 
     # open window with visualization
     anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
