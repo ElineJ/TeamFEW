@@ -25,9 +25,6 @@ The number represents one of the four boards the algoritm can solve with the bre
 
 The code is written in `Python 2.7`. Running it in Python 3 might cause problems. Running the program requires installation of `Matplotlib`. If this is not yet installed on your computer, you can find installation instructions for your operating system [here](http://matplotlib.org/users/installing.html).
 
-```
-Give examples of how to check if matplotlib is installed
-```
 
 ## Methods
 
@@ -36,14 +33,17 @@ Give examples of how to check if matplotlib is installed
 File          | Description
 ------------- | -------------
 main          | Main file to run the program
-bfs           | A breadth first algorithm 
+bfs           | A breadth-first search algorithm 
 rndm          | A random algorithm
+rndm_2        | A second random algorithm
+combo         | A combination algorithm of random and breadth-first search
 positions     | Position classes for Grid, Car and Truck
 grid          | Implementation of the grid of the game
 car           | Car 
 truck         | Truck
 visualize     | Visualization of the game
 csvtries      | File to import the game data from csv and set-up board
+visualdata    | File to visualize breadth-first search solution of games 1 - 4
 
 
 ## Authors
