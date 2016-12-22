@@ -12,7 +12,6 @@ games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #5.csv', '../datasets/Game #6.csv',
          '../datasets/Game #7.csv']
 
-# TODO: add datasets
 datasets = ['none', '../results/gameresult1.csv', '../results/gameresult2.csv',
         '../results/gameresult3.csv', '../results/gameresult4.csv']
 
