@@ -1,7 +1,7 @@
 import sys
 sys.dont_write_bytecode = True
 import csv
-import rndom_2 as rd
+import combo as cmb
 import positions as pos
 import csvtries
 import bfs
@@ -34,6 +34,8 @@ def test():
 
     num_runs = int(sys.argv[2])
 
+    max_moves = int(sys.argv[3])
+
     # # check which exit to use
     # if width == 6:
     #     exit = pos.GridPosition(5, 2)
@@ -43,22 +45,16 @@ def test():
     #     exit = pos.GridPosition(11, 5)
 
     # set up grid with vehicles
-    grid_rnd = csvtries.run(f, width, height, exit)
+    grid = csvtries.run(f, width, height, exit)
     # grid_bfs = deepcopy(grid_rnd)
     f.close()
 
-    for i in range(0, num_runs):
-        new_grid = grid_rnd.copy_grid()
-        # print "--- Random algoritme ---"
-        result = rd.runrandom(new_grid, exit)
+    cmb.runcombo(grid, exit, num_runs, max_moves)
         # print result
-        # add result to csv file
-        with open('../results/random2_7.csv', 'a') as testFile:
-            testFileWriter = csv.writer(testFile)
-            testFileWriter.writerow(result)
+
 
     print "done"
 
-
 if __name__ == "__main__":
     test()
+
