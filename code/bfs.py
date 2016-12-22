@@ -1,4 +1,3 @@
-from copy import deepcopy
 import time
 #import visualize as vis
 import car
@@ -31,14 +30,14 @@ def runbfs(grid, exit):
             if node.vehicles[i].orientation == "V":
                 # use copy function to make a copy of nodes and the objects in node
                 new_node = node.copy_grid()
-                if new_node.vehicles[i].move("up", new_node) != False:
+                if new_node.vehicles[i].move("up", new_node):
                     # add new set-up to queue
                     string = make_string(new_node)
                     if string not in dictionary:
                         add_dictionary(string, dictionary, check)
                         queue.append(new_node)
                 new_node2 = node.copy_grid()
-                if new_node2.vehicles[i].move("down", new_node2) != False:
+                if new_node2.vehicles[i].move("down", new_node2):
                     # add new set-up to queue
                     string = make_string(new_node2)
                     if string not in dictionary:
@@ -48,14 +47,14 @@ def runbfs(grid, exit):
             # move horizontal vehicles
             elif node.vehicles[i].orientation == "H":
                 new_node = node.copy_grid()
-                if new_node.vehicles[i].move("left", new_node) != False:
+                if new_node.vehicles[i].move("left", new_node):
                     # add set-up to dictionary
                     string = make_string(new_node)
                     if string not in dictionary:
                         add_dictionary(string, dictionary, check)
                         queue.append(new_node)
                 new_node2 = node.copy_grid()
-                if new_node2.vehicles[i].move("right", new_node2) != False:
+                if new_node2.vehicles[i].move("right", new_node2):
                     # check if the car is at the exit
                     if new_node2.car_at_exit(new_node2.vehicles[i].pos):
                         print "--- %s seconds ---" % (time.time() - start_time)
@@ -67,7 +66,7 @@ def runbfs(grid, exit):
                             add_dictionary(string, dictionary, check)
                             queue.append(new_node2)
 
-
+# @profile
 def make_string(node):
     """
     Creates a unique string of the position coordinates
@@ -78,7 +77,7 @@ def make_string(node):
         string = string + str(vehicle)
     return string
 
-
+# @profile
 def add_dictionary(string, dictionary, check):
     """
     Adds a unique string of vehicle positions to
@@ -103,8 +102,8 @@ def amount_steps(dictionary, parent, begin, grid):
                 steps.insert(0, node)
                 if parent == begin:
                     print "Counter = " + str(counter)
-                    #print steps
-                    visualobject(steps, grid)
+                    # print steps
+                    # visualobject(steps, grid)
                     return counter
                 parent = value
 

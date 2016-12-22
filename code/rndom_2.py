@@ -39,7 +39,7 @@ def runrandom(grid, exit):
             # move vertical car in a random direction
             if vehicle.orientation == 'V':
                 direction = v_direction[number]
-                if vehicle.move(direction, grid) != False:
+                if vehicle.move(direction, grid):
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
@@ -48,7 +48,7 @@ def runrandom(grid, exit):
             # move horizontal car into a random direction
             elif vehicle.orientation == 'H':
                 direction = h_direction[number]
-                if vehicle.move(direction, grid) != False:
+                if vehicle.move(direction, grid):
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
