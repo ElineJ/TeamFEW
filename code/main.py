@@ -10,6 +10,7 @@ import car
 import truck
 import visualize as vis
 
+
 # array of all files for the games
 games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #3.csv', '../datasets/Game #4.csv',

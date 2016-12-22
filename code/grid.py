@@ -19,7 +19,6 @@ class Grid(object):
         empty_grid = set()
         self.empty_grid = empty_grid
 
-
     def car_at_exit(self, pos):
         """
         Checks if the red car is at the exit
@@ -66,20 +65,11 @@ class Grid(object):
         gridcopy = Grid(self.width, self.height, self.exit)
         gridcopy.empty_grid.clear()
         del gridcopy.vehicles[:]
-
         # add empty_grid positions
         for empty in self.empty_grid:
-            # empty_pos = pos.GridPosition(empty.x, empty.y)
             gridcopy.empty_grid.add(pos.GridPosition(empty.x, empty.y))
-
         # add vehicles to grid
         for vehicle in self.vehicles:
             gridcopy.vehicles.append(vehicle.copy_self())
-            # if isinstance(vehicle, car.Car):
-            #     new_car = car.Car(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2, vehicle.orientation, vehicle.color)
-            #     gridcopy.vehicles.append(new_car)
-            # elif isinstance(vehicle, truck.Truck):
-            #     new_truck = truck.Truck(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3, vehicle.orientation, vehicle.color)
-            #     gridcopy.vehicles.append(new_truck)
 
         return gridcopy
