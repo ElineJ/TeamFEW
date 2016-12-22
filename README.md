@@ -9,11 +9,11 @@ In `main` the program will run the `random` and `breadth first search` algorithm
 python main.py 1
 ```
 
-The number represents one of the seven boards the algoritm can solve. In order to have the algorithm solve one of the other seven boards, enter a different number between 1 - 7. You can run the program in the terminal with the following command: 
+The number represents one of the seven boards the algoritm can solve. In order to have the algorithm solve one of the other seven boards, enter a different number between 1 - 7. 
 
 -----
 
-In `visualdata` the program will run a visualisation of the boards 1 - 4, which have already been solved by a breadth-first search algorithm. 
+In `visualdata` the program will run a visualisation of the boards 1 - 4, which have already been solved by a breadth-first search algorithm. You can run the program in the terminal with the following command: 
 
 ```
 python visualdata.py 1
