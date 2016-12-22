@@ -2,7 +2,7 @@
 import sys
 sys.dont_write_bytecode = True
 from copy import deepcopy
-import rndom_2 as rd
+import rndom as rd
 import positions as pos
 import csvtries
 import bfs
@@ -48,7 +48,7 @@ def main():
     # open visualization
     # anim = vis.Visualization(width, width, grid_rnd.vehicles)
     print "--- Random algoritme ---"
-    rd.runrandom(grid_rnd, exit)
+    rd.runrandom(grid_rnd)
     print "--- bfs ---"
     bfs.runbfs(grid_test, exit)
 

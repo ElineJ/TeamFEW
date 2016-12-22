@@ -1,3 +1,7 @@
+"""
+Csvtries.py: imports csv dataset for a game
+and sets up grid with vehicles
+"""
 import csv
 import grid as g
 import car
@@ -5,88 +9,35 @@ import truck
 
 
 def run(dataset, width, height, exit):
-
+    """
+    Runs csvtries for the specified dataset,
+    with given width, height and exit position
+    """
     grid = g.Grid(width, height, exit)
-    # open csv file
     f = dataset
 
     try:
+        # open reading and skip first line
         reader = csv.reader(f)
-        # skip first line of csv file
         next(reader)
 
         for row in reader:
-            # check whether the vehicle is a car or a truck or a redcar
-            if row[0] == "car":
-                # get string of x coordinates
-                str = row[1]
-                # split this string
-                list = str.split(", ")
-                # save values from list
-                x1 = list[0]
-                x2 = list[1]
-                # get string of y coordinates
-                str = row[2]
-                # split this string
-                list = str.split(", ")
-                # save values from list
-                y1 = list[0]
-                y2 = list[1]
-
-                newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
-                grid.vehicles.append(newCar)
-
+            if row[0] == "car" or row[0] == "redcar":
+                # get the coordinates
+                x = row[1].split(", ")
+                y = row[2].split(", ")
+                # create new vehicle
+                new_car = car.Car(x[0], x[1], y[0], y[1], row[3], row[4])
+                grid.vehicles.append(new_car)
             elif row[0] == "truck":
-                # get string of x coordinates
-                str = row[1]
+                # get the coordinates
+                x = row[1].split(", ")
+                y = row[2].split(", ")
+                # create new vehicle
+                new_truck = truck.Truck(x[0], x[1], x[2], y[0], y[1], y[2], row[3], row[4])
+                grid.vehicles.append(new_truck)
 
-                # split this string
-                list = str.split(", ")
-
-                # save values from list
-                x1 = list[0]
-                x2 = list[1]
-                x3 = list[2]
-
-                # get string of y coordinates
-                str = row[2]
-
-                # split this string
-                list = str.split(", ")
-
-                # save values from list
-                y1 = list[0]
-                y2 = list[1]
-                y3 = list[2]
-
-                newTruck = truck.Truck(x1, x2, x3, y1, y2, y3, row[3], row[4])
-                grid.vehicles.append(newTruck)
-
-            elif row[0] == "redcar":
-                # get string of x coordinates
-                str = row[1]
-
-                # split this string
-                list = str.split(", ")
-
-                # save values from list
-                x1 = list[0]
-                x2 = list[1]
-
-                # get string of y coordinates
-                str = row[2]
-
-                # split this string
-                list = str.split(", ")
-
-                # save values from list
-                y1 = list[0]
-                y2 = list[1]
-
-                newCar = car.Car(x1, x2, y1, y2, row[3], row[4])
-                grid.vehicles.append(newCar)
     finally:
-        # close file
         f.close()
         grid.removeEmptyGrid()
         return grid

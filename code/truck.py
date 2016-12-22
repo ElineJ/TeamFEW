@@ -1,3 +1,7 @@
+"""
+Truck.py: initializes an object truck with a position, orientation and color.
+Includes methods for moving truck up, down, left or right.
+"""
 import positions as pos
 
 
@@ -17,7 +21,7 @@ class Truck(object):
                 str(self.pos.y1) + str(self.pos.y2) + str(self.pos.y3))
 
     def __eq__(self, other):
-        return (self.type == other.type and self.pos.id == other.pos.id)
+        return self.type == other.type and self.pos.id == other.pos.id
 
     def __ne__(self, other):
         return not self.__eq__(other)
@@ -27,8 +31,8 @@ class Truck(object):
 
     def copy_self(self):
         """
-        Creates a new instance of Truck with attributes of
-        truck to be copies
+        Returns a new instance of Truck with attributes identical
+        to current truck
         """
         return Truck(self.pos.x1, self.pos.x2, self.pos.x3,
                      self.pos.y1, self.pos.y2, self.pos.y3,
@@ -39,9 +43,8 @@ class Truck(object):
     @staticmethod
     def setTruckPosition(truck, direction, a, b, c, Grid):
         """
-        Set the position of the truck to position
-
-        position: a Position object.
+        Change the current positions of truck to new
+        position depending on direction
         """
         if direction == 'up' or direction == 'down':
             Grid.vehicles[truck].pos.y1 = a
@@ -53,6 +56,10 @@ class Truck(object):
             Grid.vehicles[truck].pos.x3 = c
 
     def move_up(self, Grid):
+        """
+        Checks if truck can move up. If True it creates a copy of Grid,
+        moves the truck in this copy and returns it.
+        """
         y1, y2, y3 = self.pos.y1 - 1, self.pos.y2 - 1, self.pos.y3 - 1
         check_pos = pos.GridPosition(self.pos.x1, y1)
         if Grid.isPositionEmpty(check_pos):
@@ -65,6 +72,10 @@ class Truck(object):
         return False
 
     def move_down(self, Grid):
+        """
+        Checks if truck can move down. If True it creates a copy of Grid,
+        moves the truck in this copy and returns it.
+        """
         y1, y2, y3 = self.pos.y1 + 1, self.pos.y2 + 1, self.pos.y3 + 1
         check_pos = pos.GridPosition(self.pos.x3, y3)
         if Grid.isPositionEmpty(check_pos):
@@ -77,6 +88,10 @@ class Truck(object):
         return False
 
     def move_left(self, Grid):
+        """
+        Checks if truck can move left. If True it creates a copy of Grid,
+        moves the truck in this copy and returns it.
+        """
         x1, x2, x3 = self.pos.x1 - 1, self.pos.x2 - 1, self.pos.x3 - 1
         check_pos = pos.GridPosition(x1, self.pos.y1)
         if Grid.isPositionEmpty(check_pos):
@@ -89,6 +104,10 @@ class Truck(object):
         return False
 
     def move_right(self, Grid):
+        """
+        Checks if truck can move right. If True it creates a copy of Grid,
+        moves the truck in this copy and returns it.
+        """
         x1, x2, x3 = self.pos.x1 + 1, self.pos.x2 + 1, self.pos.x3 + 1
         check_pos = pos.GridPosition(x3, self.pos.y3)
         if Grid.isPositionEmpty(check_pos):
@@ -104,9 +123,8 @@ class Truck(object):
 
     def setNewPosition(self, direction, a, b, c, Grid):
         """
-        Set the position of the truck to position
-
-        position: a Position object.
+        Change the current positions of truck to new
+        position depending on direction
         """
         truck = Grid.vehicles.index(self)
         if direction == 'up' or direction == 'down':
@@ -120,6 +138,10 @@ class Truck(object):
         self.pos = Grid.vehicles[truck].pos
 
     def up(self, Grid):
+        """
+        Check if truck can move up. If it can, moves truck in
+        current Grid and returns True.
+        """
         y1, y2, y3 = self.pos.y1 - 1, self.pos.y2 - 1, self.pos.y3 - 1
         check_pos = pos.GridPosition(self.pos.x1, y1)
         if Grid.isPositionEmpty(check_pos):
@@ -130,6 +152,10 @@ class Truck(object):
         return False
 
     def down(self, Grid):
+        """
+        Check if truck can move down. If it can, moves truck in
+        current Grid and returns True.
+        """
         y1, y2, y3 = self.pos.y1 + 1, self.pos.y2 + 1, self.pos.y3 + 1
         check_pos = pos.GridPosition(self.pos.x3, y3)
         if Grid.isPositionEmpty(check_pos):
@@ -140,6 +166,10 @@ class Truck(object):
         return False
 
     def left(self, Grid):
+        """
+        Check if truck can move left. If it can, moves truck in
+        current Grid and returns True.
+        """
         x1, x2, x3 = self.pos.x1 - 1, self.pos.x2 - 1, self.pos.x3 - 1
         check_pos = pos.GridPosition(x1, self.pos.y1)
         if Grid.isPositionEmpty(check_pos):
@@ -150,6 +180,10 @@ class Truck(object):
         return False
 
     def right(self, Grid):
+        """
+        Check if truck can move right. If it can, moves truck in
+        current Grid and returns True.
+        """
         x1, x2, x3 = self.pos.x1 + 1, self.pos.x2 + 1, self.pos.x3 + 1
         check_pos = pos.GridPosition(x3, self.pos.y3)
         if Grid.isPositionEmpty(check_pos):
