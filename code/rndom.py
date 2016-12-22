@@ -30,6 +30,6 @@ def runrandom(grid):
                 if h_direction[number](grid):
                     moves += 1
                     if grid.car_at_exit(vehicle.pos):
-                        print "Moves:", moves
+                        print "Steps:", moves
                         print "--- %s seconds ---" % (time.time() - start_time)
                         not_at_exit = False
