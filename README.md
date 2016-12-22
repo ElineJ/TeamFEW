@@ -13,7 +13,7 @@ The number represents one of the seven boards the algoritm can solve. In order t
 
 -----
 
-In `visualdata` the program will run a visualisation of the boards 1 - 4, which are solved by a breadth-first search algorithm. 
+In `visualdata` the program will run a visualisation of the boards 1 - 4, which have already been solved by a breadth-first search algorithm. 
 
 ```
 python visualdata.py 1
