@@ -13,8 +13,6 @@ def runcombo(grid, exit, num_runs, max_moves):
     start_time = time.time()
 
     for i in range(0, num_runs):
-        v_direction = ["up", "down"]
-        h_direction = ["left", "right"]
         new_grid = grid.copy_grid()
         random_dictionary = {}
         vehicles = new_grid.vehicles
