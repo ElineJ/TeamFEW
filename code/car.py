@@ -12,12 +12,6 @@ class Car(object):
         self.color = color
         self.old_pos = position
         self.type = "car"
-        # directions = {
-        #     'up': moveUp(),
-        #     'down': moveDown(),
-        #     'left': moveLeft(),
-        #     'right': moveRight()
-        #     }
 
     def __str__(self):
         return (str(self.pos.x1) + str(self.pos.x2) +
@@ -32,7 +26,7 @@ class Car(object):
     def __hash__(self):
         return hash(self.type + self.pos.id)
 
-    # @profile
+    # # @profile
     def setCarPosition(self, direction, a, b, Grid):
         """
         Set the position of the car to position
@@ -74,7 +68,7 @@ class Car(object):
     #                 vehicle.pos = old_pos
     #     self.pos = old_pos
 
-    # @profile
+    # # @profile
     def move(self, direction, Grid):
         """
         Moves car to new position
@@ -136,6 +130,10 @@ class Car(object):
                     return True
                 else:
                     return False
+
+    def copy_self(self):
+        return Car(self.pos.x1, self.pos.x2, self.pos.y1, self.pos.y2, self.orientation, self.color)
+
 
     def checkMove(self, direction, Grid):
         """

@@ -18,10 +18,7 @@ class Grid(object):
         self.vehicles = vehicles
         empty_grid = set()
         self.empty_grid = empty_grid
-        for i in range(0, height):
-            for j in range(0, width):
-                new_grid = pos.GridPosition(i, j)
-                self.empty_grid.add(new_grid)
+
 
     def car_at_exit(self, pos):
         """
@@ -41,6 +38,11 @@ class Grid(object):
         self.empty_grid.add(new_pos)
 
     def removeEmptyGrid(self):
+        # create empty grid for all tiles
+        for i in range(0, self.height):
+            for j in range(0, self.width):
+                new_grid = pos.GridPosition(i, j)
+                self.empty_grid.add(new_grid)
 
         # create GridPosition objects for all vehicle positions
         for i in range(0, len(self.vehicles)):
@@ -55,6 +57,7 @@ class Grid(object):
                 if empty_pos3 in self.empty_grid:
                     self.empty_grid.remove(empty_pos3)
 
+    # @profile
     def copy_grid(self):
         """
         Creates a unique copy of current grid
@@ -66,16 +69,17 @@ class Grid(object):
 
         # add empty_grid positions
         for empty in self.empty_grid:
-            empty_pos = pos.GridPosition(empty.x, empty.y)
-            gridcopy.empty_grid.add(empty_pos)
+            # empty_pos = pos.GridPosition(empty.x, empty.y)
+            gridcopy.empty_grid.add(pos.GridPosition(empty.x, empty.y))
 
         # add vehicles to grid
         for vehicle in self.vehicles:
-            if isinstance(vehicle, car.Car):
-                new_car = car.Car(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2, vehicle.orientation, vehicle.color)
-                gridcopy.vehicles.append(new_car)
-            elif isinstance(vehicle, truck.Truck):
-                new_truck = truck.Truck(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3, vehicle.orientation, vehicle.color)
-                gridcopy.vehicles.append(new_truck)
+            gridcopy.vehicles.append(vehicle.copy_self())
+            # if isinstance(vehicle, car.Car):
+            #     new_car = car.Car(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.y1, vehicle.pos.y2, vehicle.orientation, vehicle.color)
+            #     gridcopy.vehicles.append(new_car)
+            # elif isinstance(vehicle, truck.Truck):
+            #     new_truck = truck.Truck(vehicle.pos.x1, vehicle.pos.x2, vehicle.pos.x3, vehicle.pos.y1, vehicle.pos.y2, vehicle.pos.y3, vehicle.orientation, vehicle.color)
+            #     gridcopy.vehicles.append(new_truck)
 
         return gridcopy

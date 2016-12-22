@@ -73,10 +73,9 @@ def make_string(node):
     Creates a unique string of the position coordinates
     of all vehicles in the current grid.
     """
-    string = ""
-    for vehicle in node.vehicles:
-        string = string + str(vehicle)
-    return string
+
+    return ''.join([str(vehicle) for vehicle in node.vehicles])
+
 
 # @profile
 def add_dictionary(string, dictionary, check):

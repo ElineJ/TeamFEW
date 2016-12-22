@@ -15,6 +15,8 @@ games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #3.csv', '../datasets/Game #4.csv',
          '../datasets/Game #5.csv', '../datasets/Game #6.csv',
          '../datasets/Game #7.csv']
+
+
 # @profile
 def main():
     # check if game exists, open file for game

@@ -53,12 +53,12 @@ def test():
         result = rd.runrandom(new_grid, exit)
         # print result
         # add result to csv file
-        with open('../results/random2_5.csv', 'a') as testFile:
+        with open('../results/random2_7.csv', 'a') as testFile:
             testFileWriter = csv.writer(testFile)
             testFileWriter.writerow(result)
 
     print "done"
 
-    
+
 if __name__ == "__main__":
     test()

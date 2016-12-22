@@ -60,24 +60,22 @@ def runrandom(grid, exit):
                             del results[:]
                             results.append(moves)
                             results.append("%.6s" % (time.time() - start_time))
-                            print "Moves:", moves
-                            print("--- %s seconds ---" % (time.time() - start_time))
+                            # print "Moves:", moves
+                            # print("--- %s seconds ---" % (time.time() - start_time))
                             # print moves,("%s seconds" % (time.time() - start_time))
                             return results
     # anim.done()
 
-
+# @profile
 def make_string(vehicles):
     """
     Creates a unique string of the position coordinates
     of all vehicles in the current grid.
     """
-    string = ""
-    for vehicle in vehicles:
-        string = string + str(vehicle)
-    return string
+    return ''.join([str(vehicle) for vehicle in vehicles])
 
 
+# @profile
 def add_dictionary(string, dictionary):
     """
     Adds unique string of vehicle positions to
