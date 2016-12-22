@@ -45,17 +45,6 @@ truck         | Truck
 visualize     | Visualization of the game
 csvtries      | File to import the game data from csv and set-up board
 
-## Running the tests (TODO)
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests (TODO)
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Authors
 
@@ -63,8 +52,3 @@ Give an example
 * Fjodor van Rijsselberg - [fjodor-rs](https://github.com/fjodor-rs)
 * Eline Jacobse - [ElineJ](https://github.com/ElineJ)
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
