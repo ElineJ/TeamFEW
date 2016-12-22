@@ -33,7 +33,8 @@ class Car(object):
 
     def copy_self(self):
         """
-        Returns a new instance of car object identical to current car
+        Returns a new instance of Car with attributes identical
+        to current car
         """
         return Car(self.pos.x1, self.pos.x2, self.pos.y1,
                    self.pos.y2, self.orientation, self.color)
@@ -43,9 +44,8 @@ class Car(object):
     @staticmethod
     def setCarPosition(car, direction, a, b, Grid):
         """
-        Set the position of the car to position
-
-        position: a Position object.
+        Change the current positions of car to new
+        position depending on direction
         """
         if direction == 'up' or direction == 'down':
             Grid.vehicles[car].pos.y1 = a
@@ -59,8 +59,7 @@ class Car(object):
         Checks if car can move up. If True it creates a copy of Grid,
         moves the car in this copy and returns it.
         """
-        y1 = self.pos.y1 - 1
-        y2 = self.pos.y2 - 1
+        y1, y2 = self.pos.y1 - 1, self.pos.y2 - 1
         check_pos = pos.GridPosition(self.pos.x1, y1)
         if Grid.isPositionEmpty(check_pos):
             new_grid = Grid.copy_grid()
@@ -76,8 +75,7 @@ class Car(object):
         Checks if car can move down. If True it creates a copy of Grid,
         moves the car in this copy and returns it.
         """
-        y1 = self.pos.y1 + 1
-        y2 = self.pos.y2 + 1
+        y1, y2 = self.pos.y1 + 1, self.pos.y2 + 1
         check_pos = pos.GridPosition(self.pos.x2, y2)
         if Grid.isPositionEmpty(check_pos):
             new_grid = Grid.copy_grid()
@@ -93,8 +91,7 @@ class Car(object):
         Checks if car can move left. If True it creates a copy of Grid,
         moves the car in this copy and returns it.
         """
-        x1 = self.pos.x1 - 1
-        x2 = self.pos.x2 - 1
+        x1, x2 = self.pos.x1 - 1, self.pos.x2 - 1
         check_pos = pos.GridPosition(x1, self.pos.y1)
         if Grid.isPositionEmpty(check_pos):
             new_grid = Grid.copy_grid()
@@ -126,8 +123,8 @@ class Car(object):
 
     def setNewPosition(self, direction, a, b, Grid):
         """
-        Set the position of the car to position
-        position: a Position object.
+        Change the current positions of car to new
+        position depending on direction
         """
         car = Grid.vehicles.index(self)
         if direction == 'up' or direction == 'down':
@@ -139,8 +136,11 @@ class Car(object):
         self.pos = Grid.vehicles[car].pos
 
     def up(self, Grid):
-        y1 = self.pos.y1 - 1
-        y2 = self.pos.y2 - 1
+        """
+        Check if car can move up. If it can, moves car in
+        current Grid and returns True.
+        """
+        y1, y2 = self.pos.y1 - 1, self.pos.y2 - 1
         check_pos = pos.GridPosition(self.pos.x1, y1)
         if Grid.isPositionEmpty(check_pos):
             empty_pos = pos.GridPosition(self.pos.x2, self.pos.y2)
@@ -150,8 +150,11 @@ class Car(object):
         return False
 
     def down(self, Grid):
-        y1 = self.pos.y1 + 1
-        y2 = self.pos.y2 + 1
+        """
+        Check if car can move down. If it can, moves car in
+        current Grid and returns True.
+        """
+        y1, y2 = self.pos.y1 + 1, self.pos.y2 + 1
         check_pos = pos.GridPosition(self.pos.x2, y2)
         if Grid.isPositionEmpty(check_pos):
             empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
@@ -161,8 +164,11 @@ class Car(object):
         return False
 
     def left(self, Grid):
-        x1 = self.pos.x1 - 1
-        x2 = self.pos.x2 - 1
+        """
+        Check if car can move left. If it can, moves car in
+        current Grid and returns True.
+        """
+        x1, x2 = self.pos.x1 - 1, self.pos.x2 - 1
         check_pos = pos.GridPosition(x1, self.pos.y1)
         if Grid.isPositionEmpty(check_pos):
             empty_pos = pos.GridPosition(self.pos.x2, self.pos.y2)
@@ -172,10 +178,12 @@ class Car(object):
         return False
 
     def right(self, Grid):
-        x1 = self.pos.x1 + 1
-        x2 = self.pos.x2 + 1
+        """
+        Check if car can move right. If it can, moves car in
+        current Grid and returns True.
+        """
+        x1, x2 = self.pos.x1 + 1, self.pos.x2 + 1
         check_pos = pos.GridPosition(x2, self.pos.y2)
-        # check if move is possible
         if Grid.isPositionEmpty(check_pos):
             empty_pos = pos.GridPosition(self.pos.x1, self.pos.y1)
             Grid.updateEmptyPosition(check_pos, empty_pos)
