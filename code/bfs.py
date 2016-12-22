@@ -1,12 +1,11 @@
 from copy import deepcopy
 import time
-import visualize as vis
+#import visualize as vis
 import car
+import csv
 import truck
 start_time = time.time()
 
-
-# @profile
 def runbfs(grid, exit):
     """
     Breadth First Search algorithm that finds the shortest path
@@ -30,7 +29,7 @@ def runbfs(grid, exit):
         for i in range(0, len(node.vehicles)):
             # move vertical vehicles
             if node.vehicles[i].orientation == "V":
-                # use deepcopy to make a copy of nodes and the objects in node
+                # use copy function to make a copy of nodes and the objects in node
                 new_node = node.copy_grid()
                 if new_node.vehicles[i].move("up", new_node) != False:
                     # add new set-up to queue
@@ -112,30 +111,34 @@ def amount_steps(dictionary, parent, begin, grid):
 def visualobject(steps, grid):
     """
     Translates the array of coordinates into grid objects
-    for the visualization.
+    for the visualization and writes array to a file.
     """
     # open window with visualization
-    anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
+    #anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
+
+    with open('../results/gameresult3.csv', 'a') as testFile:
+        testFileWriter = csv.writer(testFile)
+        testFileWriter.writerow(steps)
 
     # go through all set ups in list
-    for i in range(0, len(steps)):
-        counter = 0
-
-        # change coordinates for cars and trucks in grid
-        for j in range(0, len(grid.vehicles)):
-            string = steps[i]
-            if isinstance(grid.vehicles[j], truck.Truck):
-                grid.vehicles[j].pos.x1 = string[counter]
-                grid.vehicles[j].pos.x2 = string[counter + 1]
-                grid.vehicles[j].pos.x3 = string[counter + 2]
-                grid.vehicles[j].pos.y1 = string[counter + 3]
-                grid.vehicles[j].pos.y2 = string[counter + 4]
-                grid.vehicles[j].pos.y3 = string[counter + 5]
-                counter += 6
-            elif isinstance(grid.vehicles[j], car.Car):
-                grid.vehicles[j].pos.x1 = string[counter]
-                grid.vehicles[j].pos.x2 = string[counter + 1]
-                grid.vehicles[j].pos.y1 = string[counter + 2]
-                grid.vehicles[j].pos.y2 = string[counter + 3]
-                counter += 4
-        anim.update(grid.vehicles)
+    # for i in range(0, len(steps)):
+    #     counter = 0
+    #
+    #     # change coordinates for cars and trucks in grid
+    #     for j in range(0, len(grid.vehicles)):
+    #         string = steps[i]
+    #         if isinstance(grid.vehicles[j], truck.Truck):
+    #             grid.vehicles[j].pos.x1 = string[counter]
+    #             grid.vehicles[j].pos.x2 = string[counter + 1]
+    #             grid.vehicles[j].pos.x3 = string[counter + 2]
+    #             grid.vehicles[j].pos.y1 = string[counter + 3]
+    #             grid.vehicles[j].pos.y2 = string[counter + 4]
+    #             grid.vehicles[j].pos.y3 = string[counter + 5]
+    #             counter += 6
+    #         elif isinstance(grid.vehicles[j], car.Car):
+    #             grid.vehicles[j].pos.x1 = string[counter]
+    #             grid.vehicles[j].pos.x2 = string[counter + 1]
+    #             grid.vehicles[j].pos.y1 = string[counter + 2]
+    #             grid.vehicles[j].pos.y2 = string[counter + 3]
+    #             counter += 4
+    #     #anim.update(grid.vehicles)
