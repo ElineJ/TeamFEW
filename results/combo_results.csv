@@ -1,5 +1,7 @@
-board, counter, time, size of dictionary
+board, counter, time, size of dictionary, max moves
 4, 90, 2213.13300014, unknown
 6, 397, 438.202, 4198
-6, , , 365315
-5, 491, 338.502, 1331
+6, , , 365315, 5000
+5, 491, 338.502, 1331, 1000
+7, 1298, 4561, 37175, 5000
+5, 207, 2638.326, 10731, 1000
