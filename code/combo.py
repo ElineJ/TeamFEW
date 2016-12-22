@@ -41,9 +41,9 @@ def runcombo(grid, exit, num_runs):
                     direction = v_direction[number]
                     if vehicle.move(direction, new_grid) != False:
                         check = make_string(vehicles)
-                        moves += 1
-                        if check not in random_dictionary:
 
+                        if check not in random_dictionary:
+                            moves += 1
                             add_random_dictionary(check, random_dictionary)
                             # anim.update(vehicles)
                 # move horizontal car into a random direction
@@ -51,9 +51,9 @@ def runcombo(grid, exit, num_runs):
                     direction = h_direction[number]
                     if vehicle.move(direction, new_grid) != False:
                         check = make_string(vehicles)
-                        moves += 1
-                        if check not in random_dictionary:
 
+                        if check not in random_dictionary:
+                            moves += 1
                             add_random_dictionary(check, random_dictionary)
                             # anim.update(vehicles)
                             # check if car is at exit
