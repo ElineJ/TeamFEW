@@ -6,7 +6,7 @@ import random
 import time
 start_time = time.time()
 
-def runcombo(grid, exit, num_runs):
+def runcombo(grid, exit, num_runs, max_moves):
     grid_bfs = grid.copy_grid()
     check_dictionary = {}
     start_time = time.time()
@@ -28,12 +28,11 @@ def runcombo(grid, exit, num_runs):
         # else:
         #     width = 12
         string = make_string(vehicles)
-        print string
         if string not in random_dictionary:
             add_random_dictionary(string, random_dictionary)
         # open window with visualization
         # anim = vis.Visualization(width, width, vehicles)
-        while moves < 5000 and not_at_exit:
+        while moves < max_moves and not_at_exit:
             for vehicle in vehicles:
                 number = random.randint(0, 1)
                 # move vertical car in a random direction
@@ -60,9 +59,8 @@ def runcombo(grid, exit, num_runs):
                         if grid.car_at_exit(vehicle.pos):
                             # print "Found exit!"
                             print moves
-                            if moves < 5000:
+                            if moves < max_moves:
                                 check_dictionary = dict(check_dictionary.items() + random_dictionary.items())
-                                print "ik kom hier in"
                             not_at_exit = False
 
     runbfs(grid_bfs, exit, check_dictionary)
@@ -145,10 +143,7 @@ def make_string(vehicles):
     Creates a unique string of the position coordinates
     of all vehicles in the current grid.
     """
-    string = ""
-    for vehicle in vehicles:
-        string = string + str(vehicle)
-    return string
+    return ''.join([str(vehicle) for vehicle in vehicles])
 
 def add_dictionary(string, dictionary, check):
     dict1 = {string: check}
