@@ -21,7 +21,7 @@ python visualdata.py 1
 
 The number represents one of the four boards the algoritm can solve with the breadth-first search algorithm. In order to see the visualisation for one of the other four boards, enter a different number between 1 - 4.  
 
-### Prerequisites (TODO)
+### Prerequisites
 
 The code is written in `Python 2.7`. Running it in Python 3 might cause problems. Running the program requires installation of `Matplotlib`. If this is not yet installed on your computer, you can find installation instructions for your operating system [here](http://matplotlib.org/users/installing.html).
 
@@ -29,7 +29,7 @@ The code is written in `Python 2.7`. Running it in Python 3 might cause problems
 Give examples of how to check if matplotlib is installed
 ```
 
-## Methods (TODO)
+## Methods
 
 ## Files ##
 
