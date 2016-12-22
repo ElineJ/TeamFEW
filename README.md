@@ -9,7 +9,7 @@ In `main` the program will run the `random` and `breadth first search` algorithm
 python main.py 1
 ```
 
-The number represents one of the seven boards the algoritm can solve. In order to have the algorithm solve one of the other seven boards, enter a different number between 1 - 7.  
+The number represents one of the seven boards the algoritm can solve. In order to have the algorithm solve one of the other seven boards, enter a different number between 1 - 7. You can run the program in the terminal with the following command: 
 
 -----
 
