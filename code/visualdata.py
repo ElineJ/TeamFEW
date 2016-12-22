@@ -13,8 +13,8 @@ games = ['none', '../datasets/Game #1.csv', '../datasets/Game #2.csv',
          '../datasets/Game #7.csv']
 
 # TODO: add datasets
-datasets = ['none', '../results/gameresult1.csv', '..results/gameresult2.csv',
-        '../results/gameresult3.csv']
+datasets = ['none', '../results/gameresult1.csv', '../results/gameresult2.csv',
+        '../results/gameresult3.csv', '../results/gameresult4.csv']
 
 def run():
     """
@@ -26,19 +26,13 @@ def run():
     steps = []
 
     # get the dataset of the path
-    data = int(sys.argv[1])
-    if data == 0 or data > 7:
-        sys.exit("Game does not exist, choose 1 - 7")
+    game = int(sys.argv[1])
+    if game == 0 or game > 4:
+        sys.exit("Game does not exist, choose 1 - 4")
     else:
-        f = open(datasets[data], 'rb')
+        f = open(datasets[game], 'rb')
         reader = csv.reader(f)
         steps = list(reader)
-
-    # get the grid of the game
-    game = int(sys.argv[2])
-    if game == 0 or game > 7:
-        sys.exit("Game does not exist, choose 1 - 7")
-    else:
         f = open(games[game], 'rb')
 
     # set up exits for each of the games
