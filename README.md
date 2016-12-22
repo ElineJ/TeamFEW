@@ -21,6 +21,13 @@ python visualdata.py 1
 
 The number represents one of the four boards the algoritm can solve with the breadth-first search algorithm. In order to see the visualisation for one of the other four boards, enter a different number between 1 - 4.  
 
+In `run_combo` the program will run the `combo` algorithm. You can run the program in the terminal with the following command:
+
+```
+python run_combo.py 1 100 5000
+```
+The first number represents one of the seven boards the algoritm can solve. In order to have the algorithm solve one of the other seven boards, enter a different number between 1 - 7. The second number is the amount of times the first part of the algorithm will run. The third argument is the amount of moves the first part of the algorithm is allowed to make.
+
 ### Prerequisites
 
 The code is written in `Python 2.7`. Running it in Python 3 might cause problems. Running the program requires installation of `Matplotlib`. If this is not yet installed on your computer, you can find installation instructions for your operating system [here](http://matplotlib.org/users/installing.html).
