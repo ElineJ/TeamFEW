@@ -4,20 +4,22 @@ import car
 import truck
 import random
 import time
+start_time = time.time()
 
+def runcombo(grid, exit, num_runs):
+    grid_bfs = grid.copy_grid()
+    check_dictionary = {}
+    start_time = time.time()
 
-def runrandom(grid, exit, num_runs):
-
-        start_time = time.time()
+    for i in range(0, num_runs):
         v_direction = ["up", "down"]
         h_direction = ["left", "right"]
-        vehicles = grid.all_vehicles
-        grid_bfs = deepcopy(grid)
-        moves = 0
-        results = []
-
-        # make a list of all states that have happened
+        new_grid = grid.copy_grid()
         random_dictionary = {}
+        vehicles = new_grid.vehicles
+        not_at_exit = True
+        moves = 0
+        # make a list of all states that have happened
         # set up visualization
         # if exit.x == 5:
         #     width = 6
@@ -25,268 +27,134 @@ def runrandom(grid, exit, num_runs):
         #     width = 9
         # else:
         #     width = 12
-        string = makeString(vehicles)
-        add_random_dictionary(string, random_dictionary)
+        string = make_string(vehicles)
+        print string
+        if string not in random_dictionary:
+            add_random_dictionary(string, random_dictionary)
         # open window with visualization
         # anim = vis.Visualization(width, width, vehicles)
+        while moves < 5000 and not_at_exit:
+            for vehicle in vehicles:
+                number = random.randint(0, 1)
+                # move vertical car in a random direction
+                if vehicle.orientation == 'V':
+                    direction = v_direction[number]
+                    if vehicle.move(direction, new_grid) != False:
+                        check = make_string(vehicles)
+                        moves += 1
+                        if check not in random_dictionary:
 
-        while True:
-            for i in range(0, len(vehicles)):
-                if isinstance(vehicles[i], car.Car):
-                    direction = random.randint(0, 1)
-                    # move vertical car in a random direction
-                    if vehicles[i].orientation == 'V':
-                        d = v_direction[direction]
-                        if vehicles[i].checkMove(d, grid):
-                            vehicles[i].moveCar(d, grid)
-                            check = makeString(vehicles)
-                            if check not in random_dictionary:
-                                moves += 1
-                                add_random_dictionary(check, random_dictionary)
-                                # anim.update(vehicles)
-                    # move horizontal car into a random direction
-                    else:
-                        d = h_direction[direction]
-                        if vehicles[i].checkMove(d, grid):
-                            vehicles[i].moveCar(d, grid)
-                            check = makeString(vehicles)
-                            if check not in random_dictionary:
-                                vehicles[i].moveCar(d, grid)
-                                moves += 1
-                                add_random_dictionary(check, random_dictionary)
-                                # anim.update(vehicles)
-                                # check if car is at exit
-                                if vehicles[i].pos.x2 == exit.x and vehicles[i].pos.y2 == exit.y:
-                                    # del results[:]
-                                    print "Found exit!"
-                                    print "Moves:", moves
-                                    print("--- %s seconds ---" % (time.time() - start_time))
-                                    runbfs(grid_bfs, exit, random_dictionary)
-                                    results.append(moves)
-                                    results.append("%.6s" % (time.time() - start_time))
-                                    # print moves,("%s seconds" % (time.time() - start_time))
-                                    runbfs(grid_bfs, exit, random_dictionary)
-                                    return False
+                            add_random_dictionary(check, random_dictionary)
+                            # anim.update(vehicles)
+                # move horizontal car into a random direction
+                elif vehicle.orientation == 'H':
+                    direction = h_direction[number]
+                    if vehicle.move(direction, new_grid) != False:
+                        check = make_string(vehicles)
+                        moves += 1
+                        if check not in random_dictionary:
 
-                elif isinstance(vehicles[i], truck.Truck):
-                    direction = random.randint(0, 1)
-                    # move vertical truck in a random direction
-                    if vehicles[i].orientation == 'V':
-                        d = v_direction[direction]
-                        if vehicles[i].checkMove(d, grid):
-                            vehicles[i].moveTruck(d, grid)
-                            check = makeString(vehicles)
-                            if check not in random_dictionary:
-                                moves += 1
-                                add_random_dictionary(check, random_dictionary)
-                                # anim.update(vehicles)
-                    # move horizontal truck into a random direction
-                    else:
-                        d = h_direction[direction]
-                        if vehicles[i].checkMove(d, grid):
-                            vehicles[i].moveTruck(d, grid)
-                            check = makeString(vehicles)
-                            if check not in random_dictionary:
-                                moves += 1
-                                add_random_dictionary(check, random_dictionary)
-                                # anim.update(vehicles)
+                            add_random_dictionary(check, random_dictionary)
+                            # anim.update(vehicles)
+                            # check if car is at exit
+                        if grid.car_at_exit(vehicle.pos):
+                            # print "Found exit!"
+                            print moves
+                            if moves < 5000:
+                                check_dictionary = dict(check_dictionary.items() + random_dictionary.items())
+                                print "ik kom hier in"
+                            not_at_exit = False
+
+    runbfs(grid_bfs, exit, check_dictionary)
+        # anim.done()
 
 
-def runbfs(grid, exit, random_dictionary):
-
-    # set up visualization
-    # if exit.x == 5:
-    #     width = 6
-    # elif exit.x == 9:
-    #     width = 9
-    # else:
-    #     width = 12
-
-    # open window with visualization
-    # anim = vis.Visualization(width, width, grid.all_vehicles)
-
+# @profile
+def runbfs(grid, exit, check_dictionary):
+    """
+    Breadth First Search algorithm that finds the shortest path
+    for the red car to get to the exit.
+    """
     # make a list of all states that have happened
+    print "dit is de lengte van de dict = " + str(len(check_dictionary))
     dictionary = {}
-    # parents = {}
-    # start = makeString(grid)
-
-    # counter = 0
+    string = make_string(grid.vehicles)
+    print string
     # make a queue of next steps
     queue = []
     queue = [grid]
-
-    begin = makeString(grid.all_vehicles)
-
+    vehicles = grid.vehicles
+    begin = make_string(vehicles)
     while queue:
-        # print "Queue at start: ", len(queue)
-
         # delete this grid set up from queue and save in node
         node = queue.pop(0)
-        check = makeString(node.all_vehicles)
-        # parents[node] = start
+        check = make_string(node.vehicles)
         if check not in dictionary:
             # add this node to the visited set-ups
-            # parents[node] = check
-            addDictionary(check, dictionary, begin)
-        if check in random_dictionary:
-            for i in range(0, len(node.all_vehicles)):
-                if isinstance(node.all_vehicles[i], car.Car):
-                    # try moving them in both directions
-                    # grid has to be updated
-                    if node.all_vehicles[i].orientation == "V":
-                        # use deepcopy to make a copy of nodes and the objects in node
-                        new_node = deepcopy(node)
+            add_dictionary(check, dictionary, begin)
+        if check in check_dictionary:
+            for i in range(0, len(node.vehicles)):
+                # move vertical vehicles
+                if node.vehicles[i].orientation == "V":
+                    # use deepcopy to make a copy of nodes and the objects in node
+                    new_node = node.copy_grid()
+                    if new_node.vehicles[i].move("up", new_node) != False:
+                        # add new set-up to queue
+                        string = make_string(new_node.vehicles)
+                        if string not in dictionary:
+                            add_dictionary(string, dictionary, check)
+                            queue.append(new_node)
+                    new_node2 = node.copy_grid()
+                    if new_node2.vehicles[i].move("down", new_node2) != False:
 
-                        if new_node.all_vehicles[i].moveCar("up", new_node) != False:
-                            # print "Car moved up"
+                        # add new set-up to queue
+                        string = make_string(new_node2.vehicles)
+                        if string not in dictionary:
+                            add_dictionary(string, dictionary, check)
+                            queue.append(new_node2)
 
-                            # grid = new set-up
-                            # add new set-up to queue
-                            string = makeString(new_node.all_vehicles)
-                            # only add new set up if not already in dictionary
+
+                # move horizontal vehicles
+                elif node.vehicles[i].orientation == "H":
+                    new_node = node.copy_grid()
+                    if new_node.vehicles[i].move("left", new_node) != False:
+
+                        # add set-up to dictionary
+                        string = make_string(new_node.vehicles)
+                        if string not in dictionary:
+                            add_dictionary(string, dictionary, check)
+                            queue.append(new_node)
+                    new_node2 = node.copy_grid()
+                    if new_node2.vehicles[i].move("right", new_node2) != False:
+
+                        # check if the car is at the exit
+                        if new_node2.car_at_exit(new_node2.vehicles[i].pos):
+                            print "klaar ermee"
+                            print "--- %s seconds ---" % (time.time() - start_time)
+                            return amount_steps(dictionary, check, begin)
+
+                        # add new set-up to queue
+                        else:
+                            string = make_string(new_node2.vehicles)
                             if string not in dictionary:
-                                addDictionary(string, dictionary, check)
-                                queue.append(new_node)
-                                # anim.update(new_node.all_vehicles)
-
-                        new_node2 = deepcopy(node)
-                        if new_node2.all_vehicles[i].moveCar("down", new_node2) != False:
-                            # print "Car moved down"
-                            # grid = new set-up
-                            # add new set-up to queue
-
-                            string = makeString(new_node2.all_vehicles)
-                            if string not in dictionary:
-                                addDictionary(string, dictionary, check)
+                                add_dictionary(string, dictionary, check)
                                 queue.append(new_node2)
-                                # anim.update(new_node2.all_vehicles)
 
-                    elif node.all_vehicles[i].orientation == "H":
-                        new_node = deepcopy(node)
-                        if new_node.all_vehicles[i].moveCar("left", new_node) != False:
-                            # print "Car moved left"
-                            # anim.update(new_node.all_vehicles)
-
-                            string = makeString(new_node.all_vehicles)
-                            if string not in dictionary:
-                                addDictionary(string, dictionary, check)
-                                queue.append(new_node)
-                                # anim.update(new_node.all_vehicles)
-
-                        new_node2 = deepcopy(node)
-                        if new_node2.all_vehicles[i].moveCar("right", new_node2) != False:
-                            # print "Car moved right"
-
-                            # check if the car is at the exit
-                            if new_node2.all_vehicles[i].pos.x2 == exit.x and new_node2.all_vehicles[i].pos.y2 == exit.y:
-                                print "found exit"
-                                print("--- %s seconds ---" % (time.time() - start_time))
-                                amountSteps(dictionary, check, begin)
-                                # print counter
-                                return new_node2
-                                # anim.update(new_node2.all_vehicles)
-                                # solution = [exit]
-                                # n = exit
-                                # while n in parents and parents[n]:
-                                #     solution.append(parents[n])
-                                #     n = parents[n]
-                                #
-                                # return solution[::-1]
-
-                            # grid = new set-up
-                            # add new set-up to queue
-                            else:
-                                string = makeString(new_node2.all_vehicles)
-                                if string not in dictionary:
-                                    addDictionary(string, dictionary, check)
-                                    queue.append(new_node2)
-                                    # anim.update(new_node2.all_vehicles)
-
-                elif isinstance(node.all_vehicles[i], truck.Truck):
-                    if node.all_vehicles[i].orientation == "V":
-
-                        new_node = deepcopy(node)
-                        if new_node.all_vehicles[i].moveTruck("up", new_node) != False:
-                            # print "truck moved up"
-                            # anim.update(new_node.all_vehicles)
-                            # grid = new set-up
-                            # add new set-up to queue
-                            string = makeString(new_node.all_vehicles)
-                            if string not in dictionary:
-                                addDictionary(string, dictionary, check)
-                                queue.append(new_node)
-                                # anim.update(new_node.all_vehicles)
-
-                        new_node2 = deepcopy(node)
-                        if new_node2.all_vehicles[i].moveTruck("down", new_node2) != False:
-                            # print "truck moved down"
-                            # anim.update(new_node2.all_vehicles)
-                            # add new set-up to queue
-                            string = makeString(new_node2.all_vehicles)
-                            if string not in dictionary:
-                                addDictionary(string, dictionary, check)
-                                queue.append(new_node2)
-                                # anim.update(new_node2.all_vehicles)
-
-                    elif node.all_vehicles[i].orientation == "H":
-
-                        new_node = deepcopy(node)
-                        if new_node.all_vehicles[i].moveTruck("left", new_node) != False:
-                            # print "truck moved left"
-                            # anim.update(new_node.all_vehicles)
-                            # grid = new set-up
-                            # add new set-up to queue
-                            string = makeString(new_node.all_vehicles)
-                            if string not in dictionary:
-                                addDictionary(string, dictionary, check)
-                                queue.append(new_node)
-                                # anim.update(new_node.all_vehicles)
-
-                        new_node2 = deepcopy(node)
-                        if new_node2.all_vehicles[i].moveTruck("right", new_node2) != False:
-                            # print "truck moved right"
-                            # anim.update(new_node2.all_vehicles)
-                            # grid = new set-up
-                            # add new set-up to queue
-                            string = makeString(new_node2.all_vehicles)
-                            if string not in dictionary:
-                                addDictionary(string, dictionary, check)
-                                queue.append(new_node2)
-                                # anim.update(new_node2.all_vehicles)
-
-    return dictionary
-    # anim.done()
-
-
-def makeString(vehicles):
+def make_string(vehicles):
+    """
+    Creates a unique string of the position coordinates
+    of all vehicles in the current grid.
+    """
     string = ""
-
-    for i in range(0, len(vehicles)):
-        if isinstance(vehicles[i], car.Car):
-            x1 = str(vehicles[i].pos.x1)
-            x2 = str(vehicles[i].pos.x2)
-            y1 = str(vehicles[i].pos.y1)
-            y2 = str(vehicles[i].pos.y2)
-
-            string = string + x1 + x2 + y1 + y2
-
-        elif isinstance(vehicles[i], truck.Truck):
-            x1 = str(vehicles[i].pos.x1)
-            x2 = str(vehicles[i].pos.x2)
-            x3 = str(vehicles[i].pos.x3)
-            y1 = str(vehicles[i].pos.y1)
-            y2 = str(vehicles[i].pos.y2)
-            y3 = str(vehicles[i].pos.y3)
-
-            string = string + x1 + x2 + x3 + y1 + y2 + y3
-
+    for vehicle in vehicles:
+        string = string + str(vehicle)
     return string
 
-def addDictionary(string, dictionary, check):
-    dict2 = {string: check}
-    dictionary.update(dict2)
+def add_dictionary(string, dictionary, check):
+    dict1 = {string: check}
+    dictionary.update(dict1)
 
-def amountSteps(dictionary, parent, begin):
+def amount_steps(dictionary, parent, begin):
     counter = 0
     while parent:
         for key, value in dictionary.iteritems():
