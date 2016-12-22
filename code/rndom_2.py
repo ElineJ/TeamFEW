@@ -1,11 +1,8 @@
 import random
 import time
 # import visualize as vis
-import car
-import truck
 
 
-# @profile
 def runrandom(grid, exit):
     """
     Algorithm that loops through all vehicles and moves each vehicle
@@ -38,8 +35,8 @@ def runrandom(grid, exit):
             number = random.randint(0, 1)
             # move vertical car in a random direction
             if vehicle.orientation == 'V':
-                direction = v_direction[number]
-                if vehicle.move(direction, grid):
+                v_direction = [vehicle.up, vehicle.down]
+                if v_direction[number](grid):
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
@@ -47,8 +44,8 @@ def runrandom(grid, exit):
                         # anim.update(vehicles)
             # move horizontal car into a random direction
             elif vehicle.orientation == 'H':
-                direction = h_direction[number]
-                if vehicle.move(direction, grid):
+                h_direction = [vehicle.left, vehicle.right]
+                if h_direction[number](grid):
                     check = make_string(vehicles)
                     if check not in dictionary:
                         moves += 1
@@ -56,17 +53,17 @@ def runrandom(grid, exit):
                         # anim.update(vehicles)
                         # check if car is at exit
                         if grid.car_at_exit(vehicle.pos):
-                            # print "Found exit!"
-                            del results[:]
-                            results.append(moves)
-                            results.append("%.6s" % (time.time() - start_time))
-                            # print "Moves:", moves
-                            # print("--- %s seconds ---" % (time.time() - start_time))
-                            # print moves,("%s seconds" % (time.time() - start_time))
-                            return results
+                            print "Moves:", moves
+                            print "--- %s seconds ---" % (time.time() - start_time)
+                            not_at_exit = False
+                            # results for testing
+                            # del results[:]
+                            # results.append(moves)
+                            # results.append("%.6s" % (time.time() - start_time))
+                            # return results
     # anim.done()
 
-# @profile
+
 def make_string(vehicles):
     """
     Creates a unique string of the position coordinates
@@ -75,7 +72,6 @@ def make_string(vehicles):
     return ''.join([str(vehicle) for vehicle in vehicles])
 
 
-# @profile
 def add_dictionary(string, dictionary):
     """
     Adds unique string of vehicle positions to

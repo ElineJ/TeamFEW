@@ -5,88 +5,82 @@ import csv
 import truck
 start_time = time.time()
 
+
 def runbfs(grid, exit):
     """
     Breadth First Search algorithm that finds the shortest path
     for the red car to get to the exit.
     """
     # make a list of all states that have happened
+    global dictionary
+    global queue
+    global begin
+    global parent
     dictionary = {}
-    # make a queue of next steps
     queue = []
     queue = [grid]
     begin = make_string(grid)
 
     while queue:
-        # delete this grid set up from queue and save in node
+        # check initial board
         node = queue.pop(0)
-        check = make_string(node)
-        if check not in dictionary:
-            # add this node to the visited set-ups
-            add_dictionary(check, dictionary, begin)
+        parent = make_string(node)
+        if parent not in dictionary:
+            add_dictionary(parent, begin)
+            queue.append(node)
 
+        # move all vehicles from current position
         for i in range(0, len(node.vehicles)):
-            # move vertical vehicles
             if node.vehicles[i].orientation == "V":
-                # use copy function to make a copy of nodes and the objects in node
-                new_node = node.copy_grid()
-                if new_node.vehicles[i].move("up", new_node):
-                    # add new set-up to queue
-                    string = make_string(new_node)
-                    if string not in dictionary:
-                        add_dictionary(string, dictionary, check)
-                        queue.append(new_node)
-                new_node2 = node.copy_grid()
-                if new_node2.vehicles[i].move("down", new_node2):
-                    # add new set-up to queue
-                    string = make_string(new_node2)
-                    if string not in dictionary:
-                        add_dictionary(string, dictionary, check)
-                        queue.append(new_node2)
+                # move vertical vehicles
+                nodecopy = node.vehicles[i].move_up(node)
+                if nodecopy is not False:
+                    check_dictionary(nodecopy)
+                nodecopy = node.vehicles[i].move_down(node)
+                if nodecopy is not False:
+                    check_dictionary(nodecopy)
 
-            # move horizontal vehicles
             elif node.vehicles[i].orientation == "H":
-                new_node = node.copy_grid()
-                if new_node.vehicles[i].move("left", new_node):
-                    # add set-up to dictionary
-                    string = make_string(new_node)
-                    if string not in dictionary:
-                        add_dictionary(string, dictionary, check)
-                        queue.append(new_node)
-                new_node2 = node.copy_grid()
-                if new_node2.vehicles[i].move("right", new_node2):
-                    # check if the car is at the exit
-                    if new_node2.car_at_exit(new_node2.vehicles[i].pos):
+                # move horizontal vehicles
+                nodecopy = node.vehicles[i].move_left(node)
+                if nodecopy is not False:
+                    check_dictionary(nodecopy)
+                nodecopy = node.vehicles[i].move_right(node)
+                if nodecopy is not False:
+                    if nodecopy.car_at_exit(nodecopy.vehicles[i].pos):
                         print "--- %s seconds ---" % (time.time() - start_time)
-                        return amount_steps(dictionary, check, begin, new_node2)
-                    # add new set-up to queue
-                    else:
-                        string = make_string(new_node2)
-                        if string not in dictionary:
-                            add_dictionary(string, dictionary, check)
-                            queue.append(new_node2)
+                        return amount_steps(parent, nodecopy)
+                    check_dictionary(nodecopy)
 
-# @profile
+
+def check_dictionary(node):
+    """
+
+    """
+    string = make_string(node)
+    if string not in dictionary:
+        add_dictionary(string, parent)
+        queue.append(node)
+
+
 def make_string(node):
     """
     Creates a unique string of the position coordinates
     of all vehicles in the current grid.
     """
-
     return ''.join([str(vehicle) for vehicle in node.vehicles])
 
 
-# @profile
-def add_dictionary(string, dictionary, check):
+def add_dictionary(string, parent):
     """
     Adds a unique string of vehicle positions to
     dictionary to track visited set-ups
     """
-    dict2 = {string: check}
+    dict2 = {string: parent}
     dictionary.update(dict2)
 
 
-def amount_steps(dictionary, parent, begin, grid):
+def amount_steps(parent, grid):
     """
     Counts the steps it has taken for the red car
     to get to the exit.
@@ -106,6 +100,7 @@ def amount_steps(dictionary, parent, begin, grid):
                     return counter
                 parent = value
 
+
 def visualobject(steps, grid):
     """
     Translates the array of coordinates into grid objects
@@ -114,7 +109,7 @@ def visualobject(steps, grid):
     # open window with visualization
     #anim = vis.Visualization(grid.width, grid.width, grid.vehicles)
 
-    with open('../results/gameresult3.csv', 'a') as testFile:
+    with open('../results/gameresult5.csv', 'a') as testFile:
         testFileWriter = csv.writer(testFile)
         testFileWriter.writerow(steps)
 
