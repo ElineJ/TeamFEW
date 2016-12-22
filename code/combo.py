@@ -7,9 +7,9 @@ import time
 start_time = time.time()
 
 
-def runcombo(grid, exit, num_runs, max_moves):
+def runcombo(grid, num_runs, max_moves):
     grid_bfs = grid.copy_grid()
-    check_dictionary = {}
+    new_dictionary = {}
     start_time = time.time()
 
     for i in range(0, num_runs):
@@ -22,15 +22,13 @@ def runcombo(grid, exit, num_runs, max_moves):
         string = make_string(vehicles)
         if string not in random_dictionary:
             add_random_dictionary(string, random_dictionary)
-        # open window with visualization
-        # anim = vis.Visualization(width, width, vehicles)
         while moves < max_moves and not_at_exit:
             for vehicle in vehicles:
                 number = random.randint(0, 1)
                 # move vertical car in a random direction
                 if vehicle.orientation == 'V':
                     v_direction = [vehicle.up, vehicle.down]
-                    if v_direction[number](grid):
+                    if v_direction[number](new_grid):
                         check = make_string(vehicles)
 
                         if check not in random_dictionary:
@@ -40,31 +38,33 @@ def runcombo(grid, exit, num_runs, max_moves):
                 # move horizontal car into a random direction
                 elif vehicle.orientation == 'H':
                     h_direction = [vehicle.left, vehicle.right]
-                    if h_direction[number](grid):
+                    if h_direction[number](new_grid):
                         check = make_string(vehicles)
 
                         if check not in random_dictionary:
                             moves += 1
                             add_random_dictionary(check, random_dictionary)
 
-                            # check if car is at exit
-                        if grid.car_at_exit(vehicle.pos):
-                            # print "Found exit!"
-                            print moves
+                        # check if car is at exit
+                        if new_grid.car_at_exit(vehicle.pos):
                             if moves < max_moves:
-                                check_dictionary = dict(check_dictionary.items() + random_dictionary.items())
+                                new_dictionary = dict(new_dictionary.items() + random_dictionary.items())
                             not_at_exit = False
 
-    runbfs(grid_bfs, exit, check_dictionary)
+    runbfs(grid_bfs, exit, new_dictionary)
 
 
-def runbfs(grid, exit, check_dictionary):
+def runbfs(grid, exit, new_dictionary):
     """
     Breadth First Search algorithm that finds the shortest path
     for the red car to get to the exit.
     """
     # make a list of all states that have happened
-    print "dit is de lengte van de dict = " + str(len(check_dictionary))
+    print "dit is de lengte van de dict = " + str(len(new_dictionary))
+    global dictionary
+    global begin
+    global parent
+    global queue
     dictionary = {}
     string = make_string(grid.vehicles)
     print string
@@ -123,24 +123,30 @@ def make_string(vehicles):
     return ''.join([str(vehicle) for vehicle in vehicles])
 
 
-def add_dictionary(string, dictionary, check):
-    dict1 = {string: check}
-    dictionary.update(dict1)
+def add_dictionary(string, parent):
+    """
+    Adds a unique string of vehicle positions to
+    dictionary to track visited set-ups
+    """
+    dict2 = {string: parent}
+    dictionary.update(dict2)
 
 
-def amount_steps(dictionary, parent, begin):
+def amount_steps(parent, grid):
+    """
+    Counts the steps it has taken for the red car
+    to get to the exit.
+    """
     counter = 0
+    steps = []
     while parent:
         for key, value in dictionary.iteritems():
-            #print str(key) + "key"
             node = key
             if parent == node:
-                #print str(begin) + "begin"
-                #print parent
-                #print node
                 counter += 1
+                steps.insert(0, node)
                 if parent == begin:
-                    print "Counter = " + str(counter)
+                    print "Steps = " + str(counter)
                     return counter
                 parent = value
 

@@ -95,8 +95,7 @@ def amount_steps(parent, grid):
                 steps.insert(0, node)
                 if parent == begin:
                     print "Steps = " + str(counter)
-                    # print steps
-                    visualobject(steps, grid)
+                    # visualobject(steps, grid)
                     return counter
                 parent = value
 

@@ -40,7 +40,7 @@ def test():
 
     f.close()
 
-    cmb.runcombo(grid, exit, num_runs, max_moves)
+    cmb.runcombo(grid, num_runs, max_moves)
         # print result
 
 
